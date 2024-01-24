@@ -1,15 +1,15 @@
 [remap]
 
-importer="scene"
+importer="animation_library"
 importer_version=1
-type="PackedScene"
-uid="uid://pkwnpfvuvatu"
-path="res://.godot/imported/soldier_sr.blend-457039606a0e2bebdd03992b1a3d400f.scn"
+type="AnimationLibrary"
+uid="uid://dg5mae40iaaf8"
+path="res://.godot/imported/anim_mp38.blend-f841bcae9791ad6557bc1eee4fca2ba9.res"
 
 [deps]
 
-source_file="res://models/soldiers/soldier_sr.blend"
-dest_files=["res://.godot/imported/soldier_sr.blend-457039606a0e2bebdd03992b1a3d400f.scn"]
+source_file="res://animations/anim_mp38.blend"
+dest_files=["res://.godot/imported/anim_mp38.blend-f841bcae9791ad6557bc1eee4fca2ba9.res"]
 
 [params]
 

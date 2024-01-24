@@ -3,13 +3,13 @@
 importer="animation_library"
 importer_version=1
 type="AnimationLibrary"
-uid="uid://bvdv0g70ypmph"
-path="res://.godot/imported/soldier_animations_movement.blend-ac8acd6b8c6547e1acee8bff2dc6db5e.res"
+uid="uid://q114twicvoua"
+path="res://.godot/imported/anim_ppsh.blend-981aa1fe585b857c199f7d662dd8ea6f.res"
 
 [deps]
 
-source_file="res://models/soldiers/soldier_animations_movement.blend"
-dest_files=["res://.godot/imported/soldier_animations_movement.blend-ac8acd6b8c6547e1acee8bff2dc6db5e.res"]
+source_file="res://animations/anim_ppsh.blend"
+dest_files=["res://.godot/imported/anim_ppsh.blend-981aa1fe585b857c199f7d662dd8ea6f.res"]
 
 [params]
 
