@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceskvi4nrm0d0"
-path="res://.godot/imported/sr_head_test.png-fdc310d34865d7382adfe40fd2b62e63.ctex"
+uid="uid://dcghwsjsdbbuk"
+path="res://.godot/imported/sr_skin_test.png-6daf1a6937fbe759ad2eedac88b9c9d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/sr_head_test.png"
-dest_files=["res://.godot/imported/sr_head_test.png-fdc310d34865d7382adfe40fd2b62e63.ctex"]
+source_file="res://textures/soldiers/sr_skin_test.png"
+dest_files=["res://.godot/imported/sr_skin_test.png-6daf1a6937fbe759ad2eedac88b9c9d3.ctex"]
 
 [params]
 

@@ -1,0 +1,106 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=23 format=3 uid="uid://dalkwfln7e241"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hy72t"]
+animation = &"anim_ppsh/aim"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i1gyo"]
+animation = &"anim_ppsh/aim_crawl"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_5xoew"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_61d7y"]
+graph_offset = Vector2(-109.908, -4.79037)
+nodes/anim/node = SubResource("AnimationNodeAnimation_hy72t")
+nodes/anim/position = Vector2(0, 80)
+nodes/anim_crawl/node = SubResource("AnimationNodeAnimation_i1gyo")
+nodes/anim_crawl/position = Vector2(-20, 220)
+nodes/crawl_blend/node = SubResource("AnimationNodeBlend2_5xoew")
+nodes/crawl_blend/position = Vector2(220, 140)
+nodes/output/position = Vector2(400, 160)
+node_connections = [&"crawl_blend", 0, &"anim", &"crawl_blend", 1, &"anim_crawl", &"output", 0, &"crawl_blend"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1l0gy"]
+animation = &"anim_ppsh/armed"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wxdaw"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_1l0gy")
+nodes/Animation/position = Vector2(60, 140)
+node_connections = [&"output", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k3mo4"]
+animation = &"anim_ppsh/equipped"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vfhyh"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_k3mo4")
+nodes/Animation/position = Vector2(40, 120)
+node_connections = [&"output", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6uxvy"]
+animation = &"anim_ppsh/reload_crawl"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i4hy5"]
+animation = &"anim_ppsh/reload"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_jh07f"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_arxsf"]
+graph_offset = Vector2(-62.695, -23.7411)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_i4hy5")
+nodes/Animation/position = Vector2(20, 80)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6uxvy")
+"nodes/Animation 2/position" = Vector2(0, 220)
+nodes/crawl_blend/node = SubResource("AnimationNodeBlend2_jh07f")
+nodes/crawl_blend/position = Vector2(240, 140)
+nodes/output/position = Vector2(420, 160)
+node_connections = [&"crawl_blend", 0, &"Animation", &"crawl_blend", 1, &"Animation 2", &"output", 0, &"crawl_blend"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nayoa"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cw35j"]
+advance_mode = 2
+advance_condition = &"is_armed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yj8rh"]
+advance_mode = 2
+advance_condition = &"is_aim"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_le6k2"]
+advance_mode = 2
+advance_condition = &"is_reload"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_agy3h"]
+advance_mode = 2
+advance_condition = &"is_aim"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8nwfe"]
+advance_mode = 2
+advance_condition = &"is_armed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7oj2e"]
+advance_mode = 2
+advance_condition = &"is_equipped"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aiwf4"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7c4i6"]
+advance_mode = 2
+advance_condition = &"is_reload"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tx2sd"]
+advance_mode = 2
+advance_condition = &"is_armed"
+
+[resource]
+states/Aim/node = SubResource("AnimationNodeBlendTree_61d7y")
+states/Aim/position = Vector2(245, 164)
+states/Armed/node = SubResource("AnimationNodeBlendTree_wxdaw")
+states/Armed/position = Vector2(328, 83)
+states/End/position = Vector2(575, 100)
+states/Equipped/node = SubResource("AnimationNodeBlendTree_vfhyh")
+states/Equipped/position = Vector2(328, 22)
+states/Reload/node = SubResource("AnimationNodeBlendTree_arxsf")
+states/Reload/position = Vector2(400, 164)
+transitions = ["Start", "Equipped", SubResource("AnimationNodeStateMachineTransition_nayoa"), "Equipped", "Armed", SubResource("AnimationNodeStateMachineTransition_cw35j"), "Armed", "Aim", SubResource("AnimationNodeStateMachineTransition_yj8rh"), "Aim", "Reload", SubResource("AnimationNodeStateMachineTransition_le6k2"), "Reload", "Aim", SubResource("AnimationNodeStateMachineTransition_agy3h"), "Aim", "Armed", SubResource("AnimationNodeStateMachineTransition_8nwfe"), "Armed", "Equipped", SubResource("AnimationNodeStateMachineTransition_7oj2e"), "Equipped", "End", SubResource("AnimationNodeStateMachineTransition_aiwf4"), "Armed", "Reload", SubResource("AnimationNodeStateMachineTransition_7c4i6"), "Reload", "Armed", SubResource("AnimationNodeStateMachineTransition_tx2sd")]
+graph_offset = Vector2(-32.3333, -15.2429)

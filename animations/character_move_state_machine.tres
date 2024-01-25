@@ -1,0 +1,72 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=17 format=3 uid="uid://cg7wo4dbt3xx3"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5kqxn"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_maa13"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_v1tw8"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_g8q8o"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a3h67"]
+advance_mode = 2
+advance_condition = &"is_aim"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m5ak5"]
+advance_mode = 2
+advance_condition = &"is_not_aim"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ohhi6"]
+advance_mode = 2
+advance_condition = &"is_not_aim"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x67d2"]
+advance_mode = 2
+advance_condition = &"is_aim"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l0pmo"]
+states/Aim/node = SubResource("AnimationNodeBlendTree_v1tw8")
+states/Aim/position = Vector2(323, 66)
+states/NotAim/node = SubResource("AnimationNodeBlendTree_g8q8o")
+states/NotAim/position = Vector2(323, 128)
+transitions = ["Start", "Aim", SubResource("AnimationNodeStateMachineTransition_a3h67"), "Start", "NotAim", SubResource("AnimationNodeStateMachineTransition_m5ak5"), "Aim", "NotAim", SubResource("AnimationNodeStateMachineTransition_ohhi6"), "NotAim", "Aim", SubResource("AnimationNodeStateMachineTransition_x67d2")]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mo363"]
+advance_mode = 2
+advance_condition = &"is_crawl"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oujxq"]
+advance_mode = 2
+advance_condition = &"is_crouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jvs8f"]
+advance_mode = 2
+advance_condition = &"is_stand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kqwan"]
+advance_mode = 2
+advance_condition = &"is_crouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u60e7"]
+advance_mode = 2
+advance_condition = &"is_stand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pjvyd"]
+advance_mode = 2
+advance_condition = &"is_crouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ia4kt"]
+advance_mode = 2
+advance_condition = &"is_crawl"
+
+[resource]
+states/Crawl/node = SubResource("AnimationNodeBlendTree_5kqxn")
+states/Crawl/position = Vector2(343, 191)
+states/Crouch/node = SubResource("AnimationNodeBlendTree_maa13")
+states/Crouch/position = Vector2(343, 119)
+states/End/position = Vector2(533, 95)
+states/Stand/node = SubResource("AnimationNodeStateMachine_l0pmo")
+states/Stand/position = Vector2(343, 53)
+states/Start/position = Vector2(191, 119)
+transitions = ["Crouch", "Crawl", SubResource("AnimationNodeStateMachineTransition_mo363"), "Crawl", "Crouch", SubResource("AnimationNodeStateMachineTransition_oujxq"), "Start", "Stand", SubResource("AnimationNodeStateMachineTransition_jvs8f"), "Stand", "Crouch", SubResource("AnimationNodeStateMachineTransition_kqwan"), "Crouch", "Stand", SubResource("AnimationNodeStateMachineTransition_u60e7"), "Start", "Crouch", SubResource("AnimationNodeStateMachineTransition_pjvyd"), "Start", "Crawl", SubResource("AnimationNodeStateMachineTransition_ia4kt")]
+graph_offset = Vector2(49.0252, 0)

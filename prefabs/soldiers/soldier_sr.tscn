@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://hnh1b76w667g"]
+
+[ext_resource type="PackedScene" uid="uid://pkwnpfvuvatu" path="res://models/soldiers/soldier_sr.blend" id="1_lc35o"]
+[ext_resource type="Texture2D" uid="uid://ceskvi4nrm0d0" path="res://textures/soldiers/sr_head_test.png" id="2_okgth"]
+[ext_resource type="Texture2D" uid="uid://dcghwsjsdbbuk" path="res://textures/soldiers/sr_skin_test.png" id="3_f32sr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vesl6"]
+albedo_texture = ExtResource("2_okgth")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6vym"]
+albedo_texture = ExtResource("3_f32sr")
+
+[node name="soldier_sr" instance=ExtResource("1_lc35o")]
+
+[node name="soldier_sr" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_vesl6")
+surface_material_override/1 = SubResource("StandardMaterial3D_q6vym")

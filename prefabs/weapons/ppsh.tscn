@@ -1,0 +1,61 @@
+[gd_scene load_steps=14 format=3 uid="uid://b8jfi54qp1h8i"]
+
+[ext_resource type="PackedScene" uid="uid://d00u6w2iid1p7" path="res://models/weapon/ppsh.blend" id="1_l34ll"]
+[ext_resource type="Script" path="res://code/scripts/weapon.gd" id="2_236vj"]
+[ext_resource type="Texture2D" uid="uid://bxwh7xsm670dh" path="res://textures/weapons/PPSH_Magazine_Texture.png" id="2_mo5lv"]
+[ext_resource type="Texture2D" uid="uid://do2ev4dmqq4bx" path="res://textures/weapons/PPSH_Texture.png" id="3_ldm2e"]
+[ext_resource type="Texture2D" uid="uid://c7eaanmau6ykr" path="res://textures/weapons/PPSH_Metalness.png" id="4_pj1ra"]
+[ext_resource type="Texture2D" uid="uid://dnt7dpqaxe1hd" path="res://textures/weapons/PPSH_BackSight.png" id="5_ggh5p"]
+[ext_resource type="Texture2D" uid="uid://catgh518pf45a" path="res://textures/weapons/PPSH_FrontSight.png" id="6_c3ka6"]
+[ext_resource type="AnimationLibrary" uid="uid://q114twicvoua" path="res://animations/anim_ppsh.blend" id="7_6shyd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6g0su"]
+albedo_texture = ExtResource("2_mo5lv")
+metallic = 1.0
+roughness = 0.51
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8arx"]
+albedo_texture = ExtResource("3_ldm2e")
+metallic = 1.0
+metallic_texture = ExtResource("4_pj1ra")
+roughness = 0.57
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj7lr"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("5_ggh5p")
+metallic = 1.0
+roughness = 0.48
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jttgw"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("6_c3ka6")
+metallic = 1.0
+roughness = 0.58
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40jcx"]
+albedo_texture = ExtResource("3_ldm2e")
+
+[node name="ppsh" instance=ExtResource("1_l34ll")]
+script = ExtResource("2_236vj")
+
+[node name="PPSH_Magazine" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6g0su")
+
+[node name="PPSH" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_i8arx")
+surface_material_override/1 = SubResource("StandardMaterial3D_kj7lr")
+surface_material_override/2 = SubResource("StandardMaterial3D_jttgw")
+
+[node name="Shutter" parent="PPSH" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_40jcx")
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"anim_ppsh": ExtResource("7_6shyd")
+}
