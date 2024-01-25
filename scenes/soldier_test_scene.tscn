@@ -1,4 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdclwnf8enpdk"]
+[gd_scene load_steps=10 format=3 uid="uid://bdclwnf8enpdk"]
+
+[ext_resource type="PackedScene" uid="uid://c2p4l47fcca4w" path="res://prefabs/soldiers/soldier_spawn.tscn" id="1_c77gl"]
+[ext_resource type="PackedScene" uid="uid://b0y8wp42nb272" path="res://prefabs/soldiers/character_body.tscn" id="2_mdmqv"]
+[ext_resource type="PackedScene" uid="uid://hnh1b76w667g" path="res://prefabs/soldiers/soldier_sr.tscn" id="3_2lsmh"]
+
+[sub_resource type="GDScript" id="GDScript_y7scx"]
+script/source = "extends Node3D
+
+func _ready():
+	$SoldierSpawn.spawn()
+"
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3cfw3"]
 size = Vector2(20, 20)
@@ -6,12 +17,37 @@ size = Vector2(20, 20)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fg1l5"]
 data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
 
-[node name="SoldierTestScene" type="Node3D"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8qxr"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[sub_resource type="Sky" id="Sky_rhnyf"]
+sky_material = SubResource("ProceduralSkyMaterial_m8qxr")
+
+[sub_resource type="Environment" id="Environment_ermi1"]
+background_mode = 2
+sky = SubResource("Sky_rhnyf")
+ambient_light_source = 2
+ambient_light_color = Color(0.74902, 0.823529, 0.866667, 1)
+
+[node name="SoldierTestScene" type="Node3D"]
+script = SubResource("GDScript_y7scx")
+
+[node name="Plane" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_3cfw3")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fg1l5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75938, 7.20337)
+
+[node name="SoldierSpawn" parent="." instance=ExtResource("1_c77gl")]
+character_body_prefab = ExtResource("2_mdmqv")
+soldier_prefab = ExtResource("3_2lsmh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.395497, 0.918467, 0, -0.918467, 0.395497, 0, 6.75244, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ermi1")

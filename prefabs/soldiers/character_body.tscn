@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0y8wp42nb272"]
+[gd_scene load_steps=9 format=3 uid="uid://b0y8wp42nb272"]
 
 [ext_resource type="Script" path="res://code/scripts/character_body.gd" id="1_33g4t"]
-[ext_resource type="PackedScene" uid="uid://hnh1b76w667g" path="res://prefabs/soldiers/soldier_sr.tscn" id="1_rgimw"]
 [ext_resource type="AnimationLibrary" uid="uid://b8v3aj5kke4fo" path="res://animations/anim_crawl.blend" id="2_4fi6j"]
 [ext_resource type="AnimationLibrary" uid="uid://dpwofy8p87krx" path="res://animations/anim_move.blend" id="3_pbyxg"]
 [ext_resource type="AnimationLibrary" uid="uid://q114twicvoua" path="res://animations/anim_ppsh.blend" id="5_la2ij"]
@@ -23,17 +22,15 @@ radius = 0.4
 [node name="CharacterBody" type="CharacterBody3D"]
 script = ExtResource("1_33g4t")
 
-[node name="soldier_sr" parent="." instance=ExtResource("1_rgimw")]
-
 [node name="WeaponTestAnimPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../soldier_sr")
+root_node = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_y607t"),
 "anim_ppsh": ExtResource("5_la2ij")
 }
 
 [node name="OnFootAnimPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../soldier_sr")
+root_node = NodePath("")
 libraries = {
 "anim_crawl": ExtResource("2_4fi6j"),
 "anim_move": ExtResource("3_pbyxg")

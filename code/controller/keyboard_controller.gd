@@ -1,5 +1,10 @@
 class_name KeyboardController
 
+var character
+
+func _init(character):
+	self.character = character
+
 func is_crouch():
 	return Input.is_action_pressed("crouch")
 
