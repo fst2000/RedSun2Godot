@@ -5,6 +5,7 @@ var character
 func _init(character):
 	self.character = character
 	character.anim_player.play("anim_move/run")
+	character.anim_player.speed_scale = 1.5
 
 func update(delta):
 	pass
@@ -14,4 +15,5 @@ func next():
 		return WalkState.new(character)
 	return self
 
-func exit(): pass
+func exit():
+	character.anim_player.speed_scale = 1.0

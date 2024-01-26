@@ -22,4 +22,5 @@ func next():
 
 	return self
 
-func exit(): pass
+func exit():
+	state_machine.state.exit()
