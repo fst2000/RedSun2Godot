@@ -1,13 +1,21 @@
 extends Node
 
-
+var crouch_value := false
+var crawl_value := false
 @onready var camera = get_tree().current_scene.get_node("Camera")
 
 func _ready():
 	print(get_tree().current_scene.name)
 
+func _process(delta):
+	if Input.is_action_just_pressed("crouch"): crouch_value = !crouch_value
+	if Input.is_action_just_pressed("crawl"): crawl_value = !crawl_value
+	
 func is_crouch():
-	return Input.is_action_pressed("crouch")
+	return crouch_value
+
+func is_crawl():
+	return crawl_value
 
 func move_direction():
 	var input = Vector3(

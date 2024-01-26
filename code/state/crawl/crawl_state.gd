@@ -1,24 +1,21 @@
-class_name CrouchState
+class_name CrawlState
 
 var character
 var state_machine
 
 func _init(character):
 	self.character = character
-	state_machine = StateMachine.new(CrouchIdleState.new(character))
+	state_machine = StateMachine.new(CrawlIdleState.new(character))
 
 func update(delta):
 	var move_direction = character.controller.move_direction()
 	character.look_at_direction(move_direction)
-	character.velocity = move_direction * 3
+	character.velocity = move_direction * 2
 	state_machine.update(delta)
 
 func next():
-	if !character.controller.is_crouch():
-		return StandState.new(character)
-
-	if character.controller.is_crawl():
-		return CrawlState.new(character)
+	if !character.controller.is_crawl():
+		return CrouchState.new(character)
 
 	return self
 

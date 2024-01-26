@@ -17,6 +17,9 @@ func next():
 	if character.controller.is_crouch():
 		return CrouchState.new(character)
 
+	if character.controller.is_crawl():
+		return CrawlState.new(character)
+
 	return self
 
 func exit(): pass
