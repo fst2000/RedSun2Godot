@@ -2,10 +2,16 @@ extends CharacterBody3D
 
 var controller
 var soldier
+var state_machine
+var anim_player
 
-func _ready():
-	pass
+func spawn(soldier, controller):
+	self.soldier = soldier
+	self.controller = controller
+	anim_player = $OnFootAnimPlayer
+	anim_player.set_root_node(soldier.get_path())
+	state_machine = StateMachine.new(StandState.new(self))
 
-func _physics_process(delta):
-	velocity = controller.move_direction() * 5 
+func _process(delta):
+	state_machine.update(delta)
 	move_and_slide()
