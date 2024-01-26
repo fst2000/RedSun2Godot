@@ -1,4 +1,4 @@
-class_name StandState
+class_name IdleState
 
 var character
 
@@ -7,9 +7,11 @@ func _init(character):
 	character.anim_player.play("anim_move/idle")
 
 func update(delta):
-	character.velocity = character.controller.move_direction() * 5
+	pass
 
 func next():
+	if character.controller.move_direction().length() > 0:
+		return WalkState.new(character)
 	return self
 
 func exit(): pass

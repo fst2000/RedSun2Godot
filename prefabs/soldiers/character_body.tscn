@@ -35,6 +35,7 @@ libraries = {
 "anim_crawl": ExtResource("2_4fi6j"),
 "anim_move": ExtResource("3_pbyxg")
 }
+playback_default_blend_time = 0.1
 
 [node name="StandShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
