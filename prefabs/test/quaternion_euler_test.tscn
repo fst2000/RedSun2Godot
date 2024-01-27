@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://8dod1rkptk3r"]
+
+[sub_resource type="GDScript" id="GDScript_0bxrr"]
+script/source = "extends Node3D
+
+@export var euler : Vector3
+@onready var object = $object
+
+func _process(delta):
+	object.quaternion = Quaternion.from_euler(euler)
+"
+
+[sub_resource type="PrismMesh" id="PrismMesh_itwb6"]
+
+[node name="QuaternionEulerTest" type="Node3D"]
+script = SubResource("GDScript_0bxrr")
+euler = Vector3(0, 1.57, 0)
+
+[node name="object" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_itwb6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.45986)
