@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
 var soldier
-var camera
 var move_controller
 var camera_controller
 var state_machine
@@ -9,6 +8,7 @@ var anim_player
 
 func _ready():
 	anim_player = $OnFootAnimPlayer
+	anim_player.set_root_node(soldier.get_path())
 	state_machine = StateMachine.new(StandState.new(self))
 
 func _process(delta):
