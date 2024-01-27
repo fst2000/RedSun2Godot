@@ -20,7 +20,7 @@ func _ready():
 "
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3cfw3"]
-size = Vector2(50, 50)
+size = Vector2(100, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6frtk"]
 albedo_color = Color(0.654902, 0.654902, 0.654902, 1)
@@ -29,10 +29,10 @@ metallic_specular = 0.0
 normal_enabled = true
 normal_scale = 16.0
 normal_texture = ExtResource("2_x43xx")
-uv1_scale = Vector3(10, 10, 10)
+uv1_scale = Vector3(50, 50, 50)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_r6pfd"]
-data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j08n7"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8qxr"]
 
@@ -56,7 +56,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6frtk")
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_r6pfd")
+shape = SubResource("ConcavePolygonShape3D_j08n7")
 
 [node name="SoldierSpawn" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_c77gl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94709, 0, 0)
