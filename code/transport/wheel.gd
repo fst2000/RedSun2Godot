@@ -18,7 +18,7 @@ func update(delta):
 	damping(delta)
 
 func damping(delta):
-	if ray.is_colliding():
+	if ray.is_colliding() && ray.get_collider() != transport:
 		var point = ray.get_collision_point()
 		var normal = ray.get_collision_normal()
 		var force_position = point - transport.global_position
@@ -31,3 +31,11 @@ func damping(delta):
 		var force_scale = transport.mass * dot_force * damping_scale * wheel_damp
 		var damping_force = normal * force_scale
 		transport.apply_force(damping_force, force_position)
+		
+		var wheel_offset = transport.basis.y * wheel_damp * wheel_radius
+		var wheel_offset_dot = wheel_offset.dot(transport.basis.y)
+		if wheel_offset_dot > 0:
+			wheel.global_position = wheel_global_position + wheel_offset
+		else:
+			wheel.global_position = wheel_global_position
+		ray.global_position = wheel_global_position

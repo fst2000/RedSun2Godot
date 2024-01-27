@@ -5,7 +5,7 @@ var wheels : Array[Wheel]
 
 func _ready():
 	for b in wheel_bones:
-		wheels.append(Wheel.new(self, b, b.get_node("RayCast3D"), 5))
+		wheels.append(Wheel.new(self, b, b.get_node("RayCast3D"), 8))
 
 func _physics_process(delta):
 	for wheel in wheels:
