@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://b8jfi54qp1h8i"]
 
 [ext_resource type="PackedScene" uid="uid://d00u6w2iid1p7" path="res://models/weapon/ppsh.blend" id="1_l34ll"]
-[ext_resource type="Script" path="res://code/scripts/weapon.gd" id="2_236vj"]
+[ext_resource type="Script" path="res://code/weapon/weapon_script.gd" id="2_236vj"]
 [ext_resource type="Texture2D" uid="uid://bxwh7xsm670dh" path="res://textures/weapons/PPSH_Magazine_Texture.png" id="2_mo5lv"]
 [ext_resource type="Texture2D" uid="uid://do2ev4dmqq4bx" path="res://textures/weapons/PPSH_Texture.png" id="3_ldm2e"]
 [ext_resource type="Texture2D" uid="uid://c7eaanmau6ykr" path="res://textures/weapons/PPSH_Metalness.png" id="4_pj1ra"]

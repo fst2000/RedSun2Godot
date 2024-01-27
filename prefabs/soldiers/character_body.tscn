@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b0y8wp42nb272"]
 
-[ext_resource type="Script" path="res://code/scripts/character_body.gd" id="1_33g4t"]
+[ext_resource type="Script" path="res://code/character/character_body_script.gd" id="1_g3g1n"]
 [ext_resource type="AnimationLibrary" uid="uid://b8v3aj5kke4fo" path="res://animations/anim_crawl.blend" id="2_4fi6j"]
 [ext_resource type="AnimationLibrary" uid="uid://dpwofy8p87krx" path="res://animations/anim_move/anim_move.blend" id="3_o2a7e"]
 [ext_resource type="AnimationLibrary" uid="uid://q114twicvoua" path="res://animations/anim_ppsh.blend" id="5_la2ij"]
@@ -20,7 +20,7 @@ height = 0.3
 radius = 0.4
 
 [node name="CharacterBody" type="CharacterBody3D"]
-script = ExtResource("1_33g4t")
+script = ExtResource("1_g3g1n")
 
 [node name="OnFootAnimPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")

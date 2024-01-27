@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdclwnf8enpdk"]
+[gd_scene load_steps=16 format=3 uid="uid://bdclwnf8enpdk"]
 
 [ext_resource type="PackedScene" uid="uid://c2p4l47fcca4w" path="res://prefabs/soldiers/soldier_spawn.tscn" id="1_c77gl"]
 [ext_resource type="Texture2D" uid="uid://cc2nsaygll3v6" path="res://textures/ground/Grass_Ground.png" id="1_xt1km"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://hnh1b76w667g" path="res://prefabs/soldiers/soldier_sr.tscn" id="3_2lsmh"]
 [ext_resource type="PackedScene" uid="uid://cry8c6t2ytxrl" path="res://prefabs/camera/camera.tscn" id="5_65f1i"]
 [ext_resource type="Script" path="res://code/character/player_character_content.gd" id="6_c1agl"]
+[ext_resource type="PackedScene" uid="uid://bsfhq7osdp8ei" path="res://prefabs/transport/tank_t34.tscn" id="8_ewxoi"]
 
 [sub_resource type="GDScript" id="GDScript_y7scx"]
 script/source = "extends Node3D
@@ -71,3 +72,6 @@ transform = Transform3D(1, 0, 0, 0, 0.395497, 0.918467, 0, -0.918467, 0.395497, 
 environment = SubResource("Environment_ermi1")
 
 [node name="Camera" parent="." instance=ExtResource("5_65f1i")]
+
+[node name="tank_t34" parent="." instance=ExtResource("8_ewxoi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.97631, 0, 0)
