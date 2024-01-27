@@ -11,7 +11,7 @@ func update(delta):
 	pass
 
 func next():
-	if character.controller.move_direction().length() < 0.5:
+	if character.move_controller.move_direction().length() < 0.5:
 		return WalkState.new(character)
 	return self
 

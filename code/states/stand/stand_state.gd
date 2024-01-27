@@ -8,16 +8,16 @@ func _init(character):
 	state_machine = StateMachine.new(IdleState.new(character))
 
 func update(delta):
-	var move_direction = character.controller.move_direction()
+	var move_direction = character.move_controller.move_direction()
 	character.look_at_direction(move_direction)
-	character.velocity = move_direction * 5
+	character.move(move_direction * 5)
 	state_machine.update(delta)
 
 func next():
-	if character.controller.is_crouch():
+	if character.move_controller.is_crouch():
 		return CrouchState.new(character)
 
-	if character.controller.is_crawl():
+	if character.move_controller.is_crawl():
 		return CrawlState.new(character)
 
 	return self

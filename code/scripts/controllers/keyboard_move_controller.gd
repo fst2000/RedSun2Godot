@@ -1,20 +1,18 @@
-extends Node
+class_name KeyboardMoveController
 
 var crouch_value := false
 var crawl_value := false
-@onready var camera = get_tree().current_scene.get_node("Camera")
+var camera : Node3D
 
-func _ready():
-	print(get_tree().current_scene.name)
+func _init(camera):
+	self.camera = camera
 
-func _process(delta):
-	if Input.is_action_just_pressed("crouch"): crouch_value = !crouch_value
-	if Input.is_action_just_pressed("crawl"): crawl_value = !crawl_value
-	
 func is_crouch():
+	if Input.is_action_just_pressed("crouch"): crouch_value = !crouch_value
 	return crouch_value
 
 func is_crawl():
+	if Input.is_action_just_pressed("crawl"): crawl_value = !crawl_value
 	return crawl_value
 
 func move_direction():

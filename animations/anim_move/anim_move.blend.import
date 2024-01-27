@@ -4,12 +4,12 @@ importer="animation_library"
 importer_version=1
 type="AnimationLibrary"
 uid="uid://dpwofy8p87krx"
-path="res://.godot/imported/anim_move.blend-803566a03972de77910898ccd4e6f4ea.res"
+path="res://.godot/imported/anim_move.blend-1534d75b52170859c666848f9dd4dc2a.res"
 
 [deps]
 
-source_file="res://animations/anim_move.blend"
-dest_files=["res://.godot/imported/anim_move.blend-803566a03972de77910898ccd4e6f4ea.res"]
+source_file="res://animations/anim_move/anim_move.blend"
+dest_files=["res://.godot/imported/anim_move.blend-1534d75b52170859c666848f9dd4dc2a.res"]
 
 [params]
 

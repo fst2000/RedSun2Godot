@@ -9,4 +9,7 @@ func _process(delta):
 
 func look_at_direction(direction, axis):
 	if direction.length() > 0.01: 
-		look_at(global_position + direction)
+		look_at(global_position + direction, axis)
+
+func switch(origin):
+	camera_controller = origin.camera_controller
