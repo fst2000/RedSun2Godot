@@ -6,10 +6,12 @@ var camera_controller
 var state_machine
 var anim_player
 
+var gravity = 10
+
 func _ready():
 	anim_player = $OnFootAnimPlayer
 	anim_player.set_root_node(soldier.get_path())
-	state_machine = StateMachine.new(StandState.new(self))
+	state_machine = StateMachine.new(FloorState.new(self))
 
 func _process(delta):
 	state_machine.update(delta)
@@ -22,3 +24,6 @@ func look_at_direction(direction : Vector3):
 func move(direction):
 	velocity.x = direction.x
 	velocity.z = direction.z
+
+func fall(delta):
+	velocity.y -= gravity * delta

@@ -1,12 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdclwnf8enpdk"]
+[gd_scene load_steps=12 format=3 uid="uid://bdclwnf8enpdk"]
 
 [ext_resource type="PackedScene" uid="uid://c2p4l47fcca4w" path="res://prefabs/soldiers/soldier_spawn.tscn" id="1_c77gl"]
-[ext_resource type="Texture2D" uid="uid://cc2nsaygll3v6" path="res://textures/ground/Grass_Ground.png" id="1_xt1km"]
 [ext_resource type="PackedScene" uid="uid://b0y8wp42nb272" path="res://prefabs/soldiers/character_body.tscn" id="2_mdmqv"]
-[ext_resource type="Texture2D" uid="uid://tq2veitxr6bm" path="res://textures/ground/Grass_Ground_NORMAL.png" id="2_x43xx"]
 [ext_resource type="PackedScene" uid="uid://hnh1b76w667g" path="res://prefabs/soldiers/soldier_sr.tscn" id="3_2lsmh"]
 [ext_resource type="PackedScene" uid="uid://cry8c6t2ytxrl" path="res://prefabs/camera/camera.tscn" id="5_65f1i"]
 [ext_resource type="Script" path="res://code/character/player_character_content.gd" id="6_c1agl"]
+[ext_resource type="PackedScene" uid="uid://dp3vdy6fq0fq" path="res://prefabs/test/ground_for_transport_test.tscn" id="7_6svti"]
 [ext_resource type="PackedScene" uid="uid://bsfhq7osdp8ei" path="res://prefabs/transport/tank_t34.tscn" id="8_ewxoi"]
 
 [sub_resource type="GDScript" id="GDScript_y7scx"]
@@ -19,21 +18,6 @@ func _ready():
 	camera.switch(player)
 "
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_3cfw3"]
-size = Vector2(100, 100)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6frtk"]
-albedo_color = Color(0.654902, 0.654902, 0.654902, 1)
-albedo_texture = ExtResource("1_xt1km")
-metallic_specular = 0.0
-normal_enabled = true
-normal_scale = 16.0
-normal_texture = ExtResource("2_x43xx")
-uv1_scale = Vector3(50, 50, 50)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j08n7"]
-data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8qxr"]
 
 [sub_resource type="Sky" id="Sky_rhnyf"]
@@ -44,19 +28,11 @@ background_mode = 2
 sky = SubResource("Sky_rhnyf")
 ambient_light_source = 2
 ambient_light_color = Color(0.74902, 0.823529, 0.866667, 1)
+ambient_light_energy = 0.5
 
 [node name="SoldierTestScene" type="Node3D" node_paths=PackedStringArray("camera")]
 script = SubResource("GDScript_y7scx")
 camera = NodePath("Camera")
-
-[node name="Plane" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_3cfw3")
-surface_material_override/0 = SubResource("StandardMaterial3D_6frtk")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Plane"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_j08n7")
 
 [node name="SoldierSpawn" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_c77gl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94709, 0, 0)
@@ -66,12 +42,16 @@ character_content = ExtResource("6_c1agl")
 camera = NodePath("../Camera")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.395497, 0.918467, 0, -0.918467, 0.395497, 0, 6.75244, 0)
+transform = Transform3D(1, 0, 0, 0, -0.152762, 0.988263, 0, -0.988263, -0.152762, 0, 6.75244, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ermi1")
 
 [node name="Camera" parent="." instance=ExtResource("5_65f1i")]
+current = true
 
 [node name="tank_t34" parent="." instance=ExtResource("8_ewxoi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93333, -0.135065, -12.6468)
+
+[node name="ground_for_transport_test" parent="." instance=ExtResource("7_6svti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.4293, 0)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wq176il0k1i1"]
+
+[ext_resource type="Script" path="res://code/controllers/mouse_rotation_controller_script.gd" id="1_52jes"]
+
+[node name="MouseRotationController" type="Node"]
+script = ExtResource("1_52jes")
