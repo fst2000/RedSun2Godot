@@ -74,4 +74,4 @@ environment = SubResource("Environment_ermi1")
 [node name="Camera" parent="." instance=ExtResource("5_65f1i")]
 
 [node name="tank_t34" parent="." instance=ExtResource("8_ewxoi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93333, 0, -12.6468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93333, -0.135065, -12.6468)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bsfhq7osdp8ei"]
+[gd_scene load_steps=15 format=3 uid="uid://bsfhq7osdp8ei"]
 
 [ext_resource type="Script" path="res://code/transport/tank_script.gd" id="2_l1v1y"]
 
@@ -107,10 +107,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d3hu6")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wijnf"]
-margin = 0.02
-size = Vector3(1.51733, 0.81334, 2.43295)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eb6ux"]
 resource_name = "T34_Track"
@@ -264,15 +260,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458364, 1.08294)
 mesh = SubResource("ArrayMesh_0835y")
 skeleton = NodePath("")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="T34/T34_Tower"]
-mass = 4000.0
-freeze = true
-freeze_mode = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="T34/T34_Tower/RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512658, -0.0438147)
-shape = SubResource("BoxShape3D_wijnf")
-
 [node name="Tank_Trail_Arm" type="Node3D" parent="."]
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Tank_Trail_Arm"]
@@ -392,6 +379,9 @@ override_pose = true
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_1"]
 target_position = Vector3(0.35, 0, 0)
 
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_1"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="wheel_l_2" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, 1, 2.3041e-07, -1, 0, -5.20549e-07, -5.20549e-07, -2.3041e-07, 1, 1.22788, 0.508275, -1.82165)
 bone_name = "B_Wheel_L_2"
@@ -400,6 +390,9 @@ override_pose = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_2"]
 target_position = Vector3(0.5, 0, 0)
+
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="wheel_l_3" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, 1, 2.3041e-07, -1, 0, -5.20549e-07, -5.20549e-07, -2.3041e-07, 1, 1.22788, 0.511547, -0.950245)
@@ -410,6 +403,9 @@ override_pose = true
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_3"]
 target_position = Vector3(0.5, 0, 0)
 
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_3"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="wheel_l_4" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, 1, 2.3041e-07, -1, 0, -5.20549e-07, -5.20549e-07, -2.3041e-07, 1, 1.22788, 0.509157, -0.0938438)
 bone_name = "B_Wheel_L_4"
@@ -418,6 +414,9 @@ override_pose = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_4"]
 target_position = Vector3(0.5, 0, 0)
+
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="wheel_l_5" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, 1, 6.91231e-07, -1, 0, -5.20549e-07, -5.20549e-07, -6.91231e-07, 1, 1.22788, 0.508999, 0.910836)
@@ -428,6 +427,9 @@ override_pose = true
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_5"]
 target_position = Vector3(0.5, 0, 0)
 
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_5"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="wheel_l_6" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, 1, 4.6082e-07, -1, 0, -5.20548e-07, -5.20548e-07, -4.6082e-07, 1, 1.22788, 0.507956, 1.82802)
 bone_name = "B_Wheel_L_6"
@@ -436,6 +438,9 @@ override_pose = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_6"]
 target_position = Vector3(0.5, 0, 0)
+
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_6"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="wheel_l_7" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, 1, 0, -1, 0, -5.20549e-07, -5.20549e-07, 0, 1, 1.22788, 0.725802, 2.52937)
@@ -446,11 +451,17 @@ override_pose = true
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_7"]
 target_position = Vector3(0.35, 0, 0)
 
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_l_7"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="wheel_r_1" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, -1, 4.6082e-07, -1, 0, -5.20548e-07, 5.20548e-07, -4.6082e-07, -1, -1.22854, 0.649923, -2.58645)
 bone_name = "B_Wheel_R_1"
 bone_idx = 7
 override_pose = true
+
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_1"]
+transform = Transform3D(4.37114e-08, -1, 0, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_1"]
 target_position = Vector3(0.35, 0, 0)
@@ -464,6 +475,9 @@ override_pose = true
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_2"]
 target_position = Vector3(0.5, 0, 0)
 
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_2"]
+transform = Transform3D(4.37114e-08, -1, 0, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, 0, -1, 0, 0, 0)
+
 [node name="wheel_r_3" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, -1, 2.3041e-07, -1, 0, -5.20549e-07, 5.20549e-07, -2.3041e-07, -1, -1.22854, 0.511547, -0.950245)
 bone_name = "B_Wheel_R_3"
@@ -472,6 +486,9 @@ override_pose = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_3"]
 target_position = Vector3(0.5, 0, 0)
+
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_3"]
+transform = Transform3D(4.37114e-08, -1, 0, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="wheel_r_4" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, -1, 2.3041e-07, -1, 0, -5.20549e-07, 5.20549e-07, -2.3041e-07, -1, -1.22854, 0.509157, -0.0938438)
@@ -482,6 +499,9 @@ override_pose = true
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_4"]
 target_position = Vector3(0.5, 0, 0)
 
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_4"]
+transform = Transform3D(4.37114e-08, -1, 0, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, 0, -1, 0, 0, 0)
+
 [node name="wheel_r_5" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, -1, 6.91231e-07, -1, 0, -5.20549e-07, 5.20549e-07, -6.91231e-07, -1, -1.22854, 0.508999, 0.910836)
 bone_name = "B_Wheel_R_5"
@@ -490,6 +510,9 @@ override_pose = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_5"]
 target_position = Vector3(0.5, 0, 0)
+
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_5"]
+transform = Transform3D(4.37114e-08, -1, 0, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="wheel_r_6" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, -1, 4.6082e-07, -1, 0, -5.20548e-07, 5.20548e-07, -4.6082e-07, -1, -1.22854, 0.507956, 1.82802)
@@ -500,11 +523,17 @@ override_pose = true
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_6"]
 target_position = Vector3(0.5, 0, 0)
 
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_6"]
+transform = Transform3D(4.37114e-08, -1, 0, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, 0, -1, 0, 0, 0)
+
 [node name="wheel_r_7" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
-transform = Transform3D(-1.19209e-07, -1, 5.96046e-08, 2.98023e-07, -1.19209e-07, -1, 1, -5.96046e-08, 2.38419e-07, -1.22788, 0.725802, 2.52937)
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -1.22788, 0.725802, 2.52937)
 bone_name = "B_Wheel_R_7"
 bone_idx = 13
 override_pose = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_7"]
 target_position = Vector3(0.35, 0, 0)
+
+[node name="axes" type="Node3D" parent="Tank_Trail_Arm/Skeleton3D/wheel_r_7"]
+transform = Transform3D(4.37114e-08, 4.37114e-08, 1, -1, -8.74228e-08, 4.37114e-08, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
