@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://bsfhq7osdp8ei"]
+[gd_scene load_steps=16 format=3 uid="uid://bsfhq7osdp8ei"]
 
 [ext_resource type="Script" path="res://code/transport/tank_script.gd" id="2_l1v1y"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5q5w4"]
-margin = 0.01
-size = Vector3(2.80298, 1.17065, 5.53023)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cs5j7"]
+points = PackedVector3Array(-1.29125, 1.70735, -2.19181, 1.4278, 0.921022, 2.89835, -1.3997, 0.921022, 2.89835, 1.14875, 0.4872, -2.37246, 1.32299, 1.84304, -1.23721, -1.20761, 0.4872, -2.37246, 1.14875, 0.4872, 2.25277, -0.895903, 1.59674, 1.31212, 1.51015, 0.908162, -2.92135, -1.20761, 0.4872, 2.25277, 1.51015, 1.28184, 2.59501, -1.48205, 0.908162, -2.92135, -1.48205, 1.28184, 2.59501, 1.51015, 0.721185, 3.06305, -1.2946, 1.84304, -1.23721, 1.19696, 1.77552, -2.12557, -1.48205, 0.721185, 3.06305, 0.84156, 1.59674, 1.31212, 1.51015, 1.28184, -2.54645, -1.48205, 1.28184, -2.54645, -1.38803, 1.74928, -1.23721, 1.41642, 1.74928, -1.23721, -1.1658, 1.77403, -2.12037, -1.48205, 1.37533, 1.84696, 1.51015, 1.37533, 1.84696, 1.30039, 1.69902, -2.15848, -1.48205, 1.37533, -0.863481, 1.51015, 0.721185, 2.96933, -1.48205, 0.721185, 2.96933)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5t3s1"]
+size = Vector3(1.66895, 0.781799, 2.50293)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7122y"]
 resource_name = "T34_Texture"
@@ -243,8 +245,11 @@ script = ExtResource("2_l1v1y")
 wheel_bones = [NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_1"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_2"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_3"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_4"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_5"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_6"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_7"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_1"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_2"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_3"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_4"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_5"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_6"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_7")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03374, -0.103657)
-shape = SubResource("BoxShape3D_5q5w4")
+shape = SubResource("ConvexPolygonShape3D_cs5j7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0936, 0.381348)
+shape = SubResource("BoxShape3D_5t3s1")
 
 [node name="T34" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_8gu0u")

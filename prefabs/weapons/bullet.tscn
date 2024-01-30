@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy438xpmqv8pi"]
+
+[ext_resource type="PackedScene" uid="uid://d1cpg5i7gwiqo" path="res://models/weapon/bullet.blend" id="1_i7xao"]
+[ext_resource type="Shader" path="res://shaders/color.gdshader" id="2_0exc5"]
+[ext_resource type="Script" path="res://code/weapon/bullet_script.gd" id="2_xtxfx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbido"]
+render_priority = 0
+shader = ExtResource("2_0exc5")
+shader_parameter/color = Vector3(1, 0.5, 0)
+
+[node name="bullet" instance=ExtResource("1_i7xao")]
+script = ExtResource("2_xtxfx")
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_dbido")
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+target_position = Vector3(0, 0, 3)

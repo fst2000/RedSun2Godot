@@ -5,12 +5,20 @@ var move_controller
 var camera_controller
 var state_machine
 var anim_player
+var skeleton
+var spine_bone
+var weapon_bone
+var anim_player_root
 
 var gravity = 10
 
 func _ready():
 	anim_player = $OnFootAnimPlayer
-	anim_player.set_root_node(soldier.get_path())
+	anim_player_root = soldier.get_path()
+	anim_player.set_root_node(anim_player_root)
+	skeleton = soldier.get_node("Armature/Skeleton3D")
+	spine_bone = soldier.get_node("SpineBone")
+	weapon_bone = soldier.get_node("WeaponBone")
 	state_machine = StateMachine.new(FloorState.new(self))
 
 func _process(delta):
