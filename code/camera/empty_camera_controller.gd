@@ -1,4 +1,4 @@
 class_name EmptyCameraController
 
-func update(delta):
+func update(_delta):
 	pass

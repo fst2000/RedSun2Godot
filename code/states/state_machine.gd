@@ -2,8 +2,8 @@ class_name StateMachine
 
 var state
 
-func _init(state):
-	self.state = state
+func _init(_state):
+	state = _state
 
 func update(delta):
 	var next = state.next()

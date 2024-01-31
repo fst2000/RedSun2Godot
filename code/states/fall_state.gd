@@ -3,8 +3,8 @@ class_name FallState
 var character
 var state_machine
 
-func _init(character):
-	self.character = character
+func _init(_character):
+	character = _character
 	state_machine = StateMachine.new(StandState.new(character))
 
 func update(delta):

@@ -1,11 +1,11 @@
-class_name KeyboardMoveController
+class_name KeyboardMoveInput
 
 var crouch_value := false
 var crawl_value := false
 var camera : Node3D
 
-func _init(camera):
-	self.camera = camera
+func _init(_camera):
+	camera = _camera
 
 func is_crouch():
 	if Input.is_action_just_pressed("crouch"): crouch_value = !crouch_value

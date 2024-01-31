@@ -33,7 +33,6 @@ bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(-0.00620933, -0.00270778, 0.0532872, 0.998556)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/rotation = Quaternion(-0.00468566, 0.0028521, -0.036901, 0.999304)
-bones/13/scale = Vector3(1, 1, 1)
 bones/14/rotation = Quaternion(0.525553, -0.510794, 0.490068, -0.471929)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/rotation = Quaternion(0.006441, -0.00654627, 0.0532597, 0.998538)
@@ -46,7 +45,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vesl6")
 surface_material_override/1 = SubResource("StandardMaterial3D_q6vym")
 
 [node name="WeaponBone" type="BoneAttachment3D" parent="." index="1"]
-transform = Transform3D(1, 1.98006e-08, -1.42109e-14, -1.98006e-08, 1, -1.93715e-07, 4.26326e-14, 1.93715e-07, 1, -0.198922, 1.36347, -0.403738)
+transform = Transform3D(1, 1.98006e-08, -9.37916e-13, -1.98006e-08, 1, -2.01166e-07, 9.37916e-13, 2.08616e-07, 1, -0.198922, 1.36347, -0.403738)
 rotation_order = 0
 bone_name = "Weapon"
 bone_idx = 10
@@ -54,7 +53,7 @@ use_external_skeleton = true
 external_skeleton = NodePath("../Armature/Skeleton3D")
 
 [node name="SpineBone" type="BoneAttachment3D" parent="." index="2"]
-transform = Transform3D(1, 0, 2.38419e-07, -1.98006e-08, 0.996545, 0.0830495, -2.37595e-07, -0.0830495, 0.996545, 0, 1.23078, 7.45058e-09)
+transform = Transform3D(1, 2.22045e-14, 2.38418e-07, -1.98005e-08, 0.996545, 0.0830496, -2.37594e-07, -0.0830496, 0.996545, 6.61744e-24, 1.23078, 7.45058e-09)
 bone_name = "Spine2"
 bone_idx = 2
 use_external_skeleton = true

@@ -1,9 +1,11 @@
 extends CharacterBody3D
 
 var soldier
-var move_controller
+var move_input
 var camera_controller
 var state_machine
+var aim_system
+var aim_controller
 var anim_player
 var skeleton
 var spine_bone

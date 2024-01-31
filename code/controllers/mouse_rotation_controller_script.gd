@@ -8,11 +8,11 @@ var rotation_speed := 1.0
 var event
 var is_event = false
 
-func _init(origin, min_angle, max_angle, rotation_speed):
-	self.origin = origin
-	self.min_angle = min_angle
-	self.max_angle = max_angle
-	self.rotation_speed = rotation_speed
+func _init(_origin, _min_angle, _max_angle, _rotation_speed):
+	origin = _origin
+	min_angle = _min_angle
+	max_angle = _max_angle
+	rotation_speed = _rotation_speed
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	origin.add_child(self)
 
@@ -27,9 +27,9 @@ func update(delta):
 		origin.rotation.z = 0
 		is_event = false
 
-func _input(event):
-	if event is InputEventMouseMotion:
-		self.event = event
+func _input(_event):
+	if _event is InputEventMouseMotion:
+		event = _event
 		is_event = true
 
 func _notification(what):

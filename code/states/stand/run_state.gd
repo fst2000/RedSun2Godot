@@ -2,16 +2,16 @@ class_name RunState
 
 var character
 
-func _init(character):
-	self.character = character
+func _init(_character):
+	character = _character
 	character.anim_player.play("anim_move/run")
 	character.anim_player.speed_scale = 1.5
 
-func update(delta):
+func update(_delta):
 	pass
 
 func next():
-	if character.move_controller.move_direction().length() < 0.5:
+	if character.move_input.move_direction().length() < 0.5:
 		return WalkState.new(character)
 	return self
 

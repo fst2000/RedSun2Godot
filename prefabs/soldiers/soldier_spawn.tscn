@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2p4l47fcca4w"]
 
 [ext_resource type="Script" path="res://code/character/soldier_spawn_script.gd" id="1_0l44n"]
-[ext_resource type="Script" path="res://code/controllers/keyboard_move_controller_script.gd" id="3_mxmar"]
+[ext_resource type="Script" path="res://code/controllers/keyboard_move_input.gd" id="3_mxmar"]
 
 [node name="SoldierSpawn" type="Node3D"]
 script = ExtResource("1_0l44n")

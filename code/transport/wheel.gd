@@ -8,12 +8,12 @@ var wheel_side_friction
 var wheel_axes : Node3D
 var wheel_start_position
 var wheel_radius
-func _init(transport, wheel, ray, damping_scale, wheel_side_friction):
-	self.transport = transport
-	self.wheel = wheel
-	self.ray = ray
-	self.damping_scale = damping_scale
-	self.wheel_side_friction = wheel_side_friction
+func _init(_transport, _wheel, _ray, _damping_scale, _wheel_side_friction):
+	transport = _transport
+	wheel = _wheel
+	ray = _ray
+	damping_scale = _damping_scale
+	wheel_side_friction = _wheel_side_friction
 	wheel_axes = wheel.get_node("axes")
 	wheel_start_position = wheel.position
 	wheel_radius = ray.target_position.length()
