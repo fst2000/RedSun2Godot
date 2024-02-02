@@ -2,19 +2,18 @@ class_name CharacterAimSystem
 
 var character
 var skeleton : Skeleton3D
-var spine_bone : BoneAttachment3D
-var spine_bone_id
-
 func _init(_characrer, _skeleton, _spine_bone : BoneAttachment3D):
 	character = _characrer
 	skeleton = _skeleton
-	spine_bone = _spine_bone
-	spine_bone_id = _spine_bone.bone_idx
 
 func aim(direction : Vector3):
-	spine_bone.override_pose = true
-	var character_forward = character.global_basis.z
-	var spine_quaternion = spine_bone.quaternion
-	var direction_quaternion = Quaternion(spine_bone.global_basis.z, direction.normalized())
-	spine_bone.quaternion = direction_quaternion
-	
+	var spine_transform = skeleton.get_bone_global_pose_no_override(2)
+	var spine_quaternion = skeleton.get_bone_global_pose(1).basis.get_rotation_quaternion() * Quaternion.from_euler(Vector3(0, -PI / 3, 0))
+	var forward = Vector3(0,0,1)
+	var spine_look_direction = (character.quaternion.inverse() * direction).normalized()
+	var spine_aim_quaternion = Quaternion(forward, spine_look_direction)
+	spine_transform.basis = Basis(spine_aim_quaternion * spine_quaternion)
+	skeleton.set_bone_global_pose_override(2, spine_transform, 1, true)
+
+func reset():
+	skeleton.reset_bone_pose(2)

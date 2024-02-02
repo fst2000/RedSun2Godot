@@ -15,4 +15,5 @@ func next():
 
 	return self
 
-func exit(): pass
+func exit():
+	pass
