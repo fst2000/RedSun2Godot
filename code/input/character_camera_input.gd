@@ -5,9 +5,9 @@ var stand_height = 1.5
 var crouch_height = 1.0
 var crawl_height = 0.5
 var distance = 2.5
-var aim_distance = 1.0
+var aim_distance = 1.2
 var side = 0
-var aim_side = 0.5
+var aim_side = 0.7
 
 var camera_offset = Vector3(side, stand_height, distance)
 
@@ -18,10 +18,9 @@ func update(_delta):
 	var _height = stand_height
 	var _distance = distance
 	var _side = side
-	if character.aim_input:
-		if character.aim_input.is_aim():
-			_side = aim_side
-			_distance = aim_distance
+	if character.weapon.weapon_input.is_aim():
+		_side = aim_side
+		_distance = aim_distance
 	
 	if character.move_input.is_crouch():
 		_height = crouch_height

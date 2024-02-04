@@ -27,6 +27,7 @@ func shoot():
 func take(character):
 	is_equipped = true
 	freeze = true
+	character.weapon = self
 	reparent(character.weapon_bone)
 	global_position = character.weapon_bone.global_position
 	rotation_degrees = custom_rotation_degrees

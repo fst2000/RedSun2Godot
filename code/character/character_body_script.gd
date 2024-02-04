@@ -3,7 +3,6 @@ extends CharacterBody3D
 var soldier
 var move_input
 var look_input
-var aim_input
 var aim_system
 var camera_controller
 var state_machine
@@ -13,6 +12,8 @@ var spine_bone
 var weapon_bone
 var anim_player_root
 var gravity = 10
+
+var weapon
 
 @onready var walk_aim_tree = $WalkAimTree
 @onready var crouch_aim_tree = $CrouchAimTree

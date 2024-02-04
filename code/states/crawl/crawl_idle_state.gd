@@ -12,6 +12,9 @@ func update(_delta):
 func next():
 	if character.move_input.move_direction().length() > 0:
 		return CrawlWalkState.new(character)
-	return self
+	
+	if character.weapon.weapon_input.is_aim():
+		return WeaponCrawlState.new(character)
 
+	return self
 func exit(): pass

@@ -18,6 +18,7 @@ script/source = "extends Node3D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	weapon.take(player)
 	camera.switch(player)
 
 func _process(_delta):

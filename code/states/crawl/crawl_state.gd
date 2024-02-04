@@ -8,9 +8,6 @@ func _init(_character):
 	state_machine = StateMachine.new(CrawlIdleState.new(character))
 
 func update(delta):
-	var move_direction = character.move_input.move_direction()
-	character.look_at_direction(move_direction)
-	character.move(move_direction * 2)
 	state_machine.update(delta)
 
 func next():
