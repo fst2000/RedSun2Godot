@@ -1,19 +1,15 @@
 class_name KeyboardMoveInput
 
-var crouch_value := false
-var crawl_value := false
 var camera : Node3D
 
 func _init(_camera):
 	camera = _camera
 
 func is_crouch():
-	if Input.is_action_just_pressed("crouch"): crouch_value = !crouch_value
-	return crouch_value
+	return Input.is_action_pressed("crouch")
 
 func is_crawl():
-	if Input.is_action_just_pressed("crawl"): crawl_value = !crawl_value
-	return crawl_value
+	return Input.is_action_pressed("crawl")
 
 func move_direction():
 	var input = Vector3(

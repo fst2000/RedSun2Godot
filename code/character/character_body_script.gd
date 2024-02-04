@@ -2,17 +2,20 @@ extends CharacterBody3D
 
 var soldier
 var move_input
+var look_input
+var aim_input
+var aim_system
 var camera_controller
 var state_machine
-var aim_system
-var aim_controller
 var anim_player
 var skeleton
 var spine_bone
 var weapon_bone
 var anim_player_root
-
 var gravity = 10
+
+@onready var walk_aim_tree = $WalkAimTree
+@onready var crouch_aim_tree = $CrouchAimTree
 
 func _ready():
 	anim_player = $OnFootAnimPlayer
@@ -27,9 +30,10 @@ func _process(delta):
 	state_machine.update(delta)
 	move_and_slide()
 
-func look_at_direction(direction : Vector3):
+func look_at_direction(direction : Vector3, axis := Vector3.UP):
+	direction = direction.slide(Vector3.UP).normalized()
 	if direction.length() > 0.1:
-		look_at(global_position - direction)
+		look_at(global_position - direction, axis)
 
 func move(direction):
 	velocity.x = direction.x

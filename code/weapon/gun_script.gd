@@ -9,12 +9,12 @@ extends RigidBody3D
 @onready var fire_point = $FirePoint
 @onready var collision = $CollisionShape3D
 @onready var weapon_input = KeyboardGunInput.new()
-@onready var state_machine = StateMachine.new(UnequippedState.new(self))
+
 var aim_controller
 var is_equipped = false
 
-func _process(delta):
-	state_machine.update(delta)
+func _process(_delta):
+	pass
 
 func shoot():
 	var bullet = bullet_prefab.instantiate()
@@ -27,7 +27,6 @@ func shoot():
 func take(character):
 	is_equipped = true
 	freeze = true
-	aim_controller = character.aim_controller
 	reparent(character.weapon_bone)
 	global_position = character.weapon_bone.global_position
 	rotation_degrees = custom_rotation_degrees

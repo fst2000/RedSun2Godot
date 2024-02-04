@@ -1,9 +1,9 @@
-class_name PlayerAimInput
+class_name PlayerLookInput
 
 var camera
 
 func _init(_camera):
 	camera = _camera
 
-func aim_direction():
+func look_direction():
 	return -camera.basis.z

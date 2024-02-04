@@ -4,7 +4,7 @@ var character
 
 func _init(_character):
 	character = _character
-	character.anim_player.play("anim_crawl/crawl_idle")
+	character.anim_player.play("crawl_idle")
 
 func update(_delta):
 	pass

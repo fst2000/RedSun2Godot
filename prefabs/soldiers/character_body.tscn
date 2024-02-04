@@ -63,7 +63,7 @@ script = ExtResource("1_g3g1n")
 [node name="OnFootAnimPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")
 libraries = {
-"anim_crawl": ExtResource("2_4fi6j"),
+"": ExtResource("2_4fi6j"),
 "anim_move": ExtResource("3_o2a7e")
 }
 playback_default_blend_time = 0.1
@@ -83,8 +83,9 @@ shape = SubResource("CylinderShape3D_dah1e")
 disabled = true
 
 [node name="WalkAimTree" type="AnimationTree" parent="."]
+active = false
 libraries = {
-"anim_crawl": ExtResource("2_4fi6j"),
+"": ExtResource("2_4fi6j"),
 "anim_move": ExtResource("3_o2a7e")
 }
 tree_root = SubResource("AnimationNodeBlendSpace2D_ergte")
@@ -92,8 +93,9 @@ anim_player = NodePath("../OnFootAnimPlayer")
 parameters/blend_position = Vector2(0.00151289, 0.0101011)
 
 [node name="CrouchAimTree" type="AnimationTree" parent="."]
+active = false
 libraries = {
-"anim_crawl": ExtResource("2_4fi6j"),
+"": ExtResource("2_4fi6j"),
 "anim_move": ExtResource("3_o2a7e")
 }
 tree_root = SubResource("AnimationNodeBlendSpace2D_lwyac")
