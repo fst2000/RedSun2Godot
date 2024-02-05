@@ -8,7 +8,7 @@ func _init(_characrer, _skeleton, _spine_bone : BoneAttachment3D):
 
 func aim(direction : Vector3):
 	var spine_transform = skeleton.get_bone_global_pose_no_override(2)
-	var spine_quaternion = skeleton.get_bone_global_pose(1).basis.get_rotation_quaternion() * Quaternion.from_euler(Vector3(0, -PI / 3, 0))
+	var spine_quaternion = skeleton.get_bone_global_pose(1).basis.get_rotation_quaternion()
 	var forward = Vector3(0,0,1)
 	var spine_look_direction = (character.quaternion.inverse() * direction).normalized()
 	var spine_aim_quaternion = Quaternion(forward, spine_look_direction)
@@ -17,3 +17,4 @@ func aim(direction : Vector3):
 
 func reset():
 	skeleton.reset_bone_pose(2)
+	skeleton.clear_bones_global_pose_override()

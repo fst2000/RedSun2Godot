@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0y8wp42nb272"]
+[gd_scene load_steps=7 format=3 uid="uid://b0y8wp42nb272"]
 
 [ext_resource type="Script" path="res://code/character/character_body_script.gd" id="1_g3g1n"]
 [ext_resource type="AnimationLibrary" uid="uid://b8v3aj5kke4fo" path="res://animations/anim_crawl.blend" id="2_4fi6j"]
@@ -15,60 +15,6 @@ height = 1.1
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dah1e"]
 height = 0.3
 radius = 0.4
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w3bpb"]
-animation = &"anim_move/walk_aim_forward"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x3n16"]
-animation = &"anim_move/walk_aim_back"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3svwx"]
-animation = &"anim_move/walk_aim_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d4r72"]
-animation = &"anim_move/walk_aim_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dng03"]
-animation = &"anim_move/idle_aim"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_d4wna"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_w3bpb")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_x3n16")
-blend_point_1/pos = Vector2(0, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_3svwx")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_d4r72")
-blend_point_3/pos = Vector2(-1, 0)
-blend_point_4/node = SubResource("AnimationNodeAnimation_dng03")
-blend_point_4/pos = Vector2(0, 0)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oyldh"]
-animation = &"anim_move/crouch_aim_forward"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8dd15"]
-animation = &"anim_move/crouch_aim_back"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_no6bh"]
-animation = &"anim_move/crouch_aim_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_brhkj"]
-animation = &"anim_move/crouch_aim_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ssq4e"]
-animation = &"anim_move/crouch_idle_aim"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_lwyac"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_oyldh")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_8dd15")
-blend_point_1/pos = Vector2(0, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_no6bh")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_brhkj")
-blend_point_3/pos = Vector2(-1, 0)
-blend_point_4/node = SubResource("AnimationNodeAnimation_ssq4e")
-blend_point_4/pos = Vector2(0, 0)
 
 [node name="CharacterBody" type="CharacterBody3D"]
 collision_layer = 2
@@ -96,23 +42,3 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("CylinderShape3D_dah1e")
 disabled = true
-
-[node name="WalkAimTree" type="AnimationTree" parent="."]
-active = false
-libraries = {
-"": ExtResource("2_4fi6j"),
-"anim_move": ExtResource("3_o2a7e")
-}
-tree_root = SubResource("AnimationNodeBlendSpace2D_d4wna")
-anim_player = NodePath("../OnFootAnimPlayer")
-parameters/blend_position = Vector2(-0.0045386, 0)
-
-[node name="CrouchAimTree" type="AnimationTree" parent="."]
-active = false
-libraries = {
-"": ExtResource("2_4fi6j"),
-"anim_move": ExtResource("3_o2a7e")
-}
-tree_root = SubResource("AnimationNodeBlendSpace2D_lwyac")
-anim_player = NodePath("../OnFootAnimPlayer")
-parameters/blend_position = Vector2(-0.993949, 0.0444444)

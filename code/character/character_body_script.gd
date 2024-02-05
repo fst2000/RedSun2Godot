@@ -15,9 +15,6 @@ var gravity = 10
 
 var weapon
 
-@onready var walk_aim_tree = $WalkAimTree
-@onready var crouch_aim_tree = $CrouchAimTree
-
 func _ready():
 	anim_player = $OnFootAnimPlayer
 	anim_player_root = soldier.get_path()

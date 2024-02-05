@@ -12,8 +12,10 @@ func update(_delta):
 func next():
 	if !character.weapon:
 		return UnarmedState.new(character)
-
+	else:
+		if character.weapon.weapon_input.is_aim():
+			return AimState.new(character)
 	return self
 
 func exit():
-	character.weapon.anim_player.stop()
+	pass

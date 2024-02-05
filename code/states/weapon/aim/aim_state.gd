@@ -13,11 +13,14 @@ func _init(_character):
 
 func update(_delta):
 	state_machine.update(_delta)
-	character.aim_system.aim(character.aim_input.aim_direction())
+	character.aim_system.aim(character.look_input.look_direction())
 
 func next():
-	if character.move_input.is_crawl():
+	if !character.weapon.weapon_input.is_aim():
 		return ArmedState.new(character)
+	
+	if !character.weapon:
+		return UnarmedState.new(character)
 
 	return self
 

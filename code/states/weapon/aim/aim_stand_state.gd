@@ -18,4 +18,4 @@ func next():
 	return self
 
 func exit():
-	pass
+	weapon.anim_player.stop()
