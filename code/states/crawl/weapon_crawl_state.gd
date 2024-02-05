@@ -6,7 +6,7 @@ var weapon
 func _init(_character):
 	character = _character
 	weapon = character.weapon
-	character.anim_player.play("crawl_idle")
+	character.anim_player.play("crawl_idle_weapon")
 	
 func update(_delta):
 	character.look_at_direction(character.look_input.look_direction())

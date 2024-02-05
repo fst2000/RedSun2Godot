@@ -1,13 +1,19 @@
 class_name ArmedState
 
 var character
+var state_machine
 
 func _init(_character):
 	character = _character
-	character.weapon.anim_player.play("armed")
+	var armed_state
+	if character.move_input.is_crawl():
+		armed_state = ArmedCrawlState.new(character)
+	else:
+		armed_state = ArmedStandState.new(character)
+	state_machine = StateMachine.new(armed_state)
 
 func update(_delta):
-	pass
+	state_machine.update(_delta)
 
 func next():
 	if !character.weapon:

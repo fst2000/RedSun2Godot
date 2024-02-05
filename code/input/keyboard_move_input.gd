@@ -19,7 +19,10 @@ func move_direction():
 	return direction
 
 func move_input():
-	return Vector3(
+	var input = Vector3(
 		Input.get_axis("right", "left"),
 		0,
 		Input.get_axis("down", "up"))
+	var input_length = min(input.length(), 1.0)
+	input = input.normalized() * input_length
+	return input

@@ -1,21 +1,20 @@
-class_name AimStandState
+class_name ArmedStandState
 
 var character
-var weapon
 
 func _init(_character):
 	character = _character
-	weapon = character.weapon
-	weapon.anim_player.play("aim")
+	character.weapon.anim_player.play("armed")
 
 func update(_delta):
 	pass
 
 func next():
 	if character.move_input.is_crawl():
-		return AimCrawlState.new(character)
+		return ArmedCrawlState.new(character)
 
 	return self
 
 func exit():
 	pass
+

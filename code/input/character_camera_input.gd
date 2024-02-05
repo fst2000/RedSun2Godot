@@ -5,9 +5,9 @@ var stand_height = 1.5
 var crouch_height = 1.0
 var crawl_height = 0.5
 var distance = 2.5
-var aim_distance = 1.2
+var aim_distance = 1.5
 var side = 0
-var aim_side = 0.7
+var aim_side = 1.2
 
 var camera_offset = Vector3(side, stand_height, distance)
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b0y8wp42nb272"]
 
 [ext_resource type="Script" path="res://code/character/character_body_script.gd" id="1_g3g1n"]
-[ext_resource type="AnimationLibrary" uid="uid://b8v3aj5kke4fo" path="res://animations/anim_crawl.blend" id="2_4fi6j"]
+[ext_resource type="AnimationLibrary" uid="uid://b8v3aj5kke4fo" path="res://animations/anim_move/anim_crawl.blend" id="2_xy5ee"]
 [ext_resource type="AnimationLibrary" uid="uid://dpwofy8p87krx" path="res://animations/anim_move/anim_move.blend" id="3_o2a7e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47ui6"]
@@ -24,7 +24,7 @@ script = ExtResource("1_g3g1n")
 [node name="OnFootAnimPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")
 libraries = {
-"": ExtResource("2_4fi6j"),
+"": ExtResource("2_xy5ee"),
 "anim_move": ExtResource("3_o2a7e")
 }
 playback_default_blend_time = 0.1
