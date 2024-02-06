@@ -20,7 +20,6 @@ func _ready():
 	anim_player_root = soldier.get_path()
 	anim_player.set_root_node(anim_player_root)
 	skeleton = soldier.get_node("Armature/Skeleton3D")
-	spine_bone = soldier.get_node("SpineBone")
 	weapon_bone = soldier.get_node("WeaponBone")
 	state_machine = StateMachine.new(FloorState.new(self))
 

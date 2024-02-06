@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://hnh1b76w667g"]
+[gd_scene load_steps=7 format=3 uid="uid://hnh1b76w667g"]
 
 [ext_resource type="PackedScene" uid="uid://pkwnpfvuvatu" path="res://models/soldiers/soldier_sr.blend" id="1_lc35o"]
 [ext_resource type="Texture2D" uid="uid://ceskvi4nrm0d0" path="res://textures/soldiers/sr_head_test.png" id="2_okgth"]
 [ext_resource type="Texture2D" uid="uid://dcghwsjsdbbuk" path="res://textures/soldiers/sr_skin_test.png" id="3_f32sr"]
+[ext_resource type="Script" path="res://code/character/bone_script.gd" id="4_g8hss"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vesl6"]
 albedo_texture = ExtResource("2_okgth")
@@ -44,17 +45,7 @@ bones/16/scale = Vector3(1, 1, 1)
 surface_material_override/0 = SubResource("StandardMaterial3D_vesl6")
 surface_material_override/1 = SubResource("StandardMaterial3D_q6vym")
 
-[node name="WeaponBone" type="BoneAttachment3D" parent="." index="1"]
-transform = Transform3D(1, 1.98006e-08, -9.37916e-13, -1.98006e-08, 1, -2.01166e-07, 9.37916e-13, 2.08616e-07, 1, -0.198922, 1.36347, -0.403738)
-rotation_order = 0
-bone_name = "Weapon"
-bone_idx = 10
-use_external_skeleton = true
-external_skeleton = NodePath("../Armature/Skeleton3D")
-
-[node name="SpineBone" type="BoneAttachment3D" parent="." index="2"]
-transform = Transform3D(1, 2.22045e-14, 2.38418e-07, -1.98005e-08, 0.996545, 0.0830496, -2.37594e-07, -0.0830496, 0.996545, 6.61744e-24, 1.23078, 7.45058e-09)
-bone_name = "Spine2"
-bone_idx = 2
-use_external_skeleton = true
-external_skeleton = NodePath("../Armature/Skeleton3D")
+[node name="WeaponBone" type="Node3D" parent="." index="1" node_paths=PackedStringArray("skeleton")]
+script = ExtResource("4_g8hss")
+skeleton = NodePath("../Armature/Skeleton3D")
+bone_id = 10
