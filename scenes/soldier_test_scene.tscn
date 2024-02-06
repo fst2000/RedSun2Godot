@@ -27,9 +27,6 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed(\"drop\"):
 		weapon.drop(player)
-	
-	if Input.is_action_pressed(\"fire\"):
-		weapon.shoot()
 "
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8qxr"]
@@ -77,3 +74,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.4293, 0)
 
 [node name="ppsh" parent="." instance=ExtResource("8_muomd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.60644, -7.90815, 29.2003)
+recoil_strength = 0.05

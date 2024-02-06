@@ -3,6 +3,8 @@ extends RigidBody3D
 @export var bullet_prefab : PackedScene
 @export var bullet_speed := 300.0
 @export var bullets_per_second := 30
+@export var recoil_time = 0.05
+@export var recoil_strength = 0.1
 @onready var fire_rate = 1.0 / bullets_per_second
 @onready var anim_player = $AnimPlayer
 @onready var fire_point = $FirePoint
