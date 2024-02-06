@@ -27,6 +27,9 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed(\"drop\"):
 		weapon.drop(player)
+	
+	if Input.is_action_pressed(\"fire\"):
+		weapon.shoot()
 "
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8qxr"]
