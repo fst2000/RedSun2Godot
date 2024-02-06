@@ -3,8 +3,6 @@ extends RigidBody3D
 @export var bullet_prefab : PackedScene
 @export var bullet_speed := 300.0
 @export var bullets_per_second := 30
-@export var custom_rotation_degrees : Vector3
-@export var custom_offset : Vector3
 @onready var fire_rate = 1.0 / bullets_per_second
 @onready var anim_player = $AnimPlayer
 @onready var fire_point = $FirePoint
@@ -33,8 +31,8 @@ func take(character):
 	freeze = true
 	character.weapon = self
 	reparent(character.weapon_bone)
-	position = custom_offset
-	rotation_degrees = custom_rotation_degrees
+	position = Vector3.ZERO
+	rotation = Vector3.ZERO
 	anim_player.set_root_node(character.anim_player_root)
 
 func drop(character):

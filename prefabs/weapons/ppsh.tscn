@@ -222,8 +222,6 @@ continuous_cd = true
 script = ExtResource("1_4eqmi")
 bullet_prefab = ExtResource("3_p8rro")
 bullets_per_second = 16
-custom_rotation_degrees = Vector3(90, 0, 0)
-custom_offset = Vector3(0, 0.1, 0)
 
 [node name="PPSH_Magazine" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.99471, 0.102721, 0, -0.102721, 0.99471, 0, -0.0418993, 0.243361)
