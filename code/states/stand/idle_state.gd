@@ -12,9 +12,6 @@ func update(_delta):
 func next():
 	if character.move_input.move_direction().length() > 0:
 		return WalkState.new(character)
-	
-	if character.is_aim():
-		return WeaponStandState.new(character)
 
 	return self
 

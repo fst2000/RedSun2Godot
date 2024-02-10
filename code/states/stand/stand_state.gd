@@ -5,7 +5,10 @@ var state_machine
 
 func _init(_character):
 	character = _character
-	state_machine = StateMachine.new(IdleState.new(character))
+	var stand_state
+	if character.is_aim(): stand_state = WeaponStandState.new(character)
+	else: stand_state = IdleState.new(character)
+	state_machine = StateMachine.new(stand_state)
 
 func update(delta):
 	state_machine.update(delta)
@@ -16,7 +19,10 @@ func next():
 
 	if character.move_input.is_crawl():
 		return CrawlState.new(character)
-
+	
+	if character.is_aim():
+		return WeaponStandState.new(character)
+	
 	return self
 
 func exit():

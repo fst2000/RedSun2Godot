@@ -39,6 +39,9 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("drop"):
 			equipment.drop(0)
+	
+	if Input.is_action_just_pressed("slot_1"):
+		equipment.arm(0)
 
 func look_at_direction(direction : Vector3, axis := Vector3.UP):
 	direction = direction.slide(Vector3.UP).normalized()
@@ -52,4 +55,4 @@ func move(direction):
 func fall(delta):
 	velocity.y -= gravity * delta
 
-func is_aim(): return false
+func is_aim(): return equipment.weapon_slots.any(func(slot): return slot.weapon.is_aim())

@@ -9,6 +9,15 @@ func _init(_character, _slot_nodes : Array[Node]):
 	slot_nodes = _slot_nodes
 	character = _character
 
+func arm(slot_id):
+	for slot in weapon_slots:
+		if slot.id == slot_id: slot.arm()
+		else: slot.disarm()
+
+func disarm():
+	for slot in weapon_slots:
+		slot.disarm()
+
 func take(weapon):
 	var id = weapon.slot_id
 	drop(id)

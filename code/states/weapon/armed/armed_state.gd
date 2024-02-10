@@ -9,9 +9,9 @@ func _init(_weapon):
 	character = weapon.character
 	var armed_state
 	if character.move_input.is_crawl():
-		armed_state = ArmedCrawlState.new(character)
+		armed_state = ArmedCrawlState.new(weapon)
 	else:
-		armed_state = ArmedStandState.new(character)
+		armed_state = ArmedStandState.new(weapon)
 	state_machine = StateMachine.new(armed_state)
 
 func update(_delta):
@@ -26,4 +26,4 @@ func next():
 	return self
 
 func exit():
-	pass
+	state_machine.state.exit()

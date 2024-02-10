@@ -5,6 +5,7 @@ extends RigidBody3D
 @export var bullet_speed := 300.0
 @export var bullets_per_second := 30
 @export var recoil_time = 0.05
+@export var recoil_min = 0.01
 @export var recoil_strength = 0.1
 @onready var fire_rate = 1.0 / bullets_per_second
 @onready var anim_player = $AnimPlayer
@@ -12,6 +13,8 @@ extends RigidBody3D
 @onready var collision = $CollisionShape3D
 @onready var weapon_input = KeyboardGunInput.new()
 @onready var weapon_state_machine = StateMachine.new(UnarmedState.new(self))
+
+var character
 
 var is_equipped = false
 var is_armed = false
@@ -37,22 +40,24 @@ func arm_action():
 func disarm_action():
 	is_armed = false
 
-func take_action(character):
+func take_action(_character):
 	is_equipped = true
 	freeze = true
 	collision.disabled = true
-	anim_player.set_root_node(character.anim_player_root)
+	anim_player.set_root_node(_character.anim_player_root)
+	character = _character
 
-func drop_action(character):
+func drop_action(_character):
 	is_equipped = false
+	disarm_action()
 	freeze = false
 	collision.disabled = false
 	anim_player.stop()
 	anim_player.set_root_node("")
-	character.skeleton.reset_bone_poses()
+	_character.skeleton.reset_bone_poses()
 
 func is_aim():
-	return weapon_input.is_aim()
+	return weapon_input.is_aim() && is_armed
 
 func is_shoot():
 	return weapon_input.is_shoot()

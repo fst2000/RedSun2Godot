@@ -23,4 +23,4 @@ func update(_delta):
 	var offset = camera_input.offset()
 	var local_pos = (quaternion * Vector3(offset.x, 0, offset.z)) + Vector3(0, offset.y, 0)
 	camera.global_position = character.global_position + local_pos
-
+	camera.fov = camera_input.fov()

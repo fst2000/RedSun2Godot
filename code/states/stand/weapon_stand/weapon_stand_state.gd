@@ -12,7 +12,7 @@ func update(_delta):
 
 func next():
 	if !character.is_aim():
-		return IdleState.new(character)
+		return StandState.new(character)
 	
 	if character.move_input.is_crouch() || character.move_input.is_crawl():
 		return WeaponCrouchState.new(character)
