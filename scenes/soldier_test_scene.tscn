@@ -18,15 +18,10 @@ script/source = "extends Node3D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	weapon.take(player)
 	camera.switch(player)
 
 func _process(_delta):
-	if Input.is_action_just_pressed(\"take\"):
-		weapon.take(player)
-	
-	if Input.is_action_just_pressed(\"drop\"):
-		weapon.drop(player)
+	pass
 "
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8qxr"]

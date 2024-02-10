@@ -1,10 +1,12 @@
 class_name ArmedState
 
+var weapon
 var character
 var state_machine
 
-func _init(_character):
-	character = _character
+func _init(_weapon):
+	weapon = _weapon
+	character = weapon.character
 	var armed_state
 	if character.move_input.is_crawl():
 		armed_state = ArmedCrawlState.new(character)
@@ -16,11 +18,11 @@ func update(_delta):
 	state_machine.update(_delta)
 
 func next():
-	if !character.weapon:
-		return UnarmedState.new(character)
+	if !weapon.is_armed:
+		return UnarmedState.new(weapon)
 	else:
-		if character.weapon.weapon_input.is_aim():
-			return AimState.new(character)
+		if weapon.is_aim():
+			return AimState.new(weapon)
 	return self
 
 func exit():

@@ -1,10 +1,12 @@
 class_name ArmedCrawlState
 
+var weapon
 var character
 
-func _init(_character):
-	character = _character
-	character.weapon.anim_player.stop()
+func _init(_weapon):
+	weapon = _weapon
+	character = weapon.character
+	weapon.anim_player.stop()
 
 func update(_delta):
 	pass

@@ -213,7 +213,7 @@ albedo_texture = ExtResource("3_ldm2e")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_to86u"]
 margin = 0.01
-size = Vector3(0.0759277, 0.201599, 0.839294)
+size = Vector3(0.1, 0.202, 0.839)
 
 [node name="ppsh" type="RigidBody3D"]
 collision_layer = 8

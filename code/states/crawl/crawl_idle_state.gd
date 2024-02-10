@@ -13,7 +13,7 @@ func next():
 	if character.move_input.move_direction().length() > 0:
 		return CrawlWalkState.new(character)
 	
-	if character.weapon.weapon_input.is_aim():
+	if character.is_aim():
 		return WeaponCrawlState.new(character)
 
 	return self

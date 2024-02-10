@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 @export var bullet_prefab : PackedScene
+@export var slot_id := 0
 @export var bullet_speed := 300.0
 @export var bullets_per_second := 30
 @export var recoil_time = 0.05
@@ -10,13 +11,15 @@ extends RigidBody3D
 @onready var fire_point = $FirePoint
 @onready var collision = $CollisionShape3D
 @onready var weapon_input = KeyboardGunInput.new()
+@onready var weapon_state_machine = StateMachine.new(UnarmedState.new(self))
 
-var aim_controller
 var is_equipped = false
+var is_armed = false
 var timer = 0.0
 
 func _process(_delta):
 	timer += _delta
+	weapon_state_machine.update(_delta)
 
 func shoot():
 	if timer >= fire_rate:
@@ -28,18 +31,31 @@ func shoot():
 		bullet.look_at(bullet.global_position - velocity)
 		timer = 0.0
 
-func take(character):
+func arm_action():
+	is_armed = true
+
+func disarm_action():
+	is_armed = false
+
+func take_action(character):
 	is_equipped = true
 	freeze = true
-	character.weapon = self
-	reparent(character.weapon_bone)
-	position = Vector3.ZERO
-	rotation = Vector3.ZERO
+	collision.disabled = true
 	anim_player.set_root_node(character.anim_player_root)
 
-func drop(character):
+func drop_action(character):
 	is_equipped = false
 	freeze = false
-	reparent(character.get_tree().current_scene)
+	collision.disabled = false
 	anim_player.stop()
+	anim_player.set_root_node("")
 	character.skeleton.reset_bone_poses()
+
+func is_aim():
+	return weapon_input.is_aim()
+
+func is_shoot():
+	return weapon_input.is_shoot()
+
+func is_reload():
+	return weapon_input.is_reload()

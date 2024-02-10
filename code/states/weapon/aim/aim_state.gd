@@ -5,23 +5,23 @@ var weapon
 var state_machine
 var look_input
 
-func _init(_character):
-	character = _character
-	weapon = character.weapon
+func _init(_weapon):
+	weapon = _weapon
+	character = weapon.character
 	var aim_state
 	if character.move_input.is_crawl(): aim_state = AimCrawlState.new(character)
 	else: aim_state = AimStandState.new(character)
 	state_machine = StateMachine.new(aim_state)
-	look_input = RecoilLookInput.new(character.look_input, weapon.weapon_input, weapon.recoil_time, weapon.recoil_strength)
+	look_input = RecoilLookInput.new(character.look_input, weapon)
 
 func update(_delta):
 	state_machine.update(_delta)
 	character.aim_system.aim(look_input.look_direction())
-	if weapon.weapon_input.is_shoot():
+	if weapon.is_shoot():
 		weapon.shoot()
 
 func next():
-	if !weapon.weapon_input.is_aim():
+	if !weapon.is_aim():
 		return ArmedState.new(character)
 	
 	if !weapon:

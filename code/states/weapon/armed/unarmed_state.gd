@@ -1,16 +1,16 @@
 class_name UnarmedState
 
-var character
+var weapon
 
-func _init(_character):
-	character = _character
+func _init(_weapon):
+	weapon = _weapon
 
 func update(_delta):
 	pass
 
 func next():
-	if character.weapon:
-		return ArmedState.new(character)
+	if weapon.is_armed:
+		return ArmedState.new(weapon)
 
 	return self
 

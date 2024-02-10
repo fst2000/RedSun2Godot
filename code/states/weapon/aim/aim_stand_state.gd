@@ -1,19 +1,17 @@
 class_name AimStandState
 
-var character
 var weapon
 
-func _init(_character):
-	character = _character
-	weapon = character.weapon
+func _init(_weapon):
+	weapon = _weapon
 	weapon.anim_player.play("aim")
 
 func update(_delta):
 	pass
 
 func next():
-	if character.move_input.is_crawl():
-		return AimCrawlState.new(character)
+	if weapon.character.move_input.is_crawl():
+		return AimCrawlState.new(weapon)
 
 	return self
 

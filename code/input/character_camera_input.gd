@@ -18,9 +18,6 @@ func update(_delta):
 	var _height = stand_height
 	var _distance = distance
 	var _side = side
-	if character.weapon.weapon_input.is_aim():
-		_side = aim_side
-		_distance = aim_distance
 	
 	if character.move_input.is_crouch():
 		_height = crouch_height

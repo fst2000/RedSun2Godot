@@ -51,3 +51,19 @@ skeleton = NodePath("../Armature/Skeleton3D")
 bone_id = 10
 custom_rotation = Vector3(90, 0, 0)
 offset = Vector3(0, 0, -0.1)
+
+[node name="SlotNodes" type="BoneAttachment3D" parent="." index="2"]
+transform = Transform3D(1, 2.22045e-14, 2.38418e-07, -1.98005e-08, 0.996545, 0.0830496, -2.37594e-07, -0.0830496, 0.996545, 6.61744e-24, 1.23078, 7.45058e-09)
+bone_name = "Spine2"
+bone_idx = 2
+use_external_skeleton = true
+external_skeleton = NodePath("../Armature/Skeleton3D")
+
+[node name="1" type="Node3D" parent="SlotNodes" index="0"]
+transform = Transform3D(-4.37114e-08, 1, 1.95399e-14, 4.47035e-08, -5.32907e-15, 1, 1, 4.37112e-08, -4.47035e-08, -0.0867135, -0.0349698, -0.204408)
+
+[node name="2" type="Node3D" parent="SlotNodes" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.47035e-08, -1, 0, 1, -4.47035e-08, -0.23172, -0.130692, 0.00313643)
+
+[node name="3" type="Node3D" parent="SlotNodes" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.214382, -0.157929, -0.0211319)

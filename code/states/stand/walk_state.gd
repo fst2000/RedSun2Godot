@@ -17,7 +17,7 @@ func next():
 	if move_strength <= 0.01:
 		return IdleState.new(character)
 	
-	if character.weapon.weapon_input.is_aim():
+	if character.is_aim():
 		return WeaponStandState.new(character)
 	
 	return self

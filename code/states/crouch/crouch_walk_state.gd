@@ -16,7 +16,7 @@ func next():
 	if move_strength <= 0.01:
 		return CrouchIdleState.new(character)
 
-	if character.weapon.weapon_input.is_aim():
+	if character.is_aim():
 		return WeaponCrouchState.new(character)
 
 	return self

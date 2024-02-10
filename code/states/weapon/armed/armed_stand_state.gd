@@ -1,10 +1,12 @@
 class_name ArmedStandState
 
+var weapon
 var character
 
-func _init(_character):
-	character = _character
-	character.weapon.anim_player.play("armed")
+func _init(_weapon):
+	weapon = _weapon
+	character = weapon.character
+	weapon.anim_player.play("armed")
 
 func update(_delta):
 	pass
