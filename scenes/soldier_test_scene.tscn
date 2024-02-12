@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdclwnf8enpdk"]
+[gd_scene load_steps=15 format=3 uid="uid://bdclwnf8enpdk"]
 
 [ext_resource type="PackedScene" uid="uid://c2p4l47fcca4w" path="res://prefabs/soldiers/soldier_spawn.tscn" id="1_c77gl"]
 [ext_resource type="PackedScene" uid="uid://b0y8wp42nb272" path="res://prefabs/soldiers/character_body.tscn" id="2_mdmqv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dp3vdy6fq0fq" path="res://prefabs/test/ground_for_transport_test.tscn" id="7_6svti"]
 [ext_resource type="PackedScene" uid="uid://bsfhq7osdp8ei" path="res://prefabs/transport/tank_t34.tscn" id="8_ewxoi"]
 [ext_resource type="PackedScene" uid="uid://b8jfi54qp1h8i" path="res://prefabs/weapons/ppsh.tscn" id="8_muomd"]
+[ext_resource type="PackedScene" uid="uid://n8ya0qu4xxt6" path="res://prefabs/weapons/mauser_c_96.tscn" id="9_aei62"]
 
 [sub_resource type="GDScript" id="GDScript_y7scx"]
 script/source = "extends Node3D
@@ -70,7 +71,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.4293, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.60644, -7.90815, 29.2003)
 
 [node name="ppsh2" parent="." instance=ExtResource("8_muomd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.60644, -7.90815, 29.2003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.96217, -7.90815, 29.2003)
 
 [node name="ppsh3" parent="." instance=ExtResource("8_muomd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.60644, -7.90815, 29.2003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29413, -7.90815, 29.2003)
+
+[node name="mauser_c_96" parent="." instance=ExtResource("9_aei62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.32261, -7.60394, 29.1339)
+
+[node name="mauser_c_97" parent="." instance=ExtResource("9_aei62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.32261, -7.60394, 29.1339)
