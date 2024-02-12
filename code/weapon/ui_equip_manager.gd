@@ -17,7 +17,8 @@ func add_in_queue(weapon):
 		func():
 			equipment.take(weapon)
 			add(weapon)
-			remove_from_queue(weapon),
+			remove_from_queue(weapon)
+			slots_queue_update_position(),
 		func(): return false)
 	slots_queue.append(weapon_slot)
 	slots_queue_update_position()
@@ -27,6 +28,7 @@ func remove_from_queue(weapon):
 	for slot in remove_slots:
 		slot.queue_free()
 		slots_queue.erase(slot)
+	slots_queue_update_position()
 
 func slots_queue_update_position():
 	var screen_size = get_window().size
