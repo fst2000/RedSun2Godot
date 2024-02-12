@@ -227,8 +227,8 @@ script = ExtResource("1_4eqmi")
 bullet_prefab = ExtResource("3_p8rro")
 weapon_slot = ExtResource("3_u30ql")
 bullets_per_second = 16
+recoil_time = 0.8
 recoil_min = 0.2
-recoil_strength = 0.01
 
 [node name="PPSH_Magazine" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.99471, 0.102721, 0, -0.102721, 0.99471, 0, -0.0418993, 0.243361)

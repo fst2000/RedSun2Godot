@@ -44,7 +44,7 @@ func move(direction):
 func fall(delta):
 	velocity.y -= gravity * delta
 
-func is_aim(): return false
+func is_aim(): return equipment.weapons.any(func(weapon): return weapon.is_aim())
 
 func weapon_detection_action(weapon):
 	equip_manager.add_in_queue(weapon)

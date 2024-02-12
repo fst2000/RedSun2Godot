@@ -15,4 +15,4 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 		look_at(global_position - velocity)
 		global_position += velocity * delta
-		if scale.z < 10: scale.z += delta * 50
+		scale.z = min(scale.z + delta * velocity.length() * 0.1, velocity.length() * 0.03)

@@ -146,8 +146,9 @@ script = ExtResource("1_inyb2")
 bullet_prefab = ExtResource("2_086b2")
 weapon_slot = ExtResource("3_at0v4")
 slot_id = 1
-bullet_speed = 100.0
+bullet_speed = 200.0
 bullets_per_second = 4
+recoil_time = 0.2
 recoil_min = 0.04
 
 [node name="Magazine" type="MeshInstance3D" parent="."]

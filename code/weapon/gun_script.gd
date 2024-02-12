@@ -63,7 +63,7 @@ func is_aim():
 	return weapon_input.is_aim() && is_armed
 
 func is_shoot():
-	return weapon_input.is_shoot()
+	return weapon_input.is_shoot() && timer >= fire_rate
 
 func is_reload():
 	return weapon_input.is_reload()

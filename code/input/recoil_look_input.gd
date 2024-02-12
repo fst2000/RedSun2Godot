@@ -21,12 +21,11 @@ func look_direction() -> Vector3:
 		if !start_shoot:
 			recoil_timer = Stopwatch.new()
 			start_shoot = true
-		var random = RandomNumberGenerator.new()
-		recoil_angle = clamp(random.randf() * recoil_timer.get_time(), recoil_min, 1) * recoil_strength
-		recoil_axis = Vector3(0.5 - random.randf(), 0.5 - random.randf(), 0.5 - random.randf())
+			var random = RandomNumberGenerator.new()
+			recoil_angle = clamp(random.randf() * recoil_timer.get_time(), recoil_min, 1) * recoil_strength
+			recoil_axis = Vector3(0.5 - random.randf(), 0.5 - random.randf(), 0.5 - random.randf())
 	else:
 		start_shoot = false
-		return look_dir
 	var recoil_axis_slide = recoil_axis.slide(look_dir).normalized()
 	var recoil_look_dir = look_dir.rotated(recoil_axis_slide, recoil_angle)
 	return recoil_look_dir
