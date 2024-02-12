@@ -1,6 +1,8 @@
 class_name PlayerCharacterContent
 
 static func content(character):
+	character.equip_manager = UIEquipManager.new(character)
+	
 	var camera = character.get_tree().current_scene.get_node("Camera")
 	character.move_input = KeyboardMoveInput.new(camera)
 	

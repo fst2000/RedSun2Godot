@@ -20,9 +20,10 @@ func update(_delta):
 func next():
 	if !weapon.is_armed:
 		return UnarmedState.new(weapon)
-	else:
-		if weapon.is_aim():
-			return AimState.new(weapon)
+	
+	if weapon.is_aim():
+		return AimState.new(weapon)
+
 	return self
 
 func exit():

@@ -1,30 +1,33 @@
 class_name Equipment
 
 var character
-var weapon_slots : Array[WeaponSlot]
+var weapons : Array
 var slot_nodes : Array[Node]
-var current_weapon
 
 func _init(_character, _slot_nodes : Array[Node]):
 	slot_nodes = _slot_nodes
 	character = _character
 
-func arm(slot_id):
-	for slot in weapon_slots:
-		if slot.id == slot_id: slot.arm()
-		else: slot.disarm()
+func arm():
+	pass
 
 func disarm():
-	for slot in weapon_slots:
-		slot.disarm()
+	pass
 
 func take(weapon):
-	var id = weapon.slot_id
-	drop(id)
-	weapon_slots.append(WeaponSlot.new(character, weapon, slot_nodes[id]))
+	var weapons_at_id = weapons.filter(func(w): return w.slot_id == weapon.slot_id)
+	for w in weapons_at_id:
+		drop(w)
+	weapon.reparent(slot_nodes[weapon.slot_id])
+	weapon.position = Vector3.ZERO
+	weapon.rotation = Vector3.ZERO
+	weapon.take_action(character)
+	weapons.append(weapon)
+	weapons.sort_custom(func(a, b): return a.slot_id < b.slot_id)
+	
 
-func drop(id):
-	for slot in weapon_slots:
-		if slot.id == id:
-			slot.drop()
-			weapon_slots.erase(slot)
+func drop(weapon):
+	weapon.reparent(character.get_tree().get_current_scene())
+	weapon.drop_action(character)
+	weapons.erase(weapon)
+	weapons.sort_custom(func(a, b): return a.slot_id < b.slot_id)

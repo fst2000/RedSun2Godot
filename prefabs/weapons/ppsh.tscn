@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://b8jfi54qp1h8i"]
+[gd_scene load_steps=27 format=3 uid="uid://b8jfi54qp1h8i"]
 
 [ext_resource type="Script" path="res://code/weapon/gun_script.gd" id="1_4eqmi"]
 [ext_resource type="Texture2D" uid="uid://bxwh7xsm670dh" path="res://textures/weapons/PPSH_Magazine_Texture.png" id="2_mo5lv"]
 [ext_resource type="Texture2D" uid="uid://do2ev4dmqq4bx" path="res://textures/weapons/PPSH_Texture.png" id="3_ldm2e"]
 [ext_resource type="PackedScene" uid="uid://cy438xpmqv8pi" path="res://prefabs/weapons/bullet.tscn" id="3_p8rro"]
+[ext_resource type="PackedScene" uid="uid://cy2t2j7gkt1bb" path="res://prefabs/ui/slots/ppsh_slot.tscn" id="3_u30ql"]
 [ext_resource type="Texture2D" uid="uid://c7eaanmau6ykr" path="res://textures/weapons/PPSH_Metalness.png" id="4_pj1ra"]
 [ext_resource type="Texture2D" uid="uid://dnt7dpqaxe1hd" path="res://textures/weapons/PPSH_BackSight.png" id="5_ggh5p"]
 [ext_resource type="Texture2D" uid="uid://catgh518pf45a" path="res://textures/weapons/PPSH_FrontSight.png" id="6_c3ka6"]
@@ -215,12 +216,16 @@ albedo_texture = ExtResource("3_ldm2e")
 margin = 0.01
 size = Vector3(0.1, 0.202, 0.839)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_dvvak"]
+
 [node name="ppsh" type="RigidBody3D"]
 collision_layer = 8
+collision_mask = 9
 mass = 5.0
 continuous_cd = true
 script = ExtResource("1_4eqmi")
 bullet_prefab = ExtResource("3_p8rro")
+weapon_slot = ExtResource("3_u30ql")
 bullets_per_second = 16
 recoil_min = 0.2
 recoil_strength = 0.01
@@ -256,3 +261,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0451366, 0.581345)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0335388, 0.149567)
 shape = SubResource("BoxShape3D_to86u")
+
+[node name="DetectArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectArea"]
+shape = SubResource("SphereShape3D_dvvak")
+
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]

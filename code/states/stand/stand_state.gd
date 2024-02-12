@@ -21,6 +21,7 @@ func next():
 		return CrawlState.new(character)
 	
 	if character.is_aim():
+		character.anim_player.set_default_blend_time(0)
 		return WeaponStandState.new(character)
 	
 	return self

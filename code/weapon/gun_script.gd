@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 @export var bullet_prefab : PackedScene
+@export var weapon_slot : PackedScene
 @export var slot_id := 0
 @export var bullet_speed := 300.0
 @export var bullets_per_second := 30
@@ -13,7 +14,7 @@ extends RigidBody3D
 @onready var collision = $CollisionShape3D
 @onready var weapon_input = KeyboardGunInput.new()
 @onready var weapon_state_machine = StateMachine.new(UnarmedState.new(self))
-
+@onready var detect_area = $DetectArea
 var character
 
 var is_equipped = false
@@ -41,6 +42,7 @@ func disarm_action():
 	is_armed = false
 
 func take_action(_character):
+	detect_area.monitoring = false
 	is_equipped = true
 	freeze = true
 	collision.disabled = true
@@ -48,6 +50,7 @@ func take_action(_character):
 	character = _character
 
 func drop_action(_character):
+	detect_area.monitoring = true
 	is_equipped = false
 	disarm_action()
 	freeze = false
@@ -64,3 +67,11 @@ func is_shoot():
 
 func is_reload():
 	return weapon_input.is_reload()
+
+
+func _on_detect_area_body_entered(body):
+	body.weapon_detection_action(self)
+
+
+func _on_detect_area_body_exited(body):
+	body.weapon_undetection_action(self)

@@ -18,6 +18,7 @@ func next():
 		return CrouchState.new(character)
 	
 	if character.is_aim():
+		character.anim_player.set_default_blend_time(0)
 		return WeaponCrawlState.new(character)
 	
 	return self

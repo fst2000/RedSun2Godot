@@ -16,9 +16,6 @@ func next():
 	if move_strength <= 0.01:
 		return CrawlIdleState.new(character)
 	
-	if character.is_aim():
-		return WeaponCrawlState.new(character)
-	
 	return self
 
 func exit():

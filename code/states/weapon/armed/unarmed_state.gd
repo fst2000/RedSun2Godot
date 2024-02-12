@@ -4,6 +4,7 @@ var weapon
 
 func _init(_weapon):
 	weapon = _weapon
+	weapon.anim_player.stop()
 
 func update(_delta):
 	pass

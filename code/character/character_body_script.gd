@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
 var soldier
-var equipment
 
-@onready var take_area = $TakeArea
+var equipment
+var equip_manager
 
 var move_input
 var look_input
@@ -31,17 +31,6 @@ func _ready():
 func _process(delta):
 	state_machine.update(delta)
 	move_and_slide()
-	
-	var weapons = take_area.get_overlapping_bodies()
-	if weapons:
-		if Input.is_action_just_pressed("take"):
-			equipment.take(weapons.front())
-	
-	if Input.is_action_just_pressed("drop"):
-			equipment.drop(0)
-	
-	if Input.is_action_just_pressed("slot_1"):
-		equipment.arm(0)
 
 func look_at_direction(direction : Vector3, axis := Vector3.UP):
 	direction = direction.slide(Vector3.UP).normalized()
@@ -55,4 +44,10 @@ func move(direction):
 func fall(delta):
 	velocity.y -= gravity * delta
 
-func is_aim(): return equipment.weapon_slots.any(func(slot): return slot.weapon.is_aim())
+func is_aim(): return false
+
+func weapon_detection_action(weapon):
+	equip_manager.add_in_queue(weapon)
+
+func weapon_undetection_action(weapon):
+	equip_manager.remove_from_queue(weapon)

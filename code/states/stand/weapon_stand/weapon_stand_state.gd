@@ -1,12 +1,15 @@
 class_name WeaponStandState
 
 var character
+var state_machine
 
 func _init(_character):
 	character = _character
-	character.anim_player.play("anim_move/idle_aim")
+	state_machine = StateMachine.new(WeaponIdleState.new(character))
+	character.anim_player.set_default_blend_time(0.1)
 
 func update(_delta):
+	state_machine.update(_delta)
 	character.move(character.move_input.move_direction() * 2.5)
 	character.look_at_direction(character.look_input.look_direction())
 
@@ -21,3 +24,4 @@ func next():
 
 func exit():
 	character.move(Vector3.ZERO)
+	state_machine.state.exit()
