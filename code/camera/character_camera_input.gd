@@ -1,9 +1,9 @@
 class_name CharacterCameraInput
 
 var character
-var stand_height = 1.5
-var crouch_height = 1.0
-var crawl_height = 0.5
+var stand_height = 1.8
+var crouch_height = 1.2
+var crawl_height = 0.6
 var distance = 2.5
 var aim_distance = 1.5
 var side = 0

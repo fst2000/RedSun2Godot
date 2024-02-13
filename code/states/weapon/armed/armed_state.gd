@@ -23,6 +23,9 @@ func next():
 	
 	if weapon.is_aim():
 		return AimState.new(weapon)
+	
+	if weapon.is_reload():
+		return ReloadState.new(weapon)
 
 	return self
 

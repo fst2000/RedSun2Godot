@@ -23,7 +23,10 @@ func next():
 	
 	if !weapon.is_armed:
 		return UnarmedState.new(weapon)
-
+	
+	if weapon.is_reload():
+		return ReloadState.new(weapon)
+	
 	return self
 
 func exit():

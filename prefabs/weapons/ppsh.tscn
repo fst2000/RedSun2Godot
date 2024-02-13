@@ -227,6 +227,7 @@ script = ExtResource("1_4eqmi")
 bullet_prefab = ExtResource("3_p8rro")
 weapon_slot = ExtResource("3_u30ql")
 bullets_per_second = 16
+bullets_capacity = 70
 recoil_time = 0.8
 recoil_min = 0.2
 

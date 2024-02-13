@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dbpq3j7mjpito" path="res://textures/weapons/MauserC96Metallic.png" id="3_rnops"]
 [ext_resource type="Texture2D" uid="uid://cntfw800qeyw2" path="res://textures/weapons/MauserC96NormalMap.png" id="4_30th6"]
 [ext_resource type="Texture2D" uid="uid://dof1lu5inkwhu" path="res://textures/weapons/MauserC96Details.png" id="5_c2iii"]
-[ext_resource type="AnimationLibrary" uid="uid://q114twicvoua" path="res://animations/anim_ppsh.blend" id="8_21yht"]
+[ext_resource type="AnimationLibrary" uid="uid://danfcnvwgfl5" path="res://animations/anim_mauser_c_96/anim_mauser_c_96.blend" id="8_reex5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y83xo"]
 resource_name = "mauser_c_96"
@@ -148,8 +148,10 @@ weapon_slot = ExtResource("3_at0v4")
 slot_id = 1
 bullet_speed = 200.0
 bullets_per_second = 4
+bullets_capacity = 10
 recoil_time = 0.2
 recoil_min = 0.04
+recoil_strength = 0.2
 
 [node name="Magazine" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000721947, 0.0944114)
@@ -172,7 +174,7 @@ shape = SubResource("BoxShape3D_ocnnv")
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": ExtResource("8_21yht")
+"": ExtResource("8_reex5")
 }
 playback_default_blend_time = 0.1
 
