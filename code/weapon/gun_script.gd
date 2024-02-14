@@ -32,10 +32,7 @@ func shoot():
 		bullets_count -= 1
 		var bullet = bullet_prefab.instantiate()
 		get_tree().current_scene.add_child(bullet)
-		bullet.global_position = fire_point.global_position
-		var velocity = global_basis.z * bullet_speed
-		bullet.velocity = velocity
-		bullet.look_at(bullet.global_position - velocity)
+		bullet.initialize(self)
 		timer = 0.0
 
 func reload():
@@ -72,7 +69,7 @@ func is_shoot():
 	return weapon_input.is_shoot() && timer >= fire_rate && bullets_count > 0
 
 func is_reload():
-	return weapon_input.is_reload()
+	return weapon_input.is_reload() && is_armed
 
 
 func _on_detect_area_body_entered(body):

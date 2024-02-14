@@ -46,6 +46,8 @@ func fall(delta):
 
 func is_aim(): return equipment.weapons.any(func(weapon): return weapon.is_aim())
 
+func is_reload(): return equipment.weapons.any(func(weapon): return weapon.is_reload())
+
 func weapon_detection_action(weapon):
 	equip_manager.add_in_queue(weapon)
 
