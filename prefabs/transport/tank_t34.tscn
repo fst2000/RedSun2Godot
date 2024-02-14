@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bsfhq7osdp8ei"]
+[gd_scene load_steps=22 format=3 uid="uid://bsfhq7osdp8ei"]
 
 [ext_resource type="Script" path="res://code/transport/tank_script.gd" id="2_l1v1y"]
 
@@ -46,6 +46,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_upinx")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysojo"]
+albedo_color = Color(0.313726, 0.396078, 0.219608, 1)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_l6bff"]
 _surfaces = [{
 "aabb": AABB(-0.976159, 0.00769833, -1.27375, 1.95232, 1.42682, 2.68),
@@ -78,6 +81,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l6bff")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkxiu"]
+albedo_color = Color(0.313726, 0.396078, 0.219608, 1)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_d3hu6"]
 _surfaces = [{
 "aabb": AABB(-0.324818, -0.324817, -0.278219, 0.649645, 0.649635, 3.75163),
@@ -109,6 +115,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d3hu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xt63"]
+albedo_color = Color(0.313726, 0.396078, 0.219608, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eb6ux"]
 resource_name = "T34_Track"
@@ -203,6 +212,12 @@ bind/13/name = &"B_Wheel_R_7"
 bind/13/bone = -1
 bind/13/pose = Transform3D(0, 3.89414e-07, 1, -1, 0, 0, 0, -1, 3.89414e-07, -2.52937, -1.22788, 0.725801)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxe68"]
+albedo_color = Color(0.32549, 0.32549, 0.32549, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81epp"]
+albedo_color = Color(0.392157, 0.435294, 0.337255, 1)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_massy"]
 resource_name = "tank_t34_Cube_003"
 _surfaces = [{
@@ -238,6 +253,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pcpjg"]
+albedo_color = Color(0.32549, 0.32549, 0.32549, 1)
+
 [node name="tank_t34" type="RigidBody3D" node_paths=PackedStringArray("wheel_bones")]
 mass = 20000.0
 center_of_mass_mode = 1
@@ -255,16 +273,19 @@ shape = SubResource("BoxShape3D_5t3s1")
 [node name="T34" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_8gu0u")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_ysojo")
 
 [node name="T34_Tower" type="MeshInstance3D" parent="T34"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58075, 0.3976)
 mesh = SubResource("ArrayMesh_kxkqp")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkxiu")
 
 [node name="T34_Gun" type="MeshInstance3D" parent="T34/T34_Tower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458364, 1.08294)
 mesh = SubResource("ArrayMesh_0835y")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_5xt63")
 
 [node name="Tank_Trail_Arm" type="Node3D" parent="."]
 
@@ -371,10 +392,14 @@ bones/13/scale = Vector3(1, 1, 1)
 [node name="t34_Track_L" type="MeshInstance3D" parent="Tank_Trail_Arm/Skeleton3D"]
 mesh = SubResource("ArrayMesh_5jl2m")
 skin = SubResource("Skin_sxktc")
+surface_material_override/0 = SubResource("StandardMaterial3D_jxe68")
+surface_material_override/1 = SubResource("StandardMaterial3D_81epp")
 
 [node name="t34_Track_R" type="MeshInstance3D" parent="Tank_Trail_Arm/Skeleton3D"]
 mesh = SubResource("ArrayMesh_massy")
 skin = SubResource("Skin_sxktc")
+surface_material_override/0 = SubResource("StandardMaterial3D_pcpjg")
+surface_material_override/1 = SubResource("StandardMaterial3D_81epp")
 
 [node name="wheel_l_1" type="BoneAttachment3D" parent="Tank_Trail_Arm/Skeleton3D"]
 transform = Transform3D(0, 1, 4.6082e-07, -1, 0, -5.20548e-07, -5.20548e-07, -4.6082e-07, 1, 1.22788, 0.649923, -2.58645)

@@ -17,6 +17,8 @@ var spine_bone
 var weapon_bone
 var anim_player_root
 
+var update_event = UpdateEvent.new()
+
 var gravity = 10
 
 func _ready():
@@ -29,6 +31,7 @@ func _ready():
 	state_machine = StateMachine.new(FloorState.new(self))
 
 func _process(delta):
+	update_event.call_event(delta)
 	state_machine.update(delta)
 	move_and_slide()
 
@@ -53,3 +56,6 @@ func weapon_detection_action(weapon):
 
 func weapon_undetection_action(weapon):
 	equip_manager.remove_from_queue(weapon)
+
+func build_camera_controller(camera):
+	return CharacterCameraController.new(self, camera, CharacterCameraInput.new(self, update_event))

@@ -5,7 +5,8 @@ var mouse_velocity
 var has_event = false
 var sensitivity
 
-func _init(_sensitivity = 0.2):
+func _init(character, _sensitivity = 0.2):
+	character.add_child(self)
 	sensitivity = _sensitivity
 
 func _input(_event):
@@ -18,4 +19,4 @@ func velocity() -> Vector2:
 		has_event = false
 		return mouse_velocity * sensitivity
 	else:
-		return Vector2.ZERO 
+		return Vector2.ZERO

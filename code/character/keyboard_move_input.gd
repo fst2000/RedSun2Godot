@@ -1,9 +1,9 @@
 class_name KeyboardMoveInput
 
-var camera : Node3D
+var look_input
 
-func _init(_camera):
-	camera = _camera
+func _init(_look_input):
+	look_input = _look_input
 
 func is_crouch():
 	return Input.is_action_pressed("crouch")
@@ -14,7 +14,8 @@ func is_crawl():
 func move_direction():
 	var input = move_input()
 	var input_strength = min(1, input.length())
-	var direction = -(camera.quaternion * input)
+	var look_quaternion = Transform3D.IDENTITY.looking_at(-look_input.look_direction(), Vector3.UP).basis.get_rotation_quaternion()
+	var direction = look_quaternion * input
 	direction = direction.slide(Vector3.UP).normalized() * input_strength
 	return direction
 

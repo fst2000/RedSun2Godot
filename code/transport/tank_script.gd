@@ -1,6 +1,5 @@
 extends RigidBody3D
 
-var camera_controller = TankCameraController.new()
 var wheels : Array[Wheel]
 var engine_l : WheelsEngine
 var engine_r : WheelsEngine
@@ -34,6 +33,8 @@ func _physics_process(delta):
 		
 	
 	if Input.is_action_pressed("right"):
-		engine_l.add_force(10)
-		engine_r.add_force(-10)
+		engine_l.add_force(20)
+		engine_r.add_force(-20)
 		
+func build_camera_controller(camera):
+	return TankCameraController.new(camera)

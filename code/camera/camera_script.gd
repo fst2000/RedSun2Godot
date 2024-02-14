@@ -10,4 +10,4 @@ func look_at_direction(direction, axis):
 		look_at(global_position + direction, axis)
 
 func switch(origin):
-	camera_controller = origin.camera_controller
+	camera_controller = origin.build_camera_controller(self)

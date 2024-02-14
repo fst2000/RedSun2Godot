@@ -19,7 +19,7 @@ func _ready():
 size = Vector2(100, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ki4s"]
-albedo_color = Color(0.713726, 0.713726, 0.713726, 1)
+albedo_color = Color(0.592157, 0.592157, 0.592157, 1)
 albedo_texture = ExtResource("1_bqikb")
 normal_enabled = true
 normal_texture = ExtResource("2_cv37u")
@@ -131,7 +131,7 @@ shape = SubResource("ConcavePolygonShape3D_av8mf")
 transform = Transform3D(-0.211973, 0, -0.977276, 0, 1, 0, 0.977276, 0, -0.211973, 6.15932, 0.999769, -0.0122175)
 
 [node name="Camera" parent="." instance=ExtResource("4_rquqj")]
-transform = Transform3D(-1, -4.23516e-22, -8.74228e-08, -5.13834e-08, 0.809038, 0.587757, 7.07283e-08, 0.587757, -0.809038, 0, 14.5023, -24.2379)
+transform = Transform3D(-1, -7.10542e-14, -8.74228e-08, -5.13834e-08, 0.809038, 0.587757, 7.07283e-08, 0.587757, -0.809038, 0, 14.5023, -12.8846)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0826344, 0.99658, 0, -0.99658, -0.0826344, 0, 10.4805, 0)
