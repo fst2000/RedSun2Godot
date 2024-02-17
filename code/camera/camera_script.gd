@@ -1,6 +1,6 @@
 extends Camera3D
 
-var camera_controller
+var camera_controller = EmptyController.new()
 
 func _process(delta):
 	camera_controller.update(delta)

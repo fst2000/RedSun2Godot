@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1ea5b2j0qhsm"]
+[gd_scene load_steps=19 format=3 uid="uid://b1ea5b2j0qhsm"]
 
 [ext_resource type="Texture2D" uid="uid://cc2nsaygll3v6" path="res://textures/ground/Grass_Ground.png" id="1_bqikb"]
 [ext_resource type="Texture2D" uid="uid://tq2veitxr6bm" path="res://textures/ground/Grass_Ground_NORMAL.png" id="2_cv37u"]
 [ext_resource type="PackedScene" uid="uid://bsfhq7osdp8ei" path="res://prefabs/transport/tank_t34.tscn" id="3_qmfca"]
 [ext_resource type="PackedScene" uid="uid://cry8c6t2ytxrl" path="res://prefabs/camera/camera.tscn" id="4_rquqj"]
+[ext_resource type="PackedScene" uid="uid://c2p4l47fcca4w" path="res://prefabs/soldiers/player_spawn.tscn" id="5_mvtiy"]
+[ext_resource type="PackedScene" uid="uid://b0y8wp42nb272" path="res://prefabs/soldiers/character_body.tscn" id="6_68pgw"]
+[ext_resource type="PackedScene" uid="uid://hnh1b76w667g" path="res://prefabs/soldiers/soldier_sr.tscn" id="7_mbukx"]
 
 [sub_resource type="GDScript" id="GDScript_ctd3x"]
 script/source = "extends Node3D
@@ -12,7 +15,8 @@ script/source = "extends Node3D
 @export var tank : Node3D
 
 func _ready():
-	camera.switch(tank)
+	var player = $PlayerSpawn.spawn()
+	camera.switch(player)
 "
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2btgp"]
@@ -127,9 +131,6 @@ mesh = SubResource("SphereMesh_x5id6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/MeshInstance3D6/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_av8mf")
 
-[node name="tank_t34" parent="." instance=ExtResource("3_qmfca")]
-transform = Transform3D(-0.211973, 0, -0.977276, 0, 1, 0, 0.977276, 0, -0.211973, 6.15932, 0.999769, -0.0122175)
-
 [node name="Camera" parent="." instance=ExtResource("4_rquqj")]
 transform = Transform3D(-1, -7.10542e-14, -8.74228e-08, -5.13834e-08, 0.809038, 0.587757, 7.07283e-08, 0.587757, -0.809038, 0, 14.5023, -12.8846)
 
@@ -138,3 +139,12 @@ transform = Transform3D(1, 0, 0, 0, -0.0826344, 0.99658, 0, -0.99658, -0.0826344
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_64kbm")
+
+[node name="tank_t34" parent="." instance=ExtResource("3_qmfca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.44041, 3.66238, 0)
+
+[node name="PlayerSpawn" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("5_mvtiy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.37533, 0, 0)
+character_body_prefab = ExtResource("6_68pgw")
+soldier_prefab = ExtResource("7_mbukx")
+camera = NodePath("../Camera")

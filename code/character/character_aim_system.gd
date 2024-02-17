@@ -2,7 +2,7 @@ class_name CharacterAimSystem
 
 var character
 var skeleton : Skeleton3D
-func _init(_characrer, _skeleton, _spine_bone : BoneAttachment3D):
+func _init(_characrer, _skeleton):
 	character = _characrer
 	skeleton = _skeleton
 

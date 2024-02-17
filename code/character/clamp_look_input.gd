@@ -4,7 +4,7 @@ var look_input
 var origin
 var max_angle
 
-func _init(_look_input, _origin, _max_angle):
+func _init(_look_input, _origin, _max_angle : float):
 	look_input = _look_input
 	origin = _origin
 	max_angle = _max_angle * PI / 180.0

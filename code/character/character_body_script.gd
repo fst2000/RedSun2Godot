@@ -1,14 +1,15 @@
 extends CharacterBody3D
 
+var content
 var soldier
 
 var equipment
 var equip_manager
+var transport_manager
 
 var move_input
 var look_input
 var aim_system
-var camera_controller
 var state_machine
 
 var anim_player
@@ -28,9 +29,18 @@ func _ready():
 	anim_player.set_root_node(anim_player_root)
 	skeleton = soldier.get_node("Armature/Skeleton3D")
 	weapon_bone = soldier.get_node("WeaponBone")
+	aim_system = CharacterAimSystem.new(self, skeleton)
+	
+	equip_manager = content.create_equip_manager()
+	transport_manager = content.create_transport_manager()
+	look_input = content.create_look_input()
+	move_input = content.create_move_input()
+	
+	
 	state_machine = StateMachine.new(FloorState.new(self))
 
 func _process(delta):
+	print(update_event.list)
 	update_event.call_event(delta)
 	state_machine.update(delta)
 	move_and_slide()
@@ -52,10 +62,13 @@ func is_aim(): return equipment.weapons.any(func(weapon): return weapon.is_aim()
 func is_reload(): return equipment.weapons.any(func(weapon): return weapon.is_reload())
 
 func weapon_detection_action(weapon):
-	equip_manager.add_in_queue(weapon)
+	equip_manager.weapon_detection_action(weapon)
 
-func weapon_undetection_action(weapon):
-	equip_manager.remove_from_queue(weapon)
+func transport_detection_action(transport):
+	transport_manager.transport_detection_action(transport)
 
 func build_camera_controller(camera):
 	return CharacterCameraController.new(self, camera, CharacterCameraInput.new(self, update_event))
+
+func create_tank_input(tank):
+	return content.create_tank_input(tank)

@@ -9,6 +9,9 @@ func _init(_character):
 	_character.add_child(self)
 	equipment = _character.equipment
 
+func weapon_detection_action(weapon):
+	add_in_queue(weapon)
+
 func add_in_queue(weapon):
 	var weapon_slot = weapon.weapon_slot.instantiate()
 	add_child(weapon_slot)

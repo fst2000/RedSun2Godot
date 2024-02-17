@@ -1,12 +1,12 @@
-class_name WeaponSlotButton
+class_name SlotButton
 extends TouchScreenButton
 
-var weapon
+var item
 var press_action
 var destroy_condition
 
-func initialize(_weapon, _press_action : Callable, _destroy_condition : Callable):
-	weapon = _weapon
+func initialize(_item, _press_action : Callable, _destroy_condition : Callable):
+	item = _item
 	press_action = _press_action
 	destroy_condition = _destroy_condition
 

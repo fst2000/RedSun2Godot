@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3xn34jknghmv"]
 
 [ext_resource type="Texture2D" uid="uid://bf1rq8lr16e46" path="res://sprites/button_mauser_c_96.png" id="1_4fe8d"]
-[ext_resource type="Script" path="res://code/weapon/weapon_slot_button.gd" id="2_t1mia"]
+[ext_resource type="Script" path="res://code/ui/slot_button_script.gd" id="2_t1mia"]
 
 [node name="PPSHSlot" type="TouchScreenButton"]
 texture_normal = ExtResource("1_4fe8d")
