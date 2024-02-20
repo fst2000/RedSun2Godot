@@ -4,11 +4,13 @@ extends RigidBody3D
 @export var weapon_slot : PackedScene
 @export var slot_id := 0
 @export var bullet_speed := 300.0
+@export var bullet_life_time = 3.0
 @export var bullets_per_second := 30
 @export var bullets_capacity : int
 @export var recoil_time = 0.05
-@export var recoil_min = 0.01
-@export var recoil_strength = 0.1
+@export var recoil_min = 0.1
+@export var recoil_max = 0.5
+@export var recoil_strength = 1.0
 @onready var fire_rate = 1.0 / bullets_per_second
 @onready var anim_player = $AnimPlayer
 @onready var fire_point = $FirePoint
@@ -32,7 +34,7 @@ func shoot():
 		bullets_count -= 1
 		var bullet = bullet_prefab.instantiate()
 		get_tree().current_scene.add_child(bullet)
-		bullet.initialize(self)
+		bullet.initialize(fire_point, bullet_speed, bullet_life_time)
 		timer = 0.0
 
 func reload():
@@ -74,7 +76,3 @@ func is_reload():
 
 func _on_detect_area_body_entered(body):
 	body.weapon_detection_action(self)
-
-
-func _on_detect_area_body_exited(body):
-	body.weapon_undetection_action(self)

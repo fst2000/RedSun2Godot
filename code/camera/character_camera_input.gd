@@ -14,9 +14,8 @@ var aim_fov = 30.0
 var camera_offset = Vector3(side, stand_height, distance)
 var camera_fov = base_fov
 
-func _init(_character, _update_event):
+func _init(_character):
 	character = _character
-	_update_event.add(update)
 
 func update(_delta):
 	var _height = stand_height

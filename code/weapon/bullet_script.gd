@@ -2,12 +2,13 @@ extends Node3D
 
 var velocity
 var gravity = 10
-var life_time = 2.0
+var life_time
 var delete_timer = 0.0
 
-func initialize(weapon):
-		global_position = weapon.fire_point.global_position
-		velocity = weapon.global_basis.z * weapon.bullet_speed
+func initialize(fire_point : Node3D, speed : float, _life_time : float):
+		life_time = _life_time
+		global_position = fire_point.global_position
+		velocity = fire_point.global_basis.z * speed
 		look_at(global_position - velocity)
 		velocity *= clamp(0.5 + RandomNumberGenerator.new().randf(), 0.8, 1.2)
 	

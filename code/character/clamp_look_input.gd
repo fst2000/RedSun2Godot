@@ -10,8 +10,10 @@ func _init(_look_input, _origin, _max_angle : float):
 	max_angle = _max_angle * PI / 180.0
 
 func look_direction():
-	var direction = look_input.look_direction()
-	var slided_direction = direction.slide(origin.basis.y).normalized()
-	var tilt_quaternion = Quaternion(slided_direction, direction)
-	var clamped_direction = slided_direction.rotated(tilt_quaternion.get_axis().normalized(), clamp(tilt_quaternion.get_angle(), -max_angle, max_angle))
-	return clamped_direction
+	var look_dir = look_input.look_direction()
+	var origin_up = origin.global_basis.y
+	var look_dir_slide = look_dir.slide(origin_up).normalized()
+	var rotation_axis = look_dir_slide.cross(origin_up)
+	var look_dir_angle = look_dir.signed_angle_to(look_dir_slide, rotation_axis)
+	look_dir = look_dir_slide.rotated(rotation_axis, clamp(-look_dir_angle, -max_angle, max_angle))
+	return look_dir

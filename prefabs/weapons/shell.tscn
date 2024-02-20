@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn4e1ponowkdu"]
+
+[ext_resource type="PackedScene" uid="uid://dl6mgy6vbdx81" path="res://models/weapon/shell.blend" id="1_0y3n2"]
+[ext_resource type="Shader" path="res://shaders/color.gdshader" id="2_fa4k8"]
+[ext_resource type="Script" path="res://code/weapon/bullet_script.gd" id="2_wkirn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rsml5"]
+render_priority = 0
+shader = ExtResource("2_fa4k8")
+shader_parameter/color = Vector3(1, 0.5, 0)
+
+[node name="Shell" instance=ExtResource("1_0y3n2")]
+script = ExtResource("2_wkirn")
+
+[node name="shell" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_rsml5")
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+target_position = Vector3(0, 0, 3)

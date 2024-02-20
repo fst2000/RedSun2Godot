@@ -2,37 +2,28 @@ class_name RecoilLookInput
 
 var look_input
 var weapon
-var recoil_angle = 0.0
-var recoil_axis = Vector3.UP
+var recoil_look_dir
 var recoil_strength
 var recoil_min
-var recoil_timer = Stopwatch.new()
-var start_timer
-var prev_call_time = 0.0
-var additive_recoil = 0.0
+var recoil_max
 
-func _init(_look_input, _weapon):
+func _init(_look_input, _weapon, _recoil_strength_multiplier = 1.0):
 	look_input = _look_input
 	weapon = _weapon
-	recoil_strength = weapon.recoil_strength
+	recoil_look_dir = _look_input.look_direction()
+	recoil_strength = weapon.recoil_strength * _recoil_strength_multiplier
 	recoil_min = _weapon.recoil_min
-	start_timer = Stopwatch.new()
+	recoil_max = _weapon.recoil_max
 
-func look_direction() -> Vector3:
-	var time = start_timer.get_time()
-	var delta = time - prev_call_time
-	prev_call_time = time
+func update(_delta):
 	var look_dir = look_input.look_direction()
 	if weapon.is_shoot():
-		additive_recoil += delta * recoil_strength * 1000
-		recoil_timer = Stopwatch.new()
-		var random = RandomNumberGenerator.new()
-		recoil_angle = clamp(random.randf(), recoil_min, 1) * recoil_strength
-		recoil_axis = Vector3(0.5 - random.randf(), 0.5 - random.randf(), 0.5 - random.randf())
+		var recoil_aixs = Vector3(0.5 - randf(), 0.5 - randf(), 0.5 - randf()).slide(look_dir).normalized()
+		var recoil_angle = recoil_strength * look_dir.angle_to(recoil_look_dir) + recoil_min
+		recoil_angle = clamp(recoil_angle, recoil_min, recoil_max)
+		recoil_look_dir = recoil_look_dir.rotated(recoil_aixs, recoil_angle)
 	else:
-		additive_recoil -= delta * recoil_strength * 300
-	additive_recoil = clamp(additive_recoil, 0, 4)
-	var recoil_axis_slide = recoil_axis.slide(look_dir).normalized()
-	var recoil_mul = clamp(recoil_strength - recoil_timer.get_time(), 0, 1) * (1 + additive_recoil)
-	var recoil_look_dir = look_dir.rotated(recoil_axis_slide, recoil_angle * recoil_mul)
+		recoil_look_dir = lerp(recoil_look_dir, look_dir, _delta * 10)
+
+func look_direction() -> Vector3:
 	return recoil_look_dir

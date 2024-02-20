@@ -27,7 +27,7 @@ func add_in_queue(weapon):
 	slots_queue_update_position()
 
 func remove_from_queue(weapon):
-	var remove_slots =  slots_queue.filter(func(slot): return slot.weapon == weapon)
+	var remove_slots =  slots_queue.filter(func(slot): return slot.item == weapon)
 	for slot in remove_slots:
 		slot.queue_free()
 		slots_queue.erase(slot)
@@ -37,7 +37,7 @@ func slots_queue_update_position():
 	var screen_size = get_window().size
 	var slot_count = 0
 	for slot in slots_queue:
-		var id = slot.weapon.slot_id
+		var id = slot.item.slot_id
 		slot.position = Vector2(screen_size.x * 0.5 + id * 50, screen_size.y * 0.9 - (slot_count + 1) * 30)
 		slot_count += 1
 

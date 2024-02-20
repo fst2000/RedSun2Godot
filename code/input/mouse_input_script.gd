@@ -9,6 +9,8 @@ func _init(character, _sensitivity = 0.2):
 	character.add_child(self)
 	sensitivity = _sensitivity
 
+func update(_delta): pass
+
 func _input(_event):
 	if _event is InputEventMouseMotion:
 		has_event = true

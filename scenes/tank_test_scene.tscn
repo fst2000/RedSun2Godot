@@ -59,6 +59,9 @@ sky_material = SubResource("ProceduralSkyMaterial_4lqpe")
 [sub_resource type="Environment" id="Environment_64kbm"]
 background_mode = 2
 sky = SubResource("Sky_mh1c1")
+ambient_light_source = 2
+ambient_light_color = Color(0.572549, 0.572549, 0.572549, 1)
+fog_light_color = Color(0.701961, 0.796078, 0.85098, 1)
 
 [node name="TankTestScene" type="Node3D" node_paths=PackedStringArray("camera", "tank")]
 script = SubResource("GDScript_ctd3x")

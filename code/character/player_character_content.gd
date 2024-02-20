@@ -14,7 +14,7 @@ func create_transport_manager():
 	return UITransportManager.new(character, camera)
 
 func create_look_input():
-	return PlayerLookInput.new(character, MouseInput.new(character), character.update_event)
+	return SlideLookInput.new(character, MouseInput.new(character), 60)
 
 func create_move_input():
 	return KeyboardMoveInput.new(character.look_input)

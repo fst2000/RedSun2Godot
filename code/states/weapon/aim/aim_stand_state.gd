@@ -11,6 +11,7 @@ func _init(_weapon):
 	look_input = RecoilLookInput.new(ClampLookInput.new(character.look_input, character, 60), weapon)
 
 func update(_delta):
+	look_input.update(_delta)
 	character.aim_system.aim(look_input.look_direction())
 
 func next():

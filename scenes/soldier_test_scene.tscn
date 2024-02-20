@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdclwnf8enpdk"]
+[gd_scene load_steps=14 format=3 uid="uid://bdclwnf8enpdk"]
 
 [ext_resource type="PackedScene" uid="uid://c2p4l47fcca4w" path="res://prefabs/soldiers/player_spawn.tscn" id="1_c77gl"]
 [ext_resource type="PackedScene" uid="uid://b0y8wp42nb272" path="res://prefabs/soldiers/character_body.tscn" id="2_mdmqv"]
 [ext_resource type="PackedScene" uid="uid://hnh1b76w667g" path="res://prefabs/soldiers/soldier_sr.tscn" id="5_3k32a"]
 [ext_resource type="PackedScene" uid="uid://cry8c6t2ytxrl" path="res://prefabs/camera/camera.tscn" id="5_65f1i"]
-[ext_resource type="Script" path="res://code/character/player_character_content.gd" id="6_c1agl"]
 [ext_resource type="PackedScene" uid="uid://dp3vdy6fq0fq" path="res://prefabs/test/ground_for_transport_test.tscn" id="7_6svti"]
 [ext_resource type="PackedScene" uid="uid://bsfhq7osdp8ei" path="res://prefabs/transport/tank_t34.tscn" id="8_ewxoi"]
 [ext_resource type="PackedScene" uid="uid://b8jfi54qp1h8i" path="res://prefabs/weapons/ppsh.tscn" id="8_muomd"]
@@ -48,7 +47,6 @@ weapon = NodePath("ppsh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40062, -9.52666, 26.9883)
 character_body_prefab = ExtResource("2_mdmqv")
 soldier_prefab = ExtResource("5_3k32a")
-character_content = ExtResource("6_c1agl")
 camera = NodePath("../Camera")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
