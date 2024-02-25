@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://n8ya0qu4xxt6"]
+[gd_scene load_steps=21 format=3 uid="uid://n8ya0qu4xxt6"]
 
 [ext_resource type="Script" path="res://code/weapon/gun_script.gd" id="1_inyb2"]
 [ext_resource type="PackedScene" uid="uid://cy438xpmqv8pi" path="res://prefabs/weapons/bullet.tscn" id="2_086b2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d3xn34jknghmv" path="res://prefabs/ui/slots/mauser_c_96_slot.tscn" id="3_at0v4"]
 [ext_resource type="Texture2D" uid="uid://dbpq3j7mjpito" path="res://textures/weapons/MauserC96Metallic.png" id="3_rnops"]
 [ext_resource type="Texture2D" uid="uid://cntfw800qeyw2" path="res://textures/weapons/MauserC96NormalMap.png" id="4_30th6"]
+[ext_resource type="PackedScene" uid="uid://dqvij3s1kbyhh" path="res://prefabs/ui/weapon_ui/gun_ui.tscn" id="4_ysy6u"]
 [ext_resource type="Texture2D" uid="uid://dof1lu5inkwhu" path="res://textures/weapons/MauserC96Details.png" id="5_c2iii"]
 [ext_resource type="AnimationLibrary" uid="uid://danfcnvwgfl5" path="res://animations/anim_mauser_c_96/anim_mauser_c_96.blend" id="8_reex5"]
 
@@ -145,6 +146,7 @@ collision_mask = 9
 script = ExtResource("1_inyb2")
 bullet_prefab = ExtResource("2_086b2")
 weapon_slot = ExtResource("3_at0v4")
+ui_prefab = ExtResource("4_ysy6u")
 slot_id = 1
 bullet_speed = 200.0
 bullets_per_second = 4

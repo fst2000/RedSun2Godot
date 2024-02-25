@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://b8jfi54qp1h8i"]
+[gd_scene load_steps=28 format=3 uid="uid://b8jfi54qp1h8i"]
 
 [ext_resource type="Script" path="res://code/weapon/gun_script.gd" id="1_4eqmi"]
 [ext_resource type="Texture2D" uid="uid://bxwh7xsm670dh" path="res://textures/weapons/PPSH_Magazine_Texture.png" id="2_mo5lv"]
 [ext_resource type="Texture2D" uid="uid://do2ev4dmqq4bx" path="res://textures/weapons/PPSH_Texture.png" id="3_ldm2e"]
 [ext_resource type="PackedScene" uid="uid://cy438xpmqv8pi" path="res://prefabs/weapons/bullet.tscn" id="3_p8rro"]
 [ext_resource type="PackedScene" uid="uid://cy2t2j7gkt1bb" path="res://prefabs/ui/slots/ppsh_slot.tscn" id="3_u30ql"]
+[ext_resource type="PackedScene" uid="uid://dqvij3s1kbyhh" path="res://prefabs/ui/weapon_ui/gun_ui.tscn" id="4_8lfq8"]
 [ext_resource type="Texture2D" uid="uid://c7eaanmau6ykr" path="res://textures/weapons/PPSH_Metalness.png" id="4_pj1ra"]
 [ext_resource type="Texture2D" uid="uid://dnt7dpqaxe1hd" path="res://textures/weapons/PPSH_BackSight.png" id="5_ggh5p"]
 [ext_resource type="Texture2D" uid="uid://catgh518pf45a" path="res://textures/weapons/PPSH_FrontSight.png" id="6_c3ka6"]
@@ -226,6 +227,7 @@ continuous_cd = true
 script = ExtResource("1_4eqmi")
 bullet_prefab = ExtResource("3_p8rro")
 weapon_slot = ExtResource("3_u30ql")
+ui_prefab = ExtResource("4_8lfq8")
 bullets_per_second = 16
 bullets_capacity = 70
 recoil_time = 0.8

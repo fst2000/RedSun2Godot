@@ -2,6 +2,7 @@ extends RigidBody3D
 
 @export var bullet_prefab : PackedScene
 @export var weapon_slot : PackedScene
+@export var ui_prefab : PackedScene
 @export var slot_id := 0
 @export var bullet_speed := 300.0
 @export var bullet_life_time = 3.0
@@ -15,7 +16,7 @@ extends RigidBody3D
 @onready var anim_player = $AnimPlayer
 @onready var fire_point = $FirePoint
 @onready var collision = $CollisionShape3D
-@onready var weapon_input = KeyboardGunInput.new()
+@onready var weapon_input = EmptyGunInput.new()
 @onready var weapon_state_machine = StateMachine.new(UnarmedState.new(self))
 @onready var detect_area = $DetectArea
 @onready var character_detector = AreaBodyDetector.new(
@@ -33,6 +34,8 @@ var timer = 0.0
 func _process(_delta):
 	timer += _delta
 	weapon_state_machine.update(_delta)
+	if weapon_input.is_drop():
+		drop_action(character)
 
 func _physics_process(_delta):
 	character_detector.update(_delta)
@@ -50,9 +53,11 @@ func reload():
 
 func arm_action():
 	is_armed = true
+	weapon_input = character.create_gun_input(self)
 
 func disarm_action():
 	is_armed = false
+	weapon_input = EmptyGunInput.new()
 
 func take_action(_character):
 	detect_area.monitoring = false
@@ -71,6 +76,7 @@ func drop_action(_character):
 	anim_player.stop()
 	anim_player.set_root_node("")
 	_character.skeleton.reset_bone_poses()
+	reparent(_character.get_tree().current_scene)
 
 func is_aim():
 	return weapon_input.is_aim() && is_armed

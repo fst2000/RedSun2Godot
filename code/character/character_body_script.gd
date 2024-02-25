@@ -76,3 +76,6 @@ func create_camera_controller(camera):
 
 func create_tank_input(tank):
 	return content.create_tank_input(tank)
+
+func create_gun_input(gun):
+	return content.create_gun_input(gun)

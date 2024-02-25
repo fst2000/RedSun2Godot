@@ -21,3 +21,6 @@ func create_move_input():
 
 func create_tank_input(tank):
 	return TankInput.new(tank, character.move_input, character.look_input, null)
+
+func create_gun_input(gun):
+	return UIGunInput.new(gun.ui_prefab, gun)

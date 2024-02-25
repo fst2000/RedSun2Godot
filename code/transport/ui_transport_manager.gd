@@ -16,7 +16,7 @@ func transport_detection_action(transport):
 		transport,
 		func(): get_in(transport))
 
-func transport_undetection_action(transport):
+func transport_undetection_action(_transport):
 	pass
 
 func get_in(transport):
