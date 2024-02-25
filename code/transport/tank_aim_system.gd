@@ -21,6 +21,5 @@ func aim(direction : Vector3):
 	turret.global_rotate(tank_up, clamp(turret_forward.signed_angle_to(direction.slide(tank_up), tank_up), -aim_speed, aim_speed))
 	gun.rotation.y = 0
 	gun.rotation.z = 0
-	var gun_forward = gun.global_basis.z
 	gun.rotation.x = turret_forward.signed_angle_to(direction.slide(turret_left), turret_left)
 	gun.rotation.x = clamp(gun.rotation.x, min_angle, max_angle)

@@ -62,8 +62,14 @@ func is_reload(): return equipment.weapons.any(func(weapon): return weapon.is_re
 func weapon_detection_action(weapon):
 	equip_manager.weapon_detection_action(weapon)
 
+func weapon_undetection_action(weapon):
+	equip_manager.weapon_undetection_action(weapon)
+
 func transport_detection_action(transport):
 	transport_manager.transport_detection_action(transport)
+
+func transport_undetection_action(transport):
+	transport_manager.transport_undetection_action(transport)
 
 func create_camera_controller(camera):
 	return CharacterCameraController.new(self, camera, CharacterCameraInput.new(self))

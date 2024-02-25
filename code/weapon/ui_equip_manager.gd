@@ -12,6 +12,9 @@ func _init(_character):
 func weapon_detection_action(weapon):
 	add_in_queue(weapon)
 
+func weapon_undetection_action(weapon):
+	remove_from_queue(weapon)
+
 func add_in_queue(weapon):
 	var weapon_slot = weapon.weapon_slot.instantiate()
 	add_child(weapon_slot)
@@ -21,8 +24,7 @@ func add_in_queue(weapon):
 			equipment.take(weapon)
 			add(weapon)
 			remove_from_queue(weapon)
-			slots_queue_update_position(),
-		func(): return false)
+			slots_queue_update_position())
 	slots_queue.append(weapon_slot)
 	slots_queue_update_position()
 
@@ -49,7 +51,6 @@ func add(weapon):
 	weapon_slot.initialize(
 		weapon,
 		func():
-			equipment.arm(weapon),
-		func(): return !weapon.is_equipped)
+			equipment.arm(weapon))
 	var screen_size = get_window().size
 	weapon_slot.position = Vector2(screen_size.x * 0.5 + id * 50, screen_size.y * 0.9)

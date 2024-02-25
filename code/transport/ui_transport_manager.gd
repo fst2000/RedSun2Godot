@@ -14,8 +14,10 @@ func transport_detection_action(transport):
 	add_child(slot)
 	slot.initialize(
 		transport,
-		func(): get_in(transport),
-		func(): return false)
+		func(): get_in(transport))
+
+func transport_undetection_action(transport):
+	pass
 
 func get_in(transport):
 	transport.get_in_action(player)

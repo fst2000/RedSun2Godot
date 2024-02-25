@@ -18,6 +18,11 @@ extends RigidBody3D
 @onready var weapon_input = KeyboardGunInput.new()
 @onready var weapon_state_machine = StateMachine.new(UnarmedState.new(self))
 @onready var detect_area = $DetectArea
+@onready var character_detector = AreaBodyDetector.new(
+	detect_area,
+	func(body): body.weapon_detection_action(self),
+	func(_body): pass,
+	func(body): body.weapon_undetection_action(self))
 @onready var bullets_count = bullets_capacity
 var character
 
@@ -28,6 +33,9 @@ var timer = 0.0
 func _process(_delta):
 	timer += _delta
 	weapon_state_machine.update(_delta)
+
+func _physics_process(_delta):
+	character_detector.update(_delta)
 
 func shoot():
 	if timer >= fire_rate && bullets_count > 0:
@@ -72,7 +80,3 @@ func is_shoot():
 
 func is_reload():
 	return weapon_input.is_reload() && is_armed
-
-
-func _on_detect_area_body_entered(body):
-	body.weapon_detection_action(self)

@@ -588,5 +588,3 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43786, 0)
 shape = SubResource("BoxShape3D_bl7xs")
-
-[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

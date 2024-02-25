@@ -6,5 +6,3 @@
 [node name="T34Slot" type="TouchScreenButton"]
 texture_normal = ExtResource("1_vkfe2")
 script = ExtResource("2_i4t6h")
-
-[connection signal="pressed" from="." to="." method="_on_pressed"]

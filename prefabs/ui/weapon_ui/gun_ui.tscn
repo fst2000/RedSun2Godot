@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqvij3s1kbyhh"]
+
+[ext_resource type="Texture2D" uid="uid://ckuc2abp8f55r" path="res://sprites/bullet_button.png" id="1_l6vpc"]
+[ext_resource type="Texture2D" uid="uid://bdex88m7mr081" path="res://sprites/aim_button.png" id="2_0cay3"]
+
+[node name="GunUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="FireButton" type="TouchScreenButton" parent="."]
+position = Vector2(939, 368)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("1_l6vpc")
+
+[node name="AimButton" type="TouchScreenButton" parent="."]
+position = Vector2(852, 272)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("2_0cay3")

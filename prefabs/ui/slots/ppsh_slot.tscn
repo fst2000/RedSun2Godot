@@ -6,5 +6,3 @@
 [node name="PPSHSlot" type="TouchScreenButton"]
 texture_normal = ExtResource("1_v8da4")
 script = ExtResource("2_pyc41")
-
-[connection signal="pressed" from="." to="." method="_on_pressed"]

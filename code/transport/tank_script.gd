@@ -18,6 +18,13 @@ var recoil_timer = Stopwatch.new()
 @export var turret : Node3D
 @export var gun : Node3D
 
+@onready var detect_area = $DetectArea
+@onready var character_detector = AreaBodyDetector.new(
+	detect_area,
+	func(body): body.transport_detection_action(self),
+	func(_body): pass,
+	func(body): body.transport_undetection_action(self))
+
 @onready var fire_point = $T34/T34_Tower/T34_Gun/FirePoint
 @onready var aim_system = TankAimSystem.new(self, turret, gun, -15, 15)
 func _ready():
@@ -36,9 +43,9 @@ func _process(_delta):
 		shoot()
 
 func _physics_process(delta):
+	character_detector.update(delta)
 	for wheel in wheels:
 		wheel.update(delta)
-	
 	if tank_input:
 		aim_system.aim(tank_input.look_direction())
 		engine_l.add_force(tank_input.engine_l_input() * engine_force)
@@ -62,5 +69,5 @@ func create_camera_controller(camera):
 	return TankCameraController.new(camera, self)
 
 
-func _on_detect_area_body_entered(body):
-	body.transport_detection_action(self)
+func is_detecting(character):
+	return detect_area.overlaps_body(character)
