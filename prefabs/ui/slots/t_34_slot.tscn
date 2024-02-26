@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://5vnd4mba4ke4"]
 
 [ext_resource type="Texture2D" uid="uid://iymb6mseb0d4" path="res://sprites/button_t_34.png" id="1_vkfe2"]
-[ext_resource type="Script" path="res://code/ui/slot_button_script.gd" id="2_i4t6h"]
+[ext_resource type="Script" path="res://code/ui/action_button_script.gd" id="2_i4t6h"]
 
 [node name="T34Slot" type="TouchScreenButton"]
 texture_normal = ExtResource("1_vkfe2")

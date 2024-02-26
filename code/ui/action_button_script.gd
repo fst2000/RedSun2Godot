@@ -1,15 +1,16 @@
-class_name SlotButton
+class_name ActionButton
 extends TouchScreenButton
 
-var item
 var press_action
+var position_func
 var has_pressed = false
 
-func initialize(_item, _press_action : Callable):
-	item = _item
+func initialize(_press_action : Callable, _position_func : Callable):
 	press_action = _press_action
+	position_func = _position_func
 
 func _process(_delta):
+	position = position_func.call()
 	if is_pressed():
 		if !has_pressed:
 			has_pressed = true

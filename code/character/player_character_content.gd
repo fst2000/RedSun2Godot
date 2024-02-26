@@ -7,11 +7,11 @@ func _init(_character, _camera):
 	character = _character
 	camera = _camera
 
-func create_equip_manager():
-	return UIEquipManager.new(character)
+func create_equip_controller():
+	return UIEquipController.new(character)
 
-func create_transport_manager():
-	return UITransportManager.new(character, camera)
+func create_transport_controller():
+	return UITransportController.new(character, camera)
 
 func create_look_input():
 	return SlideLookInput.new(character, MouseInput.new(character), 60)

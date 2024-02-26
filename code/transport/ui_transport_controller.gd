@@ -1,4 +1,4 @@
-class_name UITransportManager
+class_name UITransportController
 extends CanvasLayer
 
 var player

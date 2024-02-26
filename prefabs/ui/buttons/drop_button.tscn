@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfh3wg3gfym5p"]
+
+[ext_resource type="Texture2D" uid="uid://6lg3mw5hh08g" path="res://sprites/button_drop.png" id="1_65s83"]
+[ext_resource type="Script" path="res://code/ui/action_button_script.gd" id="2_v42x6"]
+
+[node name="DropButton" type="TouchScreenButton"]
+texture_normal = ExtResource("1_65s83")
+script = ExtResource("2_v42x6")

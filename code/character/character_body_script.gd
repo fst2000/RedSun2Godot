@@ -4,8 +4,8 @@ var content
 var soldier
 
 var equipment
-var equip_manager
-var transport_manager
+var equip_controller
+var transport_controller
 
 var move_input
 var look_input
@@ -29,8 +29,8 @@ func _ready():
 	weapon_bone = soldier.get_node("WeaponBone")
 	aim_system = CharacterAimSystem.new(self, skeleton)
 	
-	equip_manager = content.create_equip_manager()
-	transport_manager = content.create_transport_manager()
+	equip_controller = content.create_equip_controller()
+	transport_controller = content.create_transport_controller()
 	look_input = content.create_look_input()
 	move_input = content.create_move_input()
 	
@@ -55,21 +55,24 @@ func move(direction):
 func fall(delta):
 	velocity.y -= gravity * delta
 
+func drop_weapon(weapon):
+	equipment.drop(weapon)
+
 func is_aim(): return equipment.weapons.any(func(weapon): return weapon.is_aim())
 
 func is_reload(): return equipment.weapons.any(func(weapon): return weapon.is_reload())
 
 func weapon_detection_action(weapon):
-	equip_manager.weapon_detection_action(weapon)
+	equip_controller.weapon_detection_action(weapon)
 
 func weapon_undetection_action(weapon):
-	equip_manager.weapon_undetection_action(weapon)
+	equip_controller.weapon_undetection_action(weapon)
 
 func transport_detection_action(transport):
-	transport_manager.transport_detection_action(transport)
+	transport_controller.transport_detection_action(transport)
 
 func transport_undetection_action(transport):
-	transport_manager.transport_undetection_action(transport)
+	transport_controller.transport_undetection_action(transport)
 
 func create_camera_controller(camera):
 	return CharacterCameraController.new(self, camera, CharacterCameraInput.new(self))
