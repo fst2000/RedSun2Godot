@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c260vx5b7kycv"]
+
+[ext_resource type="Texture2D" uid="uid://de6a6siau8tsg" path="res://sprites/circle_32x32.png" id="1_235g5"]
+[ext_resource type="Script" path="res://code/ui/joystick_script.gd" id="1_jsk5b"]
+[ext_resource type="Texture2D" uid="uid://crdrx8sqw6tgq" path="res://sprites/circle16x16.png" id="2_ddg4v"]
+
+[node name="Joystick" type="Node2D"]
+script = ExtResource("1_jsk5b")
+
+[node name="Basis" type="TextureRect" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+texture = ExtResource("1_235g5")
+
+[node name="Stick" type="TextureRect" parent="."]
+z_index = 1
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("2_ddg4v")

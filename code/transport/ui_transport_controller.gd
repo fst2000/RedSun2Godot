@@ -13,8 +13,10 @@ func transport_detection_action(transport):
 	var slot = transport.transport_slot.instantiate()
 	add_child(slot)
 	slot.initialize(
-		transport,
-		func(): get_in(transport))
+		func(): get_in(transport),
+		func():
+			var screen_size = get_window().size
+			return Vector2(screen_size.x * 0.5, screen_size.y * 0.1))
 
 func transport_undetection_action(_transport):
 	pass
