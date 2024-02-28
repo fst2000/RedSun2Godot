@@ -18,4 +18,4 @@ grow_vertical = 2
 script = SubResource("GDScript_y6pm5")
 
 [node name="Joystick" parent="." instance=ExtResource("1_e4a1e")]
-position = Vector2(167, 490)
+position = Vector2(161, 457)

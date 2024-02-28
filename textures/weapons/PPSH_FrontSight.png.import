@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://catgh518pf45a"
 path.s3tc="res://.godot/imported/PPSH_FrontSight.png-02ec8b0662d97da2fe83d31ec5839440.s3tc.ctex"
+path.etc2="res://.godot/imported/PPSH_FrontSight.png-02ec8b0662d97da2fe83d31ec5839440.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/weapons/PPSH_FrontSight.png"
-dest_files=["res://.godot/imported/PPSH_FrontSight.png-02ec8b0662d97da2fe83d31ec5839440.s3tc.ctex"]
+dest_files=["res://.godot/imported/PPSH_FrontSight.png-02ec8b0662d97da2fe83d31ec5839440.s3tc.ctex", "res://.godot/imported/PPSH_FrontSight.png-02ec8b0662d97da2fe83d31ec5839440.etc2.ctex"]
 
 [params]
 

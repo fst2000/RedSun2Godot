@@ -2,10 +2,12 @@ class_name UIMoveInput
 
 var look_input
 var joystick
+var buttons_input
 
-func _init(_look_input, _joystick):
+func _init(_look_input, _joystick, _buttons_input):
 	look_input = _look_input
 	joystick = _joystick
+	buttons_input = _buttons_input
 
 func move_direction():
 	var joystick_input = joystick.input()
@@ -18,7 +20,7 @@ func update(_delta):
 	pass
 
 func is_crouch():
-	return false
+	return buttons_input.is_crouch()
 
 func is_crawl():
-	return false
+	return buttons_input.is_crawl()

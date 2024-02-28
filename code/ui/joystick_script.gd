@@ -8,7 +8,7 @@ func input() -> Vector2:
 
 func _input(event):
 	var is_touch = false
-	if event is InputEventMouse:
+	if event is InputEventScreenTouch || event is InputEventScreenDrag:
 		var touch_position = event.position
 		if touch_position.distance_to(global_position) < basis.size.x * 0.5:
 			is_touch = true

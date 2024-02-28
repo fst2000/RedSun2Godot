@@ -7,8 +7,7 @@ var equipment
 var equip_controller
 var transport_controller
 
-var move_input
-var look_input
+var character_input
 var aim_system
 var state_machine
 
@@ -31,15 +30,12 @@ func _ready():
 	
 	equip_controller = content.create_equip_controller()
 	transport_controller = content.create_transport_controller()
-	look_input = content.create_look_input()
-	move_input = content.create_move_input()
-	
+	character_input = content.create_character_input()
 	
 	state_machine = StateMachine.new(FloorState.new(self))
 
 func _process(delta):
-	look_input.update(delta)
-	move_input.update(delta)
+	character_input.update(delta)
 	state_machine.update(delta)
 	move_and_slide()
 
@@ -76,6 +72,9 @@ func transport_undetection_action(transport):
 
 func create_camera_controller(camera):
 	return CharacterCameraController.new(self, camera, CharacterCameraInput.new(self))
+
+func create_character_input():
+	return content.create_character_input()
 
 func create_tank_input(tank):
 	return content.create_tank_input(tank)
