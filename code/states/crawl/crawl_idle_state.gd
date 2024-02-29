@@ -10,7 +10,7 @@ func update(_delta):
 	pass
 
 func next():
-	if character.move_input.move_direction().length() > 0:
+	if character.move_direction().length() > 0:
 		return CrawlWalkState.new(character)
 
 	return self

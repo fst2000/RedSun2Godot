@@ -54,6 +54,15 @@ func fall(delta):
 func drop_weapon(weapon):
 	equipment.drop(weapon)
 
+func move_direction():
+	return character_input.move_direction()
+
+func is_crouch():
+	return character_input.is_crouch()
+
+func is_crawl():
+	return character_input.is_crawl()
+
 func is_aim(): return equipment.weapons.any(func(weapon): return weapon.is_aim())
 
 func is_reload(): return equipment.weapons.any(func(weapon): return weapon.is_reload())

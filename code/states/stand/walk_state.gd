@@ -10,7 +10,7 @@ func update(_delta):
 	pass
 
 func next():
-	var move_strength = character.move_input.move_direction().length()
+	var move_strength = character.move_direction().length()
 	if move_strength > 0.5:
 		return RunState.new(character)
 	

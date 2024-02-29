@@ -8,7 +8,7 @@ func _init(_weapon):
 	weapon = _weapon
 	character = weapon.character
 	var armed_state
-	if character.move_input.is_crawl():
+	if character.is_crawl():
 		armed_state = ArmedCrawlState.new(weapon)
 	else:
 		armed_state = ArmedStandState.new(weapon)

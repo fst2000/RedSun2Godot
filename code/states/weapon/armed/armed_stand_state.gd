@@ -12,7 +12,7 @@ func update(_delta):
 	pass
 
 func next():
-	if character.move_input.is_crawl():
+	if character.is_crawl():
 		return ArmedCrawlState.new(weapon)
 
 	return self

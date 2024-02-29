@@ -1,8 +1,9 @@
-class_name UITransportController
+class_name PlayerTransportController
 extends CanvasLayer
 
 var player
 var camera
+var slot
 
 func _init(_player, _camera):
 	player = _player
@@ -10,7 +11,7 @@ func _init(_player, _camera):
 	player.add_child(self)
 
 func transport_detection_action(transport):
-	var slot = transport.transport_slot.instantiate()
+	slot = transport.transport_slot.instantiate()
 	add_child(slot)
 	slot.initialize(
 		func(): get_in(transport),
@@ -19,7 +20,7 @@ func transport_detection_action(transport):
 			return Vector2(screen_size.x * 0.5, screen_size.y * 0.1))
 
 func transport_undetection_action(_transport):
-	pass
+	slot.queue_free()
 
 func get_in(transport):
 	transport.get_in_action(player)

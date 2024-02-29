@@ -14,7 +14,7 @@ func update(delta):
 	state_machine.update(delta)
 
 func next():
-	if !character.move_input.is_crawl():
+	if !character.is_crawl():
 		return CrouchState.new(character)
 	
 	if character.is_aim():

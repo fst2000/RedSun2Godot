@@ -27,10 +27,10 @@ func update(_delta):
 		_side = aim_side
 		_fov = aim_fov
 	
-	if character.move_input.is_crouch():
+	if character.character_input.is_crouch():
 		_height = crouch_height
 
-	if character.move_input.is_crawl():
+	if character.character_input.is_crawl():
 		_height = crawl_height
 	
 	camera_offset = camera_offset.lerp(Vector3(_side, _height, _distance), _delta * 5)

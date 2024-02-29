@@ -14,7 +14,7 @@ func update(_delta): pass
 func exit(): pass
 
 func next():
-	if !character.move_input.is_crawl():
+	if !character.is_crawl():
 		return ReloadStandState.new(weapon, weapon.anim_player.current_animation_position)
 	
 	return self

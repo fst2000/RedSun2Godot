@@ -22,8 +22,8 @@ func add_in_queue(weapon):
 		func():
 			equipment.take(weapon),
 		func():
+			var screen_size = get_tree().get_root().size
 			var id = weapon.slot_id
-			var screen_size = get_window().size
 			var weapon_key_index = slots_queue.keys().filter(func(w): return w.slot_id == weapon.slot_id).find(weapon)
 			return Vector2(screen_size.x * 0.5 + id * 50, screen_size.y * 0.9 - (weapon_key_index + 1) * 30))
 	slots_queue.merge({weapon : weapon_slot})
@@ -46,7 +46,7 @@ func _process(_delta):
 			func():
 				equipment.arm(weapon),
 			func():
-				var screen_size = get_window().size
+				var screen_size = get_tree().get_root().size
 				return Vector2(screen_size.x * 0.5 + id * 50, screen_size.y * 0.9))
 	
 	for weapon in drop_weapons:

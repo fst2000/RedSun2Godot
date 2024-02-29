@@ -39,8 +39,7 @@ func _ready():
 		30, 30)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("fire"):
-		shoot()
+	pass
 
 func _physics_process(delta):
 	character_detector.update(delta)
@@ -61,8 +60,10 @@ func shoot():
 
 func get_in_action(_character):
 	tank_input = _character.create_tank_input(self)
+	_character.character.input = EmptyCharacterInput.new()
 	
 func get_out_action(_character):
+	_character.character_input = _character.create_character_input()
 	tank_input = null
 
 func create_camera_controller(camera):

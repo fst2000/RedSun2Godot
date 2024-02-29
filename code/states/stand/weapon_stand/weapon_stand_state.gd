@@ -10,14 +10,14 @@ func _init(_character):
 
 func update(_delta):
 	state_machine.update(_delta)
-	character.move(character.move_input.move_direction() * 2.5)
-	character.look_at_direction(character.look_input.look_direction())
+	character.move(character.move_direction() * 2.5)
+	character.look_at_direction(character.look_direction())
 
 func next():
 	if !character.is_aim():
 		return StandState.new(character)
 	
-	if character.move_input.is_crouch() || character.move_input.is_crawl():
+	if character.is_crouch() || character.is_crawl():
 		return WeaponCrouchState.new(character)
 	
 	return self

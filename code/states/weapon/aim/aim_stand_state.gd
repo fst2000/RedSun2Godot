@@ -8,7 +8,7 @@ func _init(_weapon):
 	weapon = _weapon
 	character = weapon.character
 	weapon.anim_player.play("aim")
-	look_input = RecoilLookInput.new(ClampLookInput.new(character.look_input, character, 60), weapon)
+	look_input = RecoilLookInput.new(ClampLookInput.new(character.character_input, character, 60), weapon)
 
 func update(_delta):
 	look_input.update(_delta)

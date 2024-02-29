@@ -9,7 +9,7 @@ func _init(_character, _camera, _camera_input):
 	character = _character
 	camera = _camera
 	camera_input = _camera_input
-	look_input = character.look_input
+	look_input = character.character_input
 
 func update(_delta):
 	camera_input.update(_delta)
