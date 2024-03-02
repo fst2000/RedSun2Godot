@@ -60,7 +60,7 @@ func shoot():
 
 func get_in_action(_character):
 	tank_input = _character.create_tank_input(self)
-	_character.character.input = EmptyCharacterInput.new()
+	_character.character_input = EmptyCharacterInput.new()
 	
 func get_out_action(_character):
 	_character.character_input = _character.create_character_input()

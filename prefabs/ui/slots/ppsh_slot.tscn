@@ -4,5 +4,6 @@
 [ext_resource type="Script" path="res://code/ui/action_button_script.gd" id="2_pyc41"]
 
 [node name="PPSHSlot" type="TouchScreenButton"]
+scale = Vector2(3, 3)
 texture_normal = ExtResource("1_v8da4")
 script = ExtResource("2_pyc41")

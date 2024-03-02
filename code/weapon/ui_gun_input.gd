@@ -1,11 +1,10 @@
 class_name UIGunInput
 
 var ui
-var gun
 
-func _init(ui_prefab, gun):
-	ui = ui_prefab.instantiate()
-	gun.add_child(ui)
+func _init(_ui_prefab, _gun):
+	ui = _ui_prefab.instantiate()
+	_gun.add_child(ui)
 
 func is_shoot():
 	return Input.is_action_pressed("fire")

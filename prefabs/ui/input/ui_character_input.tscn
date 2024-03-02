@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://code/ui/pose_buttons_script.gd" id="3_3jb46"]
 [ext_resource type="Texture2D" uid="uid://cu8lkrak85fm5" path="res://sprites/button_stand.png" id="3_8bisx"]
 [ext_resource type="Texture2D" uid="uid://sxnt7bwjbsfm" path="res://sprites/button_crouch.png" id="4_u533x"]
+[ext_resource type="Script" path="res://code/ui/action_button_script.gd" id="5_btvw8"]
 [ext_resource type="Texture2D" uid="uid://b0e4eo6k7k1wb" path="res://sprites/button_crawl.png" id="5_q70pp"]
-[ext_resource type="Script" path="res://code/ui/touch_screen_script.gd" id="6_r2f6b"]
 
 [node name="UICharacterInput" type="Control"]
 layout_mode = 3
@@ -24,26 +24,25 @@ position = Vector2(161, 457)
 position = Vector2(24, 219)
 script = ExtResource("3_3jb46")
 
-[node name="Stand" type="TextureRect" parent="PoseButtons"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_8bisx")
+[node name="Stand" type="TouchScreenButton" parent="PoseButtons"]
+position = Vector2(0, -79)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("3_8bisx")
+script = ExtResource("5_btvw8")
 
-[node name="Crouch" type="TextureRect" parent="PoseButtons"]
-offset_top = 40.0
-offset_right = 40.0
-offset_bottom = 80.0
-texture = ExtResource("4_u533x")
+[node name="Crouch" type="TouchScreenButton" parent="PoseButtons"]
+position = Vector2(0, -15)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("4_u533x")
+script = ExtResource("5_btvw8")
 
-[node name="Crawl" type="TextureRect" parent="PoseButtons"]
-offset_top = 80.0
-offset_right = 40.0
-offset_bottom = 120.0
-texture = ExtResource("5_q70pp")
+[node name="Crawl" type="TouchScreenButton" parent="PoseButtons"]
+position = Vector2(0, 49)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("5_q70pp")
+script = ExtResource("5_btvw8")
 
 [node name="TouchScreen" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 576.0
-offset_right = 1152.0
-offset_bottom = 648.0
-script = ExtResource("6_r2f6b")
+offset_right = 40.0
+offset_bottom = 40.0

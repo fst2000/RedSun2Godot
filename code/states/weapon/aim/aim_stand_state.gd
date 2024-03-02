@@ -15,7 +15,7 @@ func update(_delta):
 	character.aim_system.aim(look_input.look_direction())
 
 func next():
-	if weapon.character.move_input.is_crawl():
+	if weapon.character.is_crawl():
 		return AimCrawlState.new(weapon)
 
 	return self

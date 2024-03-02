@@ -1,5 +1,8 @@
 class_name EmptyCharacterInput
 
+func update(delta):
+	pass
+
 func look_direction():
 	return Vector3.ZERO
 

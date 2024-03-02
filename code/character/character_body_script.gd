@@ -57,6 +57,9 @@ func drop_weapon(weapon):
 func move_direction():
 	return character_input.move_direction()
 
+func look_direction():
+	return character_input.look_direction()
+
 func is_crouch():
 	return character_input.is_crouch()
 
