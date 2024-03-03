@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqvij3s1kbyhh"]
+
+[ext_resource type="Script" path="res://code/weapon/ui_gun_input.gd" id="1_rskoq"]
+[ext_resource type="Texture2D" uid="uid://ckuc2abp8f55r" path="res://sprites/button_bullet.png" id="2_8xilr"]
+[ext_resource type="Script" path="res://code/ui/action_button_script.gd" id="3_35lgk"]
+[ext_resource type="Texture2D" uid="uid://bdex88m7mr081" path="res://sprites/button_aim.png" id="3_llaq2"]
+[ext_resource type="Texture2D" uid="uid://bsw1qbekgp5j4" path="res://sprites/button_reload.png" id="4_j6fic"]
+[ext_resource type="Texture2D" uid="uid://6lg3mw5hh08g" path="res://sprites/button_drop.png" id="5_y2smd"]
+
+[node name="UIGunInput" type="Control"]
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_rskoq")
+
+[node name="FireButton" type="TouchScreenButton" parent="."]
+position = Vector2(831, 282)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("2_8xilr")
+action = "fire"
+script = ExtResource("3_35lgk")
+
+[node name="AimButton" type="TouchScreenButton" parent="."]
+position = Vector2(896, 161)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("3_llaq2")
+action = "aim"
+script = ExtResource("3_35lgk")
+
+[node name="ReloadButton" type="TouchScreenButton" parent="."]
+position = Vector2(1032, 262)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("4_j6fic")
+action = "reload"
+script = ExtResource("3_35lgk")
+
+[node name="DropButton" type="TouchScreenButton" parent="."]
+position = Vector2(1030, 448)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("5_y2smd")
+action = "drop"
+script = ExtResource("3_35lgk")

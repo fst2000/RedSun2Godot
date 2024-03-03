@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://do2ev4dmqq4bx" path="res://textures/weapons/PPSH_Texture.png" id="3_ldm2e"]
 [ext_resource type="PackedScene" uid="uid://cy438xpmqv8pi" path="res://prefabs/weapons/bullet.tscn" id="3_p8rro"]
 [ext_resource type="PackedScene" uid="uid://cy2t2j7gkt1bb" path="res://prefabs/ui/slots/ppsh_slot.tscn" id="3_u30ql"]
-[ext_resource type="PackedScene" uid="uid://dqvij3s1kbyhh" path="res://prefabs/ui/weapon_ui/gun_ui.tscn" id="4_8lfq8"]
+[ext_resource type="PackedScene" uid="uid://dqvij3s1kbyhh" path="res://prefabs/ui/input/gun_input_ui.tscn" id="4_8lfq8"]
 [ext_resource type="Texture2D" uid="uid://c7eaanmau6ykr" path="res://textures/weapons/PPSH_Metalness.png" id="4_pj1ra"]
 [ext_resource type="Texture2D" uid="uid://dnt7dpqaxe1hd" path="res://textures/weapons/PPSH_BackSight.png" id="5_ggh5p"]
 [ext_resource type="Texture2D" uid="uid://catgh518pf45a" path="res://textures/weapons/PPSH_FrontSight.png" id="6_c3ka6"]

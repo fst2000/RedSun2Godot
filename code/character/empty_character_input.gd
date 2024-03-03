@@ -1,6 +1,6 @@
 class_name EmptyCharacterInput
 
-func update(delta):
+func update(_delta):
 	pass
 
 func look_direction():

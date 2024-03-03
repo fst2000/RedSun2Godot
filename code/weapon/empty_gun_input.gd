@@ -1,5 +1,8 @@
 class_name EmptyGunInput
 
+func update(_delta):
+	pass
+
 func is_aim():
 	return false
 

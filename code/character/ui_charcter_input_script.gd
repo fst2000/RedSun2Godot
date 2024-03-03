@@ -11,7 +11,7 @@ func initialize(_character):
 	look_input = SlideLookInput.new(_character, touch_screen, 60)
 
 func update(_delta):
-	pass
+	look_input.update(_delta)
 
 func look_direction():
 	return look_input.look_direction()

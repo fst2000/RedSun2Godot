@@ -22,7 +22,8 @@ func add_in_queue(weapon):
 		func():
 			equipment.take(weapon),
 		func():
-			var screen_size = get_window().size
+			var window = get_window()
+			var screen_size = window.size / window.get_final_transform().get_scale().x
 			var id = weapon.slot_id
 			var weapon_key_index = slots_queue.keys().filter(func(w): return w.slot_id == weapon.slot_id).find(weapon)
 			return Vector2(screen_size.x * 0.5 + id * 32 * weapon_slot.scale.x, screen_size.y * 0.9 - (weapon_key_index + 1) * 16 * weapon_slot.scale.y))
@@ -46,7 +47,8 @@ func _process(_delta):
 			func():
 				equipment.arm(weapon),
 			func():
-				var screen_size = get_window().size
+				var window = get_window()
+				var screen_size = window.size / window.get_final_transform().get_scale().x
 				return Vector2(screen_size.x * 0.5 + id * 32 * weapon_slot.scale.x, screen_size.y * 0.9))
 	
 	for weapon in drop_weapons:

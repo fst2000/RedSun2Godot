@@ -6,6 +6,7 @@ var canvas = CanvasLayer.new()
 
 
 var character_input_prefab = preload("res://prefabs/ui/input/ui_character_input.tscn")
+var gun_input_ui_prefab = preload("res://prefabs/ui/input/gun_input_ui.tscn")
 
 func _init(_character, _camera):
 	character = _character
@@ -27,4 +28,5 @@ func create_tank_input(tank):
 	return TankInput.new(tank, character.character_input, null)
 
 func create_gun_input(gun):
-	return UIGunInput.new(gun.ui_prefab, gun)
+	var gun_input = UIGunInput.new(gun_input_ui_prefab.instantiate(), gun)
+	return gun_input

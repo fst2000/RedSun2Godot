@@ -35,5 +35,6 @@ func take(weapon):
 
 func drop(weapon):
 	weapon.reparent(character.get_tree().get_current_scene())
+	weapon.disarm_action()
 	weapon.drop_action(character)
 	weapons.erase(weapon)

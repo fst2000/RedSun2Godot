@@ -33,9 +33,11 @@ var timer = 0.0
 
 func _process(_delta):
 	timer += _delta
+	weapon_input.update(_delta)
 	weapon_state_machine.update(_delta)
 	if weapon_input.is_drop():
 		character.drop_weapon(self)
+		drop_action(character)
 
 func _physics_process(_delta):
 	character_detector.update(_delta)
@@ -68,7 +70,6 @@ func take_action(_character):
 	character = _character
 
 func drop_action(_character):
-	disarm_action()
 	detect_area.monitoring = true
 	is_equipped = false
 	freeze = false

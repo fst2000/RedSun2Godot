@@ -22,8 +22,6 @@ func update(_delta):
 	var rotation_axis = look_dir_slide.cross(character_up)
 	var look_dir_angle = look_dir.signed_angle_to(look_dir_slide, rotation_axis)
 	look_dir = look_dir_slide.rotated(rotation_axis, clamp(-look_dir_angle, -max_angle, max_angle))
-	
-	
 
 func look_direction():
 	return look_dir

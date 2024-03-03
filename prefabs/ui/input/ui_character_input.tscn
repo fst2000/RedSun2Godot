@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbeyvggappbvf"]
+[gd_scene load_steps=11 format=3 uid="uid://cbeyvggappbvf"]
 
 [ext_resource type="PackedScene" uid="uid://c260vx5b7kycv" path="res://prefabs/ui/controls/joystick.tscn" id="1_cut1g"]
 [ext_resource type="Script" path="res://code/character/ui_charcter_input_script.gd" id="1_pw2n3"]
@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://sxnt7bwjbsfm" path="res://sprites/button_crouch.png" id="4_u533x"]
 [ext_resource type="Script" path="res://code/ui/action_button_script.gd" id="5_btvw8"]
 [ext_resource type="Texture2D" uid="uid://b0e4eo6k7k1wb" path="res://sprites/button_crawl.png" id="5_q70pp"]
+[ext_resource type="Script" path="res://code/ui/touch_screen_script.gd" id="8_wdkao"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wclm1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8nie"]
 
 [node name="UICharacterInput" type="Control"]
 layout_mode = 3
@@ -42,7 +47,20 @@ scale = Vector2(4, 4)
 texture_normal = ExtResource("5_q70pp")
 script = ExtResource("5_btvw8")
 
-[node name="TouchScreen" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TouchScreen" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -791.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wclm1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f8nie")
+action_mode = 0
+flat = true
+script = ExtResource("8_wdkao")
+
+[connection signal="button_down" from="TouchScreen" to="TouchScreen" method="_on_button_down"]
+[connection signal="button_up" from="TouchScreen" to="TouchScreen" method="_on_button_up"]
