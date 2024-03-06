@@ -5,6 +5,7 @@ var state_machine
 
 func _init(_character):
 	character = _character
+	character.shape_crouch()
 	var crouch_state
 	if character.is_aim(): crouch_state = WeaponCrouchState.new(character)
 	else: crouch_state = CrouchIdleState.new(character)
@@ -14,7 +15,7 @@ func update(delta):
 	state_machine.update(delta)
 
 func next():
-	if !character.is_crouch():
+	if !character.is_crouch() && character.can_stand():
 		return StandState.new(character)
 
 	if character.is_crawl():

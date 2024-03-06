@@ -4,6 +4,7 @@ var character
 
 func _init(_character):
 	character = _character
+	character.shape_crouch()
 	character.anim_player.play("anim_move/crouch_idle_aim")
 	character.anim_player.set_default_blend_time(0.1)
 	
@@ -18,7 +19,7 @@ func next():
 	if character.is_crawl():
 		return WeaponCrawlState.new(character)
 	
-	if !character.is_crouch():
+	if !character.is_crouch() && character.can_stand():
 		return WeaponStandState.new(character)
 
 	return self

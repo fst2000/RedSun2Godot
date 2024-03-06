@@ -17,6 +17,13 @@ var spine_bone
 var weapon_bone
 var anim_player_root
 
+@onready var stand_check_ray = $StandCheckRay
+@onready var crouch_check_ray = $CrouchCheckRay
+
+@onready var stand_shape = $StandShape
+@onready var crouch_shape = $CrouchShape
+@onready var crawl_shape = $CrawlShape
+
 var gravity = 10
 
 func _ready():
@@ -51,6 +58,21 @@ func move(direction):
 func fall(delta):
 	velocity.y -= gravity * delta
 
+func shape_stand():
+	stand_shape.disabled = false
+	crouch_shape.disabled = true
+	crawl_shape.disabled = true
+
+func shape_crouch():
+	stand_shape.disabled = true
+	crouch_shape.disabled = false
+	crawl_shape.disabled = true
+
+func shape_crawl():
+	stand_shape.disabled = true
+	crouch_shape.disabled = true
+	crawl_shape.disabled = false
+
 func drop_weapon(weapon):
 	skeleton.reset_bone_poses()
 	equipment.drop(weapon)
@@ -60,6 +82,12 @@ func move_direction():
 
 func look_direction():
 	return character_input.look_direction()
+
+func can_stand():
+	return !stand_check_ray.is_colliding()
+
+func can_crouch():
+	return !crouch_check_ray.is_colliding()
 
 func is_crouch():
 	return character_input.is_crouch()

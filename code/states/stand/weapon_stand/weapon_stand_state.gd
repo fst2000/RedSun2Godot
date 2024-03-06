@@ -5,6 +5,7 @@ var state_machine
 
 func _init(_character):
 	character = _character
+	character.shape_stand()
 	state_machine = StateMachine.new(WeaponIdleState.new(character))
 	character.anim_player.set_default_blend_time(0.1)
 

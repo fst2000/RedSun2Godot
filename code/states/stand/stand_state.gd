@@ -5,6 +5,7 @@ var state_machine
 
 func _init(_character):
 	character = _character
+	character.shape_stand()
 	var stand_state
 	if character.is_aim(): stand_state = WeaponStandState.new(character)
 	else: stand_state = IdleState.new(character)

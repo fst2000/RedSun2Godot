@@ -5,6 +5,7 @@ var state_machine
 
 func _init(_character):
 	character = _character
+	character.shape_crawl()
 	var crawl_state
 	if character.is_aim(): crawl_state = WeaponCrawlState.new(character)
 	else: crawl_state = CrawlIdleState.new(character)
@@ -14,7 +15,7 @@ func update(delta):
 	state_machine.update(delta)
 
 func next():
-	if !character.is_crawl():
+	if !character.is_crawl() && character.can_crouch():
 		return CrouchState.new(character)
 	
 	if character.is_aim():
