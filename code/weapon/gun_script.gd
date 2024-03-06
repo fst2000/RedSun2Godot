@@ -59,6 +59,7 @@ func arm_action():
 
 func disarm_action():
 	is_armed = false
+	weapon_input.close()
 	weapon_input = EmptyGunInput.new()
 
 func take_action(_character):
@@ -76,7 +77,6 @@ func drop_action(_character):
 	collision.disabled = false
 	anim_player.stop()
 	anim_player.set_root_node("")
-	_character.skeleton.reset_bone_poses()
 	reparent(_character.get_tree().current_scene)
 
 func is_aim():

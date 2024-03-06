@@ -45,7 +45,10 @@ func _process(_delta):
 		var id = weapon.slot_id
 		weapon_slot.initialize(
 			func():
-				equipment.arm(weapon),
+				if weapon.is_armed:
+					equipment.disarm(weapon)
+				else:
+					equipment.arm(weapon),
 			func():
 				var window = get_window()
 				var screen_size = window.size / window.get_final_transform().get_scale().x

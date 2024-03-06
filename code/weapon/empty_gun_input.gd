@@ -14,3 +14,6 @@ func is_reload():
 
 func is_drop():
 	return false
+
+func close():
+	pass

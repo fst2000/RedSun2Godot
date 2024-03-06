@@ -8,7 +8,7 @@ var look_input
 
 func initialize(_character):
 	_character.add_child(self)
-	look_input = SlideLookInput.new(_character, touch_screen, 60)
+	look_input = ClampLookInput.new(SlideLookInput.new(_character, touch_screen, 0.25), _character, 60)
 
 func update(_delta):
 	look_input.update(_delta)
@@ -29,6 +29,5 @@ func is_crouch():
 func is_crawl():
 	return pose_buttons.is_crawl()
 
-func _notification(what):
-	if what == NOTIFICATION_PREDELETE:
-		queue_free()
+func close():
+	queue_free()

@@ -1,10 +1,10 @@
 class_name UIGunInput
+extends Control
 
-var ui
-var fire_button
-var aim_button
-var reload_button
-var drop_button
+@onready var fire_button = $FireButton
+@onready var aim_button = $AimButton
+@onready var reload_button = $ReloadButton
+@onready var drop_button = $DropButton
 
 var _is_shoot = false
 var has_shoot = false
@@ -13,13 +13,8 @@ var _is_reload = false
 var has_reload = false
 var _is_drop = false
 
-func _init(_ui, _gun):
-	ui = _ui
-	_gun.add_child(ui)
-	fire_button = ui.get_node("FireButton")
-	aim_button = ui.get_node("AimButton")
-	reload_button = ui.get_node("ReloadButton")
-	drop_button = ui.get_node("DropButton")
+func initialize(_gun):
+	_gun.add_child(self)
 	fire_button.initialize(
 		func():
 			_is_shoot = true
@@ -58,6 +53,5 @@ func is_reload():
 func is_drop():
 	return _is_drop
 
-func _notification(what):
-	if what == NOTIFICATION_PREDELETE:
-		ui.queue_free()
+func close():
+	queue_free()

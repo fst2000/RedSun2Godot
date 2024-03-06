@@ -9,6 +9,9 @@ func _init(_look_input, _origin, _max_angle : float):
 	origin = _origin
 	max_angle = _max_angle * PI / 180.0
 
+func update(_delta):
+	look_input.update(_delta)
+
 func look_direction():
 	var look_dir = look_input.look_direction()
 	var origin_up = origin.global_basis.y

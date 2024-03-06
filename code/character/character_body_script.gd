@@ -52,6 +52,7 @@ func fall(delta):
 	velocity.y -= gravity * delta
 
 func drop_weapon(weapon):
+	skeleton.reset_bone_poses()
 	equipment.drop(weapon)
 
 func move_direction():
