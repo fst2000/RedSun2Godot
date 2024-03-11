@@ -5,7 +5,14 @@ var look_input
 
 func _init(_tank):
 	tank = _tank
-	look_input = ForwardLookInput.new(tank)
+	look_input = SlideLookInput.new(
+			ForwardLookInput.new(tank),
+			tank,
+			MouseInput.new(tank), 1.0,
+			20.0)
+
+func update(_delta):
+	look_input.update(_delta)
 
 func engine_l_input() -> float:
 	var move_dir = move_input()

@@ -8,7 +8,7 @@ var look_input
 
 func initialize(_character):
 	_character.add_child(self)
-	look_input = ClampLookInput.new(SlideLookInput.new(_character, touch_screen, 0.25), _character, 60)
+	look_input = SlideLookInput.new(FuncLookInput.new(func(): return Vector3(0,0,0)), _character, touch_screen, 0.25, 60)
 
 func update(_delta):
 	look_input.update(_delta)

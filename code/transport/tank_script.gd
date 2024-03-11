@@ -5,7 +5,7 @@ extends RigidBody3D
 var wheels : Array[Wheel]
 var engine_l : WheelsEngine
 var engine_r : WheelsEngine
-var tank_input
+var tank_input = EmptyTankInput.new(self)
 var recoil_timer = Stopwatch.new()
 
 @export var transport_slot : PackedScene
@@ -39,16 +39,15 @@ func _ready():
 		30, 30)
 
 func _process(_delta):
-	pass
+	tank_input.update(_delta)
 
 func _physics_process(delta):
 	character_detector.update(delta)
 	for wheel in wheels:
 		wheel.update(delta)
-	if tank_input:
-		aim_system.aim(tank_input.look_direction())
-		engine_l.add_force(tank_input.engine_l_input() * engine_force)
-		engine_r.add_force(tank_input.engine_r_input() * engine_force)
+	aim_system.aim(tank_input.look_direction())
+	engine_l.add_force(tank_input.engine_l_input() * engine_force)
+	engine_r.add_force(tank_input.engine_r_input() * engine_force)
 
 func shoot():
 	if recoil_timer.get_time() > recoil_time:
@@ -65,7 +64,7 @@ func get_in_action(_character):
 	
 func get_out_action(_character):
 	_character.character_input = _character.create_character_input()
-	tank_input = null
+	tank_input = EmptyTankInput.new(self)
 
 func create_camera_controller(camera):
 	return TankCameraController.new(camera, self)

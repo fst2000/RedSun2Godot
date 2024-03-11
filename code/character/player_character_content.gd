@@ -28,7 +28,7 @@ func create_character_input():
 func create_tank_input(tank):
 	return PCTankInput.new(tank)
 
-func create_gun_input(gun):
+func create_gun_input(_gun):
 	#var gun_input = gun_input_prefab.instantiate()
 	#gun_input.initialize(gun)
 	var gun_input = PCGunInput.new()

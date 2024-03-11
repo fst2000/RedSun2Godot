@@ -58,6 +58,10 @@ func move(direction):
 func fall(delta):
 	velocity.y -= gravity * delta
 
+func die():
+	print("dead")
+	skeleton.physical_bones_start_simulation()
+
 func shape_stand():
 	stand_shape.disabled = false
 	crouch_shape.disabled = true

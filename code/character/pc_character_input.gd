@@ -4,7 +4,11 @@ var look_input
 var move_input
 
 func _init(_character):
-	look_input = ClampLookInput.new(SlideLookInput.new(_character, MouseInput.new(_character), 1.0), _character, 60.0)
+	look_input = SlideLookInput.new(
+			FuncLookInput.new(func(): return Vector3(0,0,1)),
+			_character,
+			MouseInput.new(_character), 1.0,
+			60.0)
 	move_input = KeyboardMoveInput.new(look_input)
 
 func update(_delta):
