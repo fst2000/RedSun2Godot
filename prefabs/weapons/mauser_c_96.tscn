@@ -143,6 +143,8 @@ size = Vector3(0.0803223, 0.153174, 0.314771)
 [node name="mauser_c_96" type="RigidBody3D"]
 collision_layer = 8
 collision_mask = 9
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0, 0.1)
 script = ExtResource("1_inyb2")
 bullet_prefab = ExtResource("2_086b2")
 weapon_slot = ExtResource("3_at0v4")

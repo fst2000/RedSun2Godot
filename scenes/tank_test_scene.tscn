@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b1ea5b2j0qhsm"]
+[gd_scene load_steps=29 format=3 uid="uid://b1ea5b2j0qhsm"]
 
 [ext_resource type="Texture2D" uid="uid://cc2nsaygll3v6" path="res://textures/ground/Grass_Ground.png" id="1_bqikb"]
 [ext_resource type="Texture2D" uid="uid://tq2veitxr6bm" path="res://textures/ground/Grass_Ground_NORMAL.png" id="2_cv37u"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c2p4l47fcca4w" path="res://prefabs/soldiers/player_spawn.tscn" id="5_mvtiy"]
 [ext_resource type="PackedScene" uid="uid://b0y8wp42nb272" path="res://prefabs/soldiers/character_body.tscn" id="6_68pgw"]
 [ext_resource type="PackedScene" uid="uid://hnh1b76w667g" path="res://prefabs/soldiers/soldier_sr.tscn" id="7_mbukx"]
+[ext_resource type="PackedScene" uid="uid://c0jk1wpquxf4f" path="res://prefabs/soldiers/bot_spawn.tscn" id="8_j4jw1"]
 [ext_resource type="PackedScene" uid="uid://n8ya0qu4xxt6" path="res://prefabs/weapons/mauser_c_96.tscn" id="8_seb5a"]
 [ext_resource type="PackedScene" uid="uid://b8jfi54qp1h8i" path="res://prefabs/weapons/ppsh.tscn" id="9_0qjen"]
 
@@ -16,14 +17,15 @@ script/source = "extends Node3D
 @export var camera : Node3D
 @export var tank : Node3D
 var player
+var bot
 
 func _ready():
 	player = $PlayerSpawn.spawn()
+	bot = $BotSpawn.spawn()
 	camera.switch(player)
 
 func _process(_delta):
-	if Input.is_action_just_pressed(\"fire\"):
-		player.die()
+	pass
 "
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2btgp"]
@@ -179,6 +181,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.37533, 0, 0)
 character_body_prefab = ExtResource("6_68pgw")
 soldier_prefab = ExtResource("7_mbukx")
 camera = NodePath("../Camera")
+
+[node name="BotSpawn" parent="." instance=ExtResource("8_j4jw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.546414, 0, 23.0508)
+character_body_prefab = ExtResource("6_68pgw")
+soldier_prefab = ExtResource("7_mbukx")
 
 [node name="ShapeTest" type="Node3D" parent="."]
 

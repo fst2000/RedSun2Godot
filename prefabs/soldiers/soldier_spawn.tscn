@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dune6o2e1i5nh"]
+
+[node name="SoldierSpawn" type="Node3D"]

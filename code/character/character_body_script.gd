@@ -24,6 +24,8 @@ var anim_player_root
 @onready var crouch_shape = $CrouchShape
 @onready var crawl_shape = $CrawlShape
 
+var hp = 100
+
 var gravity = 10
 
 func _ready():
@@ -58,8 +60,10 @@ func move(direction):
 func fall(delta):
 	velocity.y -= gravity * delta
 
+func damage(value):
+	hp -= value
+
 func die():
-	print("dead")
 	skeleton.physical_bones_start_simulation()
 
 func shape_stand():
