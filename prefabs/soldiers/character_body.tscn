@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0y8wp42nb272"]
+[gd_scene load_steps=8 format=3 uid="uid://b0y8wp42nb272"]
 
 [ext_resource type="Script" path="res://code/character/character_body_script.gd" id="1_g3g1n"]
+[ext_resource type="PackedScene" uid="uid://bv8e613qdxxdy" path="res://prefabs/particles/blood_particles.tscn" id="2_jtso5"]
 [ext_resource type="AnimationLibrary" uid="uid://b8v3aj5kke4fo" path="res://animations/anim_move/anim_crawl.blend" id="2_xy5ee"]
 [ext_resource type="AnimationLibrary" uid="uid://dpwofy8p87krx" path="res://animations/anim_move/anim_move.blend" id="3_o2a7e"]
 
@@ -20,6 +21,7 @@ radius = 0.4
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_g3g1n")
+blood_particles_prefab = ExtResource("2_jtso5")
 
 [node name="OnFootAnimPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")

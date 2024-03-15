@@ -17,6 +17,8 @@ var spine_bone
 var weapon_bone
 var anim_player_root
 
+@export var blood_particles_prefab : PackedScene
+
 @onready var stand_check_ray = $StandCheckRay
 @onready var crouch_check_ray = $CrouchCheckRay
 
@@ -29,6 +31,7 @@ var hp = 100
 var gravity = 10
 
 func _ready():
+	soldier.character_body = self
 	equipment = Equipment.new(self, soldier.get_node("SlotNodes").get_children())
 	anim_player = $OnFootAnimPlayer
 	anim_player_root = soldier.get_path()
@@ -96,12 +99,14 @@ func can_stand():
 
 func can_crouch():
 	return !crouch_check_ray.is_colliding()
-
 func is_crouch():
 	return character_input.is_crouch()
 
 func is_crawl():
 	return character_input.is_crawl()
+
+func is_dead():
+	return hp <= 0
 
 func is_aim(): return equipment.weapons.any(func(weapon): return weapon.is_aim())
 

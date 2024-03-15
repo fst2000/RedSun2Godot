@@ -5,6 +5,7 @@ extends RigidBody3D
 @export var ui_prefab : PackedScene
 @export var slot_id := 0
 @export var bullet_damage = 50.0
+@export var bullet_impulse = 5.0
 @export var bullet_speed := 300.0
 @export var bullet_life_time = 3.0
 @export var bullets_per_second := 30
@@ -48,7 +49,7 @@ func shoot():
 		bullets_count -= 1
 		var bullet = bullet_prefab.instantiate()
 		get_tree().current_scene.add_child(bullet)
-		bullet.initialize(fire_point, bullet_damage, bullet_speed, bullet_life_time)
+		bullet.initialize(fire_point, bullet_damage, bullet_impulse, bullet_speed, bullet_life_time)
 		timer = 0.0
 
 func reload():

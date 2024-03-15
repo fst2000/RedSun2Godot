@@ -14,6 +14,10 @@ func update(delta):
 func next():
 	if character.is_on_floor():
 		return FloorState.new(character)
+	
+	if character.is_dead():
+		return DeadState.new(character)
+	
 	return self
 
 func exit():

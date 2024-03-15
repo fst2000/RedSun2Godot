@@ -1,9 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://b1ea5b2j0qhsm"]
+[gd_scene load_steps=31 format=3 uid="uid://b1ea5b2j0qhsm"]
 
 [ext_resource type="Texture2D" uid="uid://cc2nsaygll3v6" path="res://textures/ground/Grass_Ground.png" id="1_bqikb"]
 [ext_resource type="Texture2D" uid="uid://tq2veitxr6bm" path="res://textures/ground/Grass_Ground_NORMAL.png" id="2_cv37u"]
+[ext_resource type="Script" path="res://code/shape/surface_hit_shape.gd" id="3_d4htm"]
 [ext_resource type="PackedScene" uid="uid://bsfhq7osdp8ei" path="res://prefabs/transport/tank_t34.tscn" id="3_qmfca"]
 [ext_resource type="PackedScene" uid="uid://cry8c6t2ytxrl" path="res://prefabs/camera/camera.tscn" id="4_rquqj"]
+[ext_resource type="PackedScene" uid="uid://b2b1mb7hpe8y2" path="res://prefabs/particles/dirt_particles.tscn" id="4_wybn6"]
 [ext_resource type="PackedScene" uid="uid://c2p4l47fcca4w" path="res://prefabs/soldiers/player_spawn.tscn" id="5_mvtiy"]
 [ext_resource type="PackedScene" uid="uid://b0y8wp42nb272" path="res://prefabs/soldiers/character_body.tscn" id="6_68pgw"]
 [ext_resource type="PackedScene" uid="uid://hnh1b76w667g" path="res://prefabs/soldiers/soldier_sr.tscn" id="7_mbukx"]
@@ -103,6 +105,8 @@ mesh = SubResource("PlaneMesh_2btgp")
 surface_material_override/0 = SubResource("StandardMaterial3D_0ki4s")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+script = ExtResource("3_d4htm")
+bullet_hit_particles_prefab = ExtResource("4_wybn6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_065r1")

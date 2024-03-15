@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://b2b1mb7hpe8y2"]
+
+[ext_resource type="Texture2D" uid="uid://cldlm10pxpqf7" path="res://textures/particles/dirt_particles.png" id="1_kxbv5"]
+[ext_resource type="Script" path="res://code/particles/one_shot_particle_script.gd" id="1_uc2mt"]
+
+[sub_resource type="Curve" id="Curve_nypx4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_equ8w"]
+curve = SubResource("Curve_nypx4")
+
+[sub_resource type="Gradient" id="Gradient_0uwlq"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gmm8g"]
+gradient = SubResource("Gradient_0uwlq")
+
+[sub_resource type="Curve" id="Curve_nfsnt"]
+_data = [Vector2(0, 0.536083), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4seo6"]
+curve = SubResource("Curve_nfsnt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b0pny"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, 1)
+spread = 20.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_4seo6")
+color_ramp = SubResource("GradientTexture1D_gmm8g")
+alpha_curve = SubResource("CurveTexture_equ8w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_310xd"]
+transparency = 1
+albedo_texture = ExtResource("1_kxbv5")
+metallic_specular = 0.0
+texture_filter = 2
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ucvje"]
+material = SubResource("StandardMaterial3D_310xd")
+size = Vector2(0.5, 0.5)
+
+[node name="DirtParticles" type="Node3D" node_paths=PackedStringArray("particles")]
+script = ExtResource("1_uc2mt")
+particles = NodePath("GPUParticles3D")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+randomness = 0.1
+process_material = SubResource("ParticleProcessMaterial_b0pny")
+draw_pass_1 = SubResource("QuadMesh_ucvje")

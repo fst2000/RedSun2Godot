@@ -2,6 +2,7 @@ extends Node3D
 
 var velocity
 var damage
+var impulse
 var gravity = 10
 var life_time
 var delete_timer = 0.0
@@ -9,8 +10,9 @@ var prev_global_pos
 var has_hit = false
 @onready var ray = $RayCast3D
 
-func initialize(fire_point : Node3D, _damage : float, speed : float, _life_time : float):
+func initialize(fire_point : Node3D, _damage : float, _impulse : float, speed : float, _life_time : float):
 		damage = _damage
+		impulse = _impulse
 		life_time = _life_time
 		global_position = fire_point.global_position
 		prev_global_pos = global_position
