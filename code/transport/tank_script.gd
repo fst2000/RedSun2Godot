@@ -10,6 +10,7 @@ var recoil_timer = Stopwatch.new()
 
 @export var transport_slot : PackedScene
 @export var shell_prefab : PackedScene
+@export var sparks_particles_prefab : PackedScene
 @export var wheel_bones : Array[Node3D]
 @export var engine_force = 20.0
 @export var shell_speed = 600.0
@@ -72,3 +73,12 @@ func create_camera_controller(camera):
 
 func is_detecting(character):
 	return detect_area.overlaps_body(character)
+
+func bullet_hit_action(bullet):
+	var point = bullet.ray.get_collision_point()
+	var normal = bullet.ray.get_collision_normal()
+	var sparks_particles = sparks_particles_prefab.instantiate()
+	add_child(sparks_particles)
+	sparks_particles.global_position = point
+	sparks_particles.quaternion = Quaternion(Vector3(0,0,1), normal)
+	bullet.queue_free()

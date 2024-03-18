@@ -44,7 +44,7 @@ billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_ucvje"]
 material = SubResource("StandardMaterial3D_310xd")
-size = Vector2(0.5, 0.5)
+size = Vector2(0.5, 1)
 
 [node name="DirtParticles" type="Node3D" node_paths=PackedStringArray("particles")]
 script = ExtResource("1_uc2mt")

@@ -1,5 +1,5 @@
 class_name SurfaceHitShape
-extends HitShape
+extends Node
 
 @export var bullet_hit_particles_prefab : PackedScene
 

@@ -42,7 +42,7 @@ func _physics_process(delta):
 	if ray.is_colliding():
 		if !has_hit:
 			var hit_collider = ray.get_collider()
-			if hit_collider is HitShape:
+			if hit_collider.has_method("bullet_hit_action"):
 				hit_collider.bullet_hit_action(self)
 			has_hit = true
 	else:

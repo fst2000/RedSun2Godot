@@ -1,5 +1,5 @@
-class_name BodyHitShape
-extends HitShape
+class_name BoneHitShape
+extends Node
 
 @export var soldier : Node3D
 @export var hit_particles_prefab : PackedScene

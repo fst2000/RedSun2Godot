@@ -68,6 +68,7 @@ func damage(value):
 
 func die():
 	skeleton.physical_bones_start_simulation()
+	equipment.weapons.all(func(w): equipment.drop(w))
 
 func shape_stand():
 	stand_shape.disabled = false
