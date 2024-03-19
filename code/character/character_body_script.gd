@@ -49,7 +49,7 @@ func _ready():
 func _process(delta):
 	character_input.update(delta)
 	state_machine.update(delta)
-	move_and_slide()
+	if !is_dead(): move_and_slide()
 
 func look_at_direction(direction : Vector3, axis := Vector3.UP):
 	direction = direction.slide(Vector3.UP).normalized()
@@ -68,7 +68,13 @@ func damage(value):
 
 func die():
 	skeleton.physical_bones_start_simulation()
+	unshape()
 	equipment.weapons.all(func(w): equipment.drop(w))
+
+func unshape():
+	stand_shape.disabled = false
+	crouch_shape.disabled = false
+	crawl_shape.disabled = false
 
 func shape_stand():
 	stand_shape.disabled = false
@@ -112,6 +118,11 @@ func is_dead():
 func is_aim(): return equipment.weapons.any(func(weapon): return weapon.is_aim())
 
 func is_reload(): return equipment.weapons.any(func(weapon): return weapon.is_reload())
+
+func transport_hit_action(_transport):
+	var hit_direction = (global_position - _transport.global_position).normalized()
+	var hit_damage = hit_direction.dot(_transport.get_linear_velocity().normalized())
+	soldier.character_body.damage(hit_damage * 50)
 
 func weapon_detection_action(weapon):
 	equip_controller.weapon_detection_action(weapon)

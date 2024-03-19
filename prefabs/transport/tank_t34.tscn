@@ -263,9 +263,13 @@ points = PackedVector3Array(-1.29125, 1.70735, -2.19181, 1.4278, 0.921022, 2.898
 size = Vector3(1.66895, 0.781799, 2.50293)
 
 [node name="tank_t34" type="RigidBody3D" node_paths=PackedStringArray("wheel_bones", "turret", "gun")]
+collision_layer = 4
+collision_mask = 5
 mass = 20000.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.5, 0)
+max_contacts_reported = 3
+contact_monitor = true
 script = ExtResource("2_l1v1y")
 transport_slot = ExtResource("2_mw5ko")
 shell_prefab = ExtResource("3_detf4")
@@ -590,3 +594,6 @@ shape = SubResource("ConvexPolygonShape3D_cs5j7")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0936, 0.381348)
 shape = SubResource("BoxShape3D_5t3s1")
+
+[node name="TankExit" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.322556, 2.82379, 0.0968156)

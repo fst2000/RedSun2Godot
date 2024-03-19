@@ -19,6 +19,7 @@ var recoil_timer = Stopwatch.new()
 @export var turret : Node3D
 @export var gun : Node3D
 
+@onready var tank_exit = $TankExit
 @onready var detect_area = $DetectArea
 @onready var character_detector = AreaBodyDetector.new(
 	detect_area,
@@ -44,6 +45,11 @@ func _process(_delta):
 
 func _physics_process(delta):
 	character_detector.update(delta)
+	get_colliding_bodies().all(
+		func(body):
+			if linear_velocity.length() > 3:
+				if body.has_method("transport_hit_action"):
+					body.transport_hit_action(self))
 	for wheel in wheels:
 		wheel.update(delta)
 	aim_system.aim(tank_input.look_direction())
@@ -62,10 +68,18 @@ func get_in_action(_character):
 	tank_input = _character.create_tank_input(self)
 	_character.character_input.close()
 	_character.character_input = EmptyCharacterInput.new()
+	_character.reparent(self)
+	_character.position = Vector3.ZERO
+	_character.visible = false
+	_character.unshape()
 	
 func get_out_action(_character):
 	_character.character_input = _character.create_character_input()
 	tank_input = EmptyTankInput.new(self)
+	_character.reparent(get_tree().current_scene)
+	_character.global_position = tank_exit.global_position
+	_character.visible = true
+	_character.unshape()
 
 func create_camera_controller(camera):
 	return TankCameraController.new(camera, self)
