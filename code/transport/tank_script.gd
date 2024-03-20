@@ -68,6 +68,8 @@ func get_in_action(_character):
 	tank_input = _character.create_tank_input(self)
 	_character.character_input.close()
 	_character.character_input = EmptyCharacterInput.new()
+	_character.equip_controller.close()
+	_character.equip_controller = EmptyEquipController.new()
 	_character.reparent(self)
 	_character.position = Vector3.ZERO
 	_character.visible = false
@@ -75,6 +77,7 @@ func get_in_action(_character):
 	
 func get_out_action(_character):
 	_character.character_input = _character.create_character_input()
+	_character.equip_controller = _character.create_equip_controller()
 	tank_input = EmptyTankInput.new(self)
 	_character.reparent(get_tree().current_scene)
 	_character.global_position = tank_exit.global_position

@@ -139,6 +139,9 @@ func transport_undetection_action(transport):
 func create_camera_controller(camera):
 	return CharacterCameraController.new(self, camera, CharacterCameraInput.new(self))
 
+func create_equip_controller():
+	return content.create_equip_controller()
+
 func create_character_input():
 	return content.create_character_input()
 

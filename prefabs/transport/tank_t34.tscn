@@ -275,6 +275,7 @@ transport_slot = ExtResource("2_mw5ko")
 shell_prefab = ExtResource("3_detf4")
 sparks_particles_prefab = ExtResource("4_7ogjg")
 wheel_bones = [NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_1"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_2"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_3"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_4"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_5"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_6"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_7"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_1"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_2"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_3"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_4"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_5"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_6"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_7")]
+engine_force = 30.0
 turret = NodePath("T34/T34_Tower")
 gun = NodePath("T34/T34_Tower/T34_Gun")
 

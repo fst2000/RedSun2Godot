@@ -15,7 +15,9 @@ curve = SubResource("Curve_as6tj")
 lifetime_randomness = 0.36
 angle_min = -90.0
 angle_max = 90.0
-direction = Vector3(0, 0, 1)
+direction = Vector3(0, 0, 0)
+orbit_velocity_max = 1.205
+gravity = Vector3(0, 0, 0)
 scale_max = 1.5
 scale_curve = SubResource("CurveTexture_b3476")
 
@@ -27,7 +29,6 @@ emission_enabled = true
 emission_energy_multiplier = 2.0
 emission_texture = ExtResource("2_3vmlu")
 texture_filter = 2
-billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_kooep"]
@@ -39,9 +40,7 @@ script = ExtResource("1_l76dr")
 particles = NodePath("GPUParticles3D")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-emitting = false
 amount = 1
-lifetime = 0.05
-one_shot = true
+lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_bl21n")
 draw_pass_1 = SubResource("QuadMesh_kooep")

@@ -1,4 +1,4 @@
-class_name BotEquipController
+class_name EmptyEquipController
 
 func weapon_detection_action(_weapon):
 	pass
