@@ -91,9 +91,7 @@ func create_camera_controller(camera):
 func is_detecting(character):
 	return detect_area.overlaps_body(character)
 
-func bullet_hit_action(bullet):
-	var point = bullet.ray.get_collision_point()
-	var normal = bullet.ray.get_collision_normal()
+func bullet_hit_action(bullet, point, normal):
 	var sparks_particles = sparks_particles_prefab.instantiate()
 	add_child(sparks_particles)
 	sparks_particles.global_position = point

@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve" id="Curve_as6tj"]
 max_value = 3.0
-_data = [Vector2(0, 0), 0.0, 9.84482, 0, 0, Vector2(1, 3), 0.141385, 0.0, 0, 0]
+_data = [Vector2(0, 0.154639), 0.0, 2.3981, 0, 0, Vector2(1, 3), 4.04874, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_b3476"]
@@ -29,7 +29,11 @@ emission_enabled = true
 emission_energy_multiplier = 2.0
 emission_texture = ExtResource("2_3vmlu")
 texture_filter = 2
+billboard_mode = 3
 billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_kooep"]
 material = SubResource("StandardMaterial3D_scahm")
@@ -40,7 +44,9 @@ script = ExtResource("1_l76dr")
 particles = NodePath("GPUParticles3D")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
 amount = 1
-lifetime = 0.2
+lifetime = 0.1
+one_shot = true
 process_material = SubResource("ParticleProcessMaterial_bl21n")
 draw_pass_1 = SubResource("QuadMesh_kooep")

@@ -1,14 +1,16 @@
 class_name WeaponCrouchState
 
 var character
+var state_machine
 
 func _init(_character):
 	character = _character
 	character.shape_crouch()
-	character.anim_player.play("anim_move/crouch_idle_aim")
 	character.anim_player.set_default_blend_time(0.1)
+	state_machine = StateMachine.new(WeaponCrouchIdleState.new(character))
 	
 func update(_delta):
+	state_machine.update(_delta)
 	character.move(character.move_direction() * 2)
 	character.look_at_direction(character.look_direction())
 
