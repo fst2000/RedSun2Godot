@@ -30,3 +30,6 @@ func move_input():
 		Input.get_axis("right", "left"),
 		0,
 		Input.get_axis("down", "up"))
+
+func is_shoot():
+	return Input.is_action_pressed("fire")

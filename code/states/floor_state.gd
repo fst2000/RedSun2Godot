@@ -5,6 +5,7 @@ var state_machine
 
 func _init(_character):
 	character = _character
+	character.look_at_direction(character.global_basis.z, Vector3.UP)
 	state_machine = StateMachine.new(StandState.new(character))
 
 func update(delta):

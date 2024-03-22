@@ -13,6 +13,8 @@ var recoil_timer = Stopwatch.new()
 @export var sparks_particles_prefab : PackedScene
 @export var wheel_bones : Array[Node3D]
 @export var engine_force = 20.0
+@export var shell_damage = 200.0
+@export var shell_impulse = 200.0
 @export var shell_speed = 600.0
 @export var shell_life_time = 5.0
 @export var recoil_time = 3.0
@@ -42,6 +44,7 @@ func _ready():
 
 func _process(_delta):
 	tank_input.update(_delta)
+	if tank_input.is_shoot(): shoot()
 
 func _physics_process(delta):
 	character_detector.update(delta)
@@ -61,7 +64,7 @@ func shoot():
 		recoil_timer = Stopwatch.new()
 		var shell = shell_prefab.instantiate()
 		get_tree().current_scene.add_child(shell)
-		shell.initialize(fire_point, shell_speed, shell_life_time)
+		shell.initialize(fire_point, shell_damage, shell_impulse, shell_speed, shell_life_time)
 		apply_force(-gun.global_basis.z * 50 * mass, gun.global_position - global_position)
 
 func get_in_action(_character):

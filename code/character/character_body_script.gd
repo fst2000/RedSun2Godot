@@ -65,6 +65,8 @@ func fall(delta):
 
 func damage(value):
 	hp -= value
+	if hp <= 0:
+		die()
 
 func die():
 	skeleton.physical_bones_start_simulation()
