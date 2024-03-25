@@ -11,12 +11,7 @@ shader_parameter/color = Vector3(1, 0.5, 0)
 
 [node name="Shell" instance=ExtResource("1_0y3n2")]
 script = ExtResource("2_wkirn")
+collision_layers = 21
 
 [node name="shell" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_rsml5")
-
-[node name="RayCast3D" type="RayCast3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
-enabled = false
-target_position = Vector3(0, 0, 3)
-collision_mask = 21

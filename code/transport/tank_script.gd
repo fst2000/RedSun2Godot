@@ -67,25 +67,15 @@ func shoot():
 		shell.initialize(fire_point, shell_damage, shell_impulse, shell_speed, shell_life_time)
 		apply_force(-gun.global_basis.z * 50 * mass, gun.global_position - global_position)
 
-func get_in_action(_character):
+func let_in_action(_character):
+	_character.get_in_action(self)
 	tank_input = _character.create_tank_input(self)
-	_character.character_input.close()
-	_character.character_input = EmptyCharacterInput.new()
-	_character.equip_controller.close()
-	_character.equip_controller = EmptyEquipController.new()
-	_character.reparent(self)
-	_character.position = Vector3.ZERO
-	_character.visible = false
-	_character.unshape()
 	
-func get_out_action(_character):
-	_character.character_input = _character.create_character_input()
-	_character.equip_controller = _character.create_equip_controller()
-	tank_input = EmptyTankInput.new(self)
-	_character.reparent(get_tree().current_scene)
+func let_out_action(_character):
+	_character.get_out_action(self)
 	_character.global_position = tank_exit.global_position
-	_character.visible = true
-	_character.unshape()
+	tank_input.close()
+	tank_input = EmptyTankInput.new(self)
 
 func create_camera_controller(camera):
 	return TankCameraController.new(camera, self)

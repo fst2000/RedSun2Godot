@@ -4,9 +4,10 @@ var bot
 var nav : NavigationAgent3D
 var target_definer
 
-func _init(_bot, _nav : NavigationAgent3D, _target_definer):
+func _init(_bot, _target_definer):
 	bot = _bot
-	nav = _nav
+	nav = NavigationAgent3D.new()
+	_bot.add_child(nav)
 	target_definer = _target_definer
 
 func move_direction():
@@ -16,3 +17,6 @@ func move_direction():
 		return nav.get_next_path_position() - bot.global_position
 	else:
 		return Vector3.ZERO
+
+func close():
+	nav.queue_free()

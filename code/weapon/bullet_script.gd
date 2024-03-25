@@ -9,7 +9,7 @@ var delete_timer = 0.0
 var prev_global_pos
 var has_hit = false
 
-@onready var raycast = $RayCast3D
+@export_flags_3d_physics var collision_layers
 
 func initialize(fire_point : Node3D, _damage : float, _impulse : float, speed : float, _life_time : float):
 		damage = _damage
@@ -37,7 +37,7 @@ func _physics_process(delta):
 		prev_global_pos = global_position
 		global_position += velocity * delta
 		scale.z = min(scale.z + delta * velocity.length() * 0.2, velocity.length() * 0.03)
-	var ray = PhysicsRayQueryParameters3D.create(prev_global_pos, global_position, raycast.collision_mask)
+	var ray = PhysicsRayQueryParameters3D.create(prev_global_pos, global_position, collision_layers)
 	var collision := get_world_3d().direct_space_state.intersect_ray(ray)
 	if collision:
 		if !has_hit:

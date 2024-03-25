@@ -30,6 +30,8 @@ var hp = 100
 
 var gravity = 10
 
+var is_in_transport = false
+
 func _ready():
 	soldier.character_body = self
 	equipment = Equipment.new(self, soldier.get_node("SlotNodes").get_children())
@@ -65,8 +67,7 @@ func fall(delta):
 
 func damage(value):
 	hp -= value
-	if hp <= 0:
-		die()
+	hp = clamp(hp, 0, 100)
 
 func die():
 	skeleton.physical_bones_start_simulation()
@@ -74,9 +75,9 @@ func die():
 	equipment.weapons.all(func(w): equipment.drop(w))
 
 func unshape():
-	stand_shape.disabled = false
-	crouch_shape.disabled = false
-	crawl_shape.disabled = false
+	stand_shape.disabled = true
+	crouch_shape.disabled = true
+	crawl_shape.disabled = true
 
 func shape_stand():
 	stand_shape.disabled = false
@@ -120,6 +121,24 @@ func is_dead():
 func is_aim(): return equipment.weapons.any(func(weapon): return weapon.is_aim())
 
 func is_reload(): return equipment.weapons.any(func(weapon): return weapon.is_reload())
+
+func get_in_action(transport):
+	is_in_transport = true
+	character_input.close()
+	character_input = EmptyCharacterInput.new()
+	equip_controller.close()
+	equip_controller = EmptyEquipController.new()
+	reparent(transport)
+	position = Vector3.ZERO
+	visible = false
+	unshape()
+
+func get_out_action(transport):
+	is_in_transport = false
+	character_input = create_character_input()
+	equip_controller = create_equip_controller()
+	reparent(transport.get_tree().current_scene)
+	visible = true
 
 func transport_hit_action(_transport):
 	var hit_direction = (global_position - _transport.global_position).normalized()

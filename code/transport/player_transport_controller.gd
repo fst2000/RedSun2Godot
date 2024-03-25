@@ -34,9 +34,9 @@ func get_in(transport):
 		func():
 			var screen_size = get_window().size
 			return Vector2(screen_size.x * 0.5, screen_size.y * 0.1))
-	transport.get_in_action(player)
+	transport.let_in_action(player)
 	camera.switch(transport)
 
 func get_out(transport):
-	transport.get_out_action(player)
+	transport.let_out_action(player)
 	camera.switch(player)

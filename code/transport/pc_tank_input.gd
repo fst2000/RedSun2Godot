@@ -33,3 +33,6 @@ func move_input():
 
 func is_shoot():
 	return Input.is_action_pressed("fire")
+
+func close():
+	pass

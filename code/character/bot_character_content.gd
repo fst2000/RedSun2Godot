@@ -1,7 +1,6 @@
 class_name BotCharacterContent
 
 var character
-
 func _init(_character):
 	character = _character
 
@@ -12,6 +11,7 @@ func create_transport_controller():
 	return BotTransportController.new()
 
 func create_character_input():
+	#var move_input = BotMoveInput.new(character, )
 	return EmptyCharacterInput.new()
 
 func create_tank_input(tank):

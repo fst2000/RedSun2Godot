@@ -1,23 +1,26 @@
-class_name ViewTargetDefiner
+class_name ViewRayTargetDefiner
 
-var area : Area3D
+var area
+var look_input
 var fov
-var distance
 
-func _init(_area, _fov : float, _distance : float):
+func _init(_origin : Node3D, _look_input, _fov : float, _distance : float):
+	area = Area3D.new()
+	var sphere_shape = SphereShape3D.new()
+	sphere_shape.radius = _distance
+	var collision_shape = CollisionShape3D.new()
+	collision_shape.shape = sphere_shape
+	area.add_child(collision_shape)
+	_origin.add_child(area)
+	area.position = Vector3(0,0,0)
+	look_input = _look_input
 	fov = _fov * PI / 180
-	distance = _distance
-	area = _area
 
 func get_target():
-	var bodies = area.get_overlapping_bodies()
+	var view_targets = view_target_definer.get_targets()
 	if bodies: bodies = bodies.filter(
 		func(body):
-			var to_body_dir = body.global_position - area.global_position
-			return area.global_position.distance_to(body.global_position) < distance && area.global_basis.z.angle_to(to_body_dir) < fov * 0.5
-	).filter(
-		func(body):
-			var ray = PhysicsRayQueryParameters3D.create(area.global_position, body.global_position, area.collision_mask)
-			var collision := area.get_world_3d().direct_space_state.intersect_ray(ray)
+			var ray = PhysicsRayQueryParameters3D.create(view_area.global_position, body.global_position, view_area.collision_mask)
+			var collision := view_area.get_world_3d().direct_space_state.intersect_ray(ray)
 			return body == collision.get("collider"))
 	if bodies: return bodies[0]
