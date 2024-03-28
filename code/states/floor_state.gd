@@ -13,14 +13,14 @@ func update(delta):
 	character.move_and_slide()
 
 func next():
+	if character.is_in_transport:
+		return InTransportState.new(character)
+	
 	if !character.is_on_floor():
 		return FallState.new(character)
 	
 	if character.is_dead():
 		return DeadState.new(character)
-	
-	if character.is_in_transport:
-		return InTransportState.new(character)
 	
 	return self
 	

@@ -1,18 +1,20 @@
 class_name FallState
 
 var character
-var state_machine
 
 func _init(_character):
 	character = _character
-	state_machine = StateMachine.new(StandState.new(character))
+	character.shape_stand()
 
 func update(delta):
 	character.fall(delta)
-	state_machine.update(delta)
 	character.move_and_slide()
 
 func next():
+	
+	if character.is_in_transport:
+		return InTransportState.new(character)
+	
 	if character.is_on_floor():
 		return FloorState.new(character)
 	
@@ -22,4 +24,4 @@ func next():
 	return self
 
 func exit():
-	state_machine.state.exit()
+	pass
