@@ -48,11 +48,6 @@ func _process(_delta):
 
 func _physics_process(delta):
 	character_detector.update(delta)
-	get_colliding_bodies().all(
-		func(body):
-			if linear_velocity.length() > 3:
-				if body.has_method("transport_hit_action"):
-					body.transport_hit_action(self))
 	for wheel in wheels:
 		wheel.update(delta)
 	aim_system.aim(tank_input.look_direction())
@@ -81,8 +76,7 @@ func create_camera_controller(camera):
 	return TankCameraController.new(camera, self)
 
 
-func is_detecting(character):
-	return detect_area.overlaps_body(character)
+
 
 func bullet_hit_action(bullet, point, normal):
 	var sparks_particles = sparks_particles_prefab.instantiate()

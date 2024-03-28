@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://bsfhq7osdp8ei"]
+[gd_scene load_steps=29 format=3 uid="uid://bsfhq7osdp8ei"]
 
 [ext_resource type="Script" path="res://code/transport/tank_script.gd" id="2_l1v1y"]
 [ext_resource type="PackedScene" uid="uid://5vnd4mba4ke4" path="res://prefabs/ui/slots/t_34_slot.tscn" id="2_mw5ko"]
 [ext_resource type="PackedScene" uid="uid://bn4e1ponowkdu" path="res://prefabs/weapons/shell.tscn" id="3_detf4"]
 [ext_resource type="PackedScene" uid="uid://c7yy5m6sswv2e" path="res://prefabs/particles/sparks_particles.tscn" id="4_7ogjg"]
+[ext_resource type="Script" path="res://code/transport/transport_hit_area.gd" id="5_ino0a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7122y"]
 resource_name = "T34_Texture"
@@ -262,6 +263,12 @@ points = PackedVector3Array(-1.29125, 1.70735, -2.19181, 1.4278, 0.921022, 2.898
 [sub_resource type="BoxShape3D" id="BoxShape3D_5t3s1"]
 size = Vector3(1.66895, 0.781799, 2.50293)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_v41xy"]
+size = Vector3(3.13, 1.37, 6.325)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6h4mw"]
+size = Vector3(2.0127, 1.07819, 2.8396)
+
 [node name="tank_t34" type="RigidBody3D" node_paths=PackedStringArray("wheel_bones", "turret", "gun")]
 collision_layer = 4
 collision_mask = 5
@@ -276,6 +283,7 @@ shell_prefab = ExtResource("3_detf4")
 sparks_particles_prefab = ExtResource("4_7ogjg")
 wheel_bones = [NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_1"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_2"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_3"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_4"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_5"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_6"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_l_7"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_1"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_2"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_3"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_4"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_5"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_6"), NodePath("Tank_Trail_Arm/Skeleton3D/wheel_r_7")]
 engine_force = 30.0
+shell_damage = 500.0
 turret = NodePath("T34/T34_Tower")
 gun = NodePath("T34/T34_Tower/T34_Gun")
 
@@ -598,3 +606,18 @@ shape = SubResource("BoxShape3D_5t3s1")
 
 [node name="TankExit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.322556, 2.82379, 0.0968156)
+
+[node name="HitArea" type="Area3D" parent="." node_paths=PackedStringArray("transport")]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("5_ino0a")
+transport = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11897, 0.125884)
+shape = SubResource("BoxShape3D_v41xy")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16719, 0.417084)
+shape = SubResource("BoxShape3D_6h4mw")

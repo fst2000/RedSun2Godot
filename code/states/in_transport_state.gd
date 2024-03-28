@@ -13,3 +13,6 @@ func next():
 		return FloorState.new(character)
 	
 	return self
+
+func exit():
+	pass

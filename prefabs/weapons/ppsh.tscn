@@ -233,9 +233,8 @@ ui_prefab = ExtResource("4_8lfq8")
 bullets_per_second = 16
 bullets_capacity = 70
 recoil_time = 0.8
-recoil_min = 0.01
-recoil_max = 1.0
-recoil_strength = 0.1
+recoil_min = 0.005
+recoil_strength = 0.2
 
 [node name="PPSH_Magazine" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.99471, 0.102721, 0, -0.102721, 0.99471, 0, -0.0418993, 0.243361)

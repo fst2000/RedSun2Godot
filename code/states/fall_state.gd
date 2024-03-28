@@ -10,6 +10,7 @@ func _init(_character):
 func update(delta):
 	character.fall(delta)
 	state_machine.update(delta)
+	character.move_and_slide()
 
 func next():
 	if character.is_on_floor():

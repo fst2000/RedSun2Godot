@@ -18,10 +18,10 @@ func _init(_look_input, _weapon, _recoil_strength_multiplier = 1.0):
 func update(_delta):
 	var look_dir = look_input.look_direction()
 	if weapon.is_shoot():
-		var recoil_aixs = Vector3(0.5 - randf(), 0.5 - randf(), 0.5 - randf()).slide(look_dir).normalized()
+		var recoil_axis = Vector3(0.5 - randf(), 0.5 - randf(), 0.5 - randf()).slide(look_dir).normalized()
 		var recoil_angle = recoil_strength * look_dir.angle_to(recoil_look_dir) + recoil_min
 		recoil_angle = clamp(recoil_angle, recoil_min, recoil_max)
-		recoil_look_dir = recoil_look_dir.rotated(recoil_aixs, recoil_angle)
+		recoil_look_dir = recoil_look_dir.rotated(recoil_axis, recoil_angle).rotated(-weapon.global_basis.x, recoil_angle * 2)
 	else:
 		recoil_look_dir = lerp(recoil_look_dir, look_dir, _delta * 10)
 

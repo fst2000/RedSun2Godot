@@ -3,12 +3,15 @@ class_name PCCharacterInput
 var look_input
 var move_input
 
+var mouse_input
+
 func _init(_character):
+	mouse_input = MouseInput.new(_character)
 	look_input = SlideLookInput.new(
 			FuncLookInput.new(func(): return Vector3(0,0,1)),
 			_character,
-			MouseInput.new(_character), 1.0,
-			60.0)
+			mouse_input,
+	1.0, 60.0)
 	move_input = KeyboardMoveInput.new(look_input)
 
 func update(_delta):
@@ -16,7 +19,9 @@ func update(_delta):
 	move_input.update(_delta)
 
 func close():
-	pass
+	look_input.close()
+	move_input.close()
+	mouse_input.close()
 
 func look_direction():
 	return look_input.look_direction()

@@ -29,3 +29,6 @@ func move_local_direction():
 	var input_length = min(input.length(), 1.0)
 	input = input.normalized() * input_length
 	return input
+
+func close():
+	pass

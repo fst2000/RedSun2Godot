@@ -28,3 +28,6 @@ func look_direction():
 	look_dir = look_dir.rotated(origin.global_basis.y, slide_angle_x)
 	look_dir = look_dir.rotated(origin.global_basis.y.cross(look_dir).normalized(), slide_angle_y)
 	return look_dir
+
+func close():
+	pass

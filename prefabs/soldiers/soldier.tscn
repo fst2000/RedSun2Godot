@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://b0y8wp42nb272"]
 
-[ext_resource type="Script" path="res://code/character/character_body_script.gd" id="1_g3g1n"]
-[ext_resource type="PackedScene" uid="uid://bv8e613qdxxdy" path="res://prefabs/particles/blood_particles.tscn" id="2_jtso5"]
-[ext_resource type="AnimationLibrary" uid="uid://b8v3aj5kke4fo" path="res://animations/anim_move/anim_crawl.blend" id="2_xy5ee"]
-[ext_resource type="AnimationLibrary" uid="uid://dpwofy8p87krx" path="res://animations/anim_move/anim_move.blend" id="3_o2a7e"]
+[ext_resource type="Script" path="res://code/character/soldier_script.gd" id="1_h6y31"]
+[ext_resource type="PackedScene" uid="uid://bv8e613qdxxdy" path="res://prefabs/particles/blood_particles.tscn" id="2_h4tdk"]
+[ext_resource type="AnimationLibrary" uid="uid://b8v3aj5kke4fo" path="res://animations/anim_move/anim_crawl.blend" id="3_6c017"]
+[ext_resource type="AnimationLibrary" uid="uid://dpwofy8p87krx" path="res://animations/anim_move/anim_move.blend" id="4_e437c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47ui6"]
 radius = 0.4
@@ -17,17 +17,17 @@ height = 1.1
 height = 0.3
 radius = 0.4
 
-[node name="CharacterBody" type="CharacterBody3D"]
+[node name="Soldier" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 7
-script = ExtResource("1_g3g1n")
-blood_particles_prefab = ExtResource("2_jtso5")
+script = ExtResource("1_h6y31")
+blood_particles_prefab = ExtResource("2_h4tdk")
 
 [node name="OnFootAnimPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")
 libraries = {
-"": ExtResource("2_xy5ee"),
-"anim_move": ExtResource("3_o2a7e")
+"": ExtResource("3_6c017"),
+"anim_move": ExtResource("4_e437c")
 }
 playback_default_blend_time = 0.1
 
@@ -38,17 +38,17 @@ shape = SubResource("CapsuleShape3D_47ui6")
 [node name="CrouchShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("CapsuleShape3D_k0pu7")
-disabled = true
 
 [node name="CrawlShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("CylinderShape3D_dah1e")
-disabled = true
 
 [node name="StandCheckRay" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 target_position = Vector3(0, 1, 0)
+collision_mask = 5
 
 [node name="CrouchCheckRay" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 target_position = Vector3(0, 1, 0)
+collision_mask = 5

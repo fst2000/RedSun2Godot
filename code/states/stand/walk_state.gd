@@ -7,7 +7,9 @@ func _init(_character):
 	character.anim_player.play("anim_move/walk")
 
 func update(_delta):
-	pass
+	var move_direction = character.move_direction()
+	character.look_at_direction(move_direction)
+	character.move(move_direction * 2)
 
 func next():
 	var move_strength = character.move_direction().length()

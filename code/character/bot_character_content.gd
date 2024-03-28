@@ -11,8 +11,8 @@ func create_transport_controller():
 	return BotTransportController.new()
 
 func create_character_input():
-	#var move_input = BotMoveInput.new(character, )
-	return EmptyCharacterInput.new()
+	
+	return BotCharacterInput.new(character)
 
 func create_tank_input(tank):
 	return EmptyTankInput.new(tank)

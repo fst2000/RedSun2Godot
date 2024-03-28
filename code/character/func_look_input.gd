@@ -7,3 +7,9 @@ func _init(_look_direction_func : Callable):
 
 func look_direction():
 	return look_direction_func.call()
+
+func update(_delta):
+	pass
+
+func close():
+	pass

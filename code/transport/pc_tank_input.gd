@@ -2,13 +2,15 @@ class_name PCTankInput
 
 var tank
 var look_input
+var mouse_input
 
 func _init(_tank):
 	tank = _tank
+	mouse_input = MouseInput.new(tank)
 	look_input = SlideLookInput.new(
 			ForwardLookInput.new(tank),
 			tank,
-			MouseInput.new(tank), 1.0,
+			mouse_input, 1.0,
 			20.0)
 
 func update(_delta):
@@ -35,4 +37,5 @@ func is_shoot():
 	return Input.is_action_pressed("fire")
 
 func close():
-	pass
+	look_input.close()
+	mouse_input.close()
