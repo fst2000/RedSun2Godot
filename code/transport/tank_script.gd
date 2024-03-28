@@ -22,6 +22,7 @@ var recoil_timer = Stopwatch.new()
 @export var gun : Node3D
 
 @onready var tank_exit = $TankExit
+@onready var driver_seat = $DriverSeat
 @onready var detect_area = $DetectArea
 @onready var character_detector = AreaBodyDetector.new(
 	detect_area,
@@ -64,10 +65,13 @@ func shoot():
 
 func let_in_action(_character):
 	_character.get_in_action(self)
+	_character.reparent(driver_seat)
+	_character.position = Vector3.ZERO
 	tank_input = _character.create_tank_input(self)
 	
 func let_out_action(_character):
 	_character.get_out_action(self)
+	_character.reparent(get_tree().current_scene)
 	_character.global_position = tank_exit.global_position
 	tank_input.close()
 	tank_input = EmptyTankInput.new(self)

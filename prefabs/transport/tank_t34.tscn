@@ -621,3 +621,5 @@ shape = SubResource("BoxShape3D_v41xy")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="HitArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16719, 0.417084)
 shape = SubResource("BoxShape3D_6h4mw")
+
+[node name="DriverSeat" type="Node3D" parent="."]

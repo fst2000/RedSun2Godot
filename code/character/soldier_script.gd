@@ -40,7 +40,7 @@ func _ready():
 	anim_player.set_root_node(anim_player_root)
 	skeleton = body.get_node("Armature/Skeleton3D")
 	weapon_bone = body.get_node("WeaponBone")
-	aim_system = CharacterAimSystem.new(self, skeleton)
+	aim_system = content.create_character_aim_system()
 	
 	equip_controller = content.create_equip_controller()
 	transport_controller = content.create_transport_controller()
@@ -124,22 +124,19 @@ func is_aim(): return equipment.weapons.any(func(weapon): return weapon.is_aim()
 
 func is_reload(): return equipment.weapons.any(func(weapon): return weapon.is_reload())
 
-func get_in_action(transport):
+func get_in_action(_transport):
 	is_in_transport = true
 	character_input.close()
 	character_input = EmptyCharacterInput.new()
 	equip_controller.close()
 	equip_controller = EmptyEquipController.new()
-	reparent(transport)
-	position = Vector3.ZERO
 	unshape()
 	skeleton.animate_physical_bones = false
 
-func get_out_action(transport):
+func get_out_action(_transport):
 	is_in_transport = false
 	character_input = create_character_input()
 	equip_controller = create_equip_controller()
-	reparent(transport.get_tree().current_scene)
 	skeleton.animate_physical_bones = true
 
 func transport_hit_action(_transport):

@@ -19,3 +19,6 @@ func create_tank_input(tank):
 
 func create_gun_input(_gun):
 	return EmptyGunInput.new()
+
+func create_character_aim_system():
+	return CharacterAimSystem.new(character, character.skeleton)
